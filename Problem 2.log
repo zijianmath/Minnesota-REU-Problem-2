@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  19 JUN 2014 23:07
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  22 JUN 2014 16:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -699,34 +699,37 @@ LaTeX Font Info:    Try loading font information for U+euf on input line 50.
  (/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2009/06/22 v3.00 Euler Fraktur
 )
-[2] [3] (./Problem 2.aux) ) 
+[2] [3] (./Problem 2.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 13324 strings out of 493633
- 236154 string characters out of 3143378
- 258925 words of memory out of 3000000
- 16178 multiletter control sequences out of 15000+200000
+ 13259 strings out of 493633
+ 234704 string characters out of 3143378
+ 258856 words of memory out of 3000000
+ 16113 multiletter control sequences out of 15000+200000
  19259 words of font info for 68 fonts, out of 3000000 for 9000
  992 hyphenation exceptions out of 8191
- 63i,9n,74p,615b,676s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/
-mnsymbol/MnSymbolC.enc}{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/mnsy
-mbol/MnSymbolF.enc}{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/mnsymbol
-/MnSymbolD.enc}{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/mnsymbol/MnS
-ymbolE.enc}</usr/local/texlive/2011/texmf-dist/fonts/type1/public/mnsymbol/MnSy
-mbol10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/mnsymbol/MnSy
-mbol8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-bx10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmc
-sc10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-6.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
-pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pf
-b></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
-/usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
-r/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr
-/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></u
-sr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
->
-Output written on "Problem 2.pdf" (3 pages, 157038 bytes).
+ 63i,6n,57p,655b,221s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolC.enc}{/
+usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolF.enc}{/usr/
+local/texlive/2011/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolD.enc}{/usr/loca
+l/texlive/2011/texmf-dist/fonts/enc/dvips/mnsymbol/MnSymbolE.enc}</usr/local/te
+xlive/2011/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol10.pfb></usr/local/te
+xlive/2011/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol8.pfb></usr/local/tex
+live/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texl
+ive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texl
+ive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texli
+ve/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive
+/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2
+011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/201
+1/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2011/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2011/te
+xmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2011/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2
+011/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on "Problem 2.pdf" (3 pages, 170418 bytes).
 PDF statistics:
  83 PDF objects out of 1000 (max. 8388607)
  64 compressed objects within 1 object stream

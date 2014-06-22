@@ -57,7 +57,7 @@ Let $p_i$ be defined as by Pak and Panova, that is
 
 $$p_i = \sum_{Gy, |y| = i} \nu(Gy)$$
 
-where $\nu(Gy)$ is the number of covering relations $Gy \cdot> Gx$.\todo{what's the latex command for the dot?}
+where $\nu(Gy)$ is the number of covering relations $Gy \gtrdot Gx$.
 
 
 
@@ -69,7 +69,7 @@ Our main goal is describe the groups $G\subset \mathfrak{S}_n$ such that for $2^
 
 
 \section{Conjectures}
-Put any conjectures, no matter how wild, here.
+
 
 
 
@@ -83,9 +83,26 @@ Put any conjectures, no matter how wild, here.
 For all $G\subset\mathfrak{S}_n$, $1\le r\le n$, the sequence $q_r^r, q_{r+1}^r,\ldots, q_n^r$ is unimodal and symmetric about $\frac{n+r}{2}$.
 \end{prop}
 
+
+
+
+There is a natural mapping from the basis of $\left(V_i^{(r)}\right)^G$ to the covering relations $Gy \gtrdot Gx$ given by first identifying the basis elements with the orbits $Ge_{(x,y)}$, and then taking the orbit $Ge_{(x,y)}$ to $Gy \gtrdot Gx$.  It is not hard to check that this mapping is both well-defined and surjective.  When $G(x,y)$ contains all the pairs $(x,y)$ such that $x\in Gx$, $y\in Gy$, and $x\subset y$, then this mapping is also injective, which implies that the dimension of $\left(V_i^{(r)}\right)^G$ and the number of covering relations $Gy \gtrdot Gx$, $|y| = i$ are equal, meaning that $q_i = p_i$ for all $i$.
+
 \begin{prop}\label{prop:pak_panova_comparison}
 For $G = \mathfrak{S}_k \wreath \mathfrak{S}_l$ and $r = 1$, $q_i = p_i$ for all $1\le i\le n$.
 \end{prop}
+
+\begin{prop}\label{prop:dihedral_groups}
+Let $p$ be prime.  If $G$ is the embedding of $D_p$ into $\mathfrak{S}_p$ given by letting $G$ act on the vertices of the regular $p$-gon, then $q_i = p_i$ for all $i$.
+\end{prop}
+
+\begin{proof}
+By the discussion above, we simply need to check that for any $x,x'\in Gx$, $y,y'\in Gy$ satisfying $x\subset y$ and $x'\subset y'$, there exists some $\pi\in G$ such that $\pi(x,y) = (x',y')$.  Pick some $\sigma\in G$ such that $\sigma(y) = y'$, and let $x'' = \sigma^{-1}(x')$.  Now if we can find $\tau\in G$ such that $\tau(y) = y$ and $\tau(x) = x''$, then we will have $\sigma\tau(x,y) = (x',y')$, as desired.
+
+We have $x''\subset y$ because the group operation preserves containment, so let $y = \{a_1,a_2,\ldots,a_i\}$, $x = y\setminus \{a_j\}$, and $x'' = y\setminus \{a_k\}$ for some $1\le j \le i$.  Pick some $\rho\in G$ such that $\rho(x) = x''$.  If $\rho$ is a reflection of the $p$-gon, then it is given by a product of disjoint transpositions, one of which must be $(a_ja_k)$, and the rest of which must fix $y\setminus \{a_j,a_k\}$ in order for $\rho(x) = x''$.  In this case $\rho$ fixes $y$, so we're done.
+
+If $\rho$ is not given by a reflection of the $p$-gon then it must be a rotation.  Since $p$ is prime, this means that $\rho$ is given by a single $p$-cycle $(1,1+l,1+2l,\ldots,1+(p-1)l)$, where the entries of the cycle are taken modulo $p$.  Since $\rho(x) = x''$, we must have $x = \{a_k,a_k + l,\ldots,a_j - l\}$ and $x'' = \{a_k + l, \ldots,a_j - l, a_j\}$.  Let $\tau$ be the reflection of the $p$-gon that flips the vertices $a_j$ and $a_k$.  Then $\tau$ also flips the pairs of vertices $\{a_k + l,a_j - l\}, \{a_k + 2l,a_j - 2l\}, \ldots$, and therefore fixes $y = \{a_k,a_k + l, \ldots, a_j\}$, so we're done.
+\end{proof}
 
 
 \begin{lem}\label{lem:U_injective}

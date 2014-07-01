@@ -219,10 +219,46 @@ First, there are the ones which all have the same difference, these seem to be m
 \section{Proof of cyclic group edge numbers is Unimodal}
 
 \begin{lem}
-The number $q_i - p_i$ is in bijection  
+\label{orbit_differences}
+The number $q_i - p_i$ is in bijection with the number of orbits with representative $y$ satisfying the following properties.
+\begin{enumerate}
+	\item There is some $k | n,$ possibly with $k = n,$ such that there are $\lfloor \frac{i}{k} \rfloor$ distinct sets of the form $\{a+k,\ldots,a+nk\},$ taken $\pmod n$
+	\item The remaining  $s = i-\lfloor \frac{i}{k} \rfloor,$ with $s \neq 1,s \neq k.$ elements all have the same value $\pmod \frac{n}{k}$ and there exists $a \in [n]$ and $r < \frac{n}{2}$ such that the remaining elements all lie in the set $\{a+r,a+2r,\ldots, a+sr\}.$
+\end{enumerate} 
 \end{lem}
 \begin{proof}
+Split by the cases of $k = n,$ in which case we have a full cycle, and this is clearly the only possibility, or otherwise $k \neq n,$ in which case some set of elements must be fixed, and then we will have such a ``tail cycle'' as in the second property
+\end{proof}
 
+\begin{defn}
+We call the non full cycle, as described in the second property a tail cycle.
+\end{defn}
+
+\begin{rem}
+The goal of this section is to bound $q_{i-1} <p_i \leq q_i.$ Note we trivially know $p_i \leq q_i,$ Additionally, this bound will trivially show the $p_i$ are unimodal (they are obviously symmetric by taking complements.) Therefore, to accomplish our goal, it suffices to show $q_i - p_i > q_i - q_{i-1} = \binom {n-2}{i-1},$ since we know $q_i = \binom {n-i}{i-1}.$
+\end{rem}
+
+\begin{note}
+Denote the number of edges from $(B_n/G)_i$ to $(B_n/G)_{i-1}$ by $p(n,i).$ Similarly, define $q(n,i)$ as the $q_i$ for $B_n.$
+\end{note}
+
+\begin{lem}
+\begin{align*}
+	p_i \leq \sum_{k = \frac{n}{p},p|k,p \text{ prime }}^{}p(k,\lceil \frac{i}{k}\rceil) \lfloor \frac{p}{2}\rfloor
+\end{align*}
+\end{lem}
+\begin{proof}
+Note that by ~\ref{orbit_differences}, we only have to count the number of G-orbits satisfying the condition of ~\ref{orbit_differences}. Clearly, for every $t|n,$ we can write $t$ as a factor of some $k = \frac{n}{p}.$ Therefore, for any cycle size $t$, it can be decomposed as a disjoint union of $\frac{k}{t}$ cycles of size $k.$ Therefore, summing the number of equivalence classes corresponding to elements of $p_i - q_i,$ overcounts the number of equivalence classes.
+
+Now, I claim the number of equivalence classes composed of cycles of length $k$ is $p(k,\lceil \frac{i}{k}\rceil) \lfloor \frac{k}{2}\rfloor.$ To see this, we describe a simple bijection. We know that the tail cycle has between $2$ and $k-1$ elements. Now, restrict to only the first $k$ elements of the cycle. Each representative has a set of $\lfloor \frac{i}{k}\rfloor$ full cycles, and $1$ partial cycle. For each such element, we correspond all $\lceil \frac{i}{k}\rceil$ to an element $y_k \in B_k,$ and the elements of $\lfloor \frac{i}{k}\rfloor$ with an element $x_k$ of $B_k.$ Clearly $x \lessdot y.$ This uniquely characterizes the locations of the full cycles $\pmod k,$ and the location of the partial cycle. Hence, there are $p(k,\lceil \frac{i}{k}\rceil)$. The reason we have to add in a factor of $ \lfloor \frac{p}{2}\rfloor$ is simply to tell us the difference between two adjacent element of the cycle in $x_k.$ It can be any multples of $k$ from $k$ to $k \cdot p,$ but of course a difference of $k \cdot i$ is equivalent to $k \cdot p-i$, and these are the only two equivalent cycles. Hence, this proves the bound. 
+\end{proof}
+
+\begin{thm}
+We can bound $p_i \leq q_i - q_{i-1}$
+\end{thm}
+\begin{proof}
+Using the above relation, we can bound $p_i \leq \sum_{k = \frac{n}{p},p|k,p \text{ prime }}^{}p(k,\lceil \frac{i}{k}\rceil) \lfloor \frac{p}{2}\rfloor.$
+We know $p(n,i) \leq q(n,i),$ and so using this bound, we have $p_i \leq \sum_{k = \frac{n}{p},p|k,p \text{ prime }}^{}q(k,\lceil \frac{i}{k}\rceil) \lfloor \frac{p}{2}\rfloor,$ and then since we know $q(k,\lceil \frac{i}{k}\rceil) = \binom {k-1} {\lceil \frac{i}{k}\rceil-1},$ we can write $p_i \leq \sum_{k = \frac{n}{p},p|k,p \text{ prime }}^{}\binom {k-1} {\lceil \frac{i}{k}\rceil-1}\lfloor \frac{p}{2}\rfloor.$ Now, there are clearly at most $\log n$ terms in this sum, since there are fewer than $\log n$ distinct prime factors of $n.$ And therefore, for all $k | n,k>3$, we just have to bound $\log n \cdot \binom {k-1} {\lceil \frac{i}{k}\rceil-1}\lfloor \frac{p}{2}\rfloor \cdot \log n < \binom {n-2}{i-1},$ which is quite obvious, at least for $n >5$ or so.
 \end{proof}
 
 

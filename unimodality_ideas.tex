@@ -261,6 +261,21 @@ Using the above relation, we can bound $p_i \leq \sum_{k = \frac{n}{p},p|k,p \te
 We know $p(n,i) \leq q(n,i),$ and so using this bound, we have $p_i \leq \sum_{k = \frac{n}{p},p|k,p \text{ prime }}^{}q(k,\lceil \frac{i}{k}\rceil) \lfloor \frac{p}{2}\rfloor,$ and then since we know $q(k,\lceil \frac{i}{k}\rceil) = \binom {k-1} {\lceil \frac{i}{k}\rceil-1},$ we can write $p_i \leq \sum_{k = \frac{n}{p},p|k,p \text{ prime }}^{}\binom {k-1} {\lceil \frac{i}{k}\rceil-1}\lfloor \frac{p}{2}\rfloor.$ Now, there are clearly at most $\log n$ terms in this sum, since there are fewer than $\log n$ distinct prime factors of $n.$ And therefore, for all $k | n,k>3$, we just have to bound $\log n \cdot \binom {k-1} {\lceil \frac{i}{k}\rceil-1}\lfloor \frac{p}{2}\rfloor \cdot \log n < \binom {n-2}{i-1},$ which is quite obvious, at least for $n >5$ or so.
 \end{proof}
 
+\section{Cyclic group with r > 1}
+
+\begin{note}
+Let me define statistics $p(i,r,n)$ which will denote the number of pairs $(x,y) \in B_n \times B_n$ such that $|x| = i-r,|y| = i,x<y$ up to the equivalence relation that $(x,y) \equiv (z,w)$ if there is some $\sigma,\tau$ such that $\sigma x = z,\sigma y = w.$
+\end{note}
+
+\begin{conj}
+The above case of $r =1$ can be generalized asymptotically as $n \rightarrow \infty$ for $r$ fixed. Obviously, it will fail in small cases, even if $r = 2$ or $3.$
+\end{conj}
+
+\section{When are quotients of prime order necklace posets peck?}
+
+I think Stanley's proof of quotients of unitary peck posets being peck uses something a little weaker. That is, I think he only uses that we need the constants $c_y = c_{wy}$ for all $w \in G,y \in P_i.$ However, for necklace posets, we know that $c_y$ is always either 1 or 2. So, quotienting by group actions which send the 1's to 1's and 2's to 2's will still leave us with a Peck poset.
+
+In the prime case, for example, we always have the 2's coming from evenly spaced chains. So for any group action sending non evenly spaced chains to evenly spaced chains, and non evenly spaced sequences to non evenly spaced sequences, the quotient should be Peck. 
 
 
 

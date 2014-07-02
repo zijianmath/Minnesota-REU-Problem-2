@@ -98,12 +98,13 @@ def nCk(n,k):
 
 def calculate_p_i(n,i):
     return nCk(n-1,i-1)
-'''
+
+
 for n in range (3,8):
-    for i in range(2,n+1):
-        print (n,i,len(cyclic_p_i(n,i,2)))
+    for i in range(1,n+1):
+        print (n,i,len(cyclic_q_i(n,i,1)))
     print 'finished ' + str(n)
-'''
+
 
 '''
 for n in range (3,15):
@@ -112,12 +113,12 @@ for n in range (3,15):
 #        print (n,i,len(cyclic_q_i(n,i,2)))
     print 'finished ' + str(n)
 '''
-
+'''
 for n in range (13,17):
     for i in range(7,n+1):
         print (n,i,len(cyclic_p_i(n,i,7)))
     print 'finished ' + str(n)
-
+'''
 
 
 

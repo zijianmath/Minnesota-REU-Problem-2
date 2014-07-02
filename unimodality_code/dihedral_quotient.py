@@ -51,7 +51,7 @@ def dihedral_edges(n,(x,y)):
 def cyclic_double_orbit(n,(x,y)):
     cyclic_orbits = []
     for i in xrange(n):
-        cyclic_orbits.append((tuple(sorted(map(lambda t: (t+i)%n,y))),tuple(sorted(map(lambda t: (t+i)%n,x)))))
+        cyclic_orbits.append((tuple(sorted(map(lambda t: (t+i)%n,x))),tuple(sorted(map(lambda t: (t+i)%n,y)))))
     return cyclic_orbits
 
 def dihedral_double_orbit(n,(x,y)):
@@ -85,15 +85,14 @@ def dihedral_q_i(n,i,r):
     return reduced_pairs
 
 
-
 #print cyclic_p_i(3,2,1)
 
-'''
-for n in range (3,8):
-    for i in range(2,n+1):
-        print (n,i,len(cyclic_p_i(n,i,2)))
+
+for n in range (3,17):
+    for i in range(2,n):
+        print (n,i,len(dihedral_q_i(n,i,1)))
     print 'finished ' + str(n)
-'''
+
 
 '''
 for n in range (3,15):
@@ -102,12 +101,12 @@ for n in range (3,15):
 #        print (n,i,len(cyclic_q_i(n,i,2)))
     print 'finished ' + str(n)
 '''
-
+'''
 for n in range (2,13):
     for i in range(1,n+1):
         print (n,i,len(dihedral_q_i(n,i,1)))
     print 'finished ' + str(n)
-
+'''
 '''for n in range (2,7):
     for i in range(1,n+1):
         print (n,i,len(dihedral_q_i(n,i,1)))

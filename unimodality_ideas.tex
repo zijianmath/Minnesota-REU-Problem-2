@@ -277,6 +277,69 @@ I think Stanley's proof of quotients of unitary peck posets being peck uses some
 
 In the prime case, for example, we always have the 2's coming from evenly spaced chains. So for any group action sending non evenly spaced chains to evenly spaced chains, and non evenly spaced sequences to non evenly spaced sequences, the quotient should be Peck. 
 
+\section{All abelian subgroups}
 
+For $A$ an abelian subgroup action on $[n],$ we can decompose it into orbits. Now, let's just try to understand the action on a single orbit. By assumption, this is transitive, and it must also act simply, as otherwise the action has a stabilizer (due to A being abelian). So, now we have a simply transitive action of an abelian subgroup on $[k].$ But then we know exactly that after quotienting by the stabilizer, we have $|A|/Stab([k])=k$ acting on $[k]$, so we can view $k$ as a cube corresponding to $A,$ so we have $A$ acting on $A$ in the natural way of the cube $A.$
+
+\section{Reducing to Transitive Actions}
+
+Think about the size of the stabilizer.
+
+Maybe we can restrict to transitive group action, since nontransitive actions can either be ignored, or have too much redundant information.
+
+\begin{rem}
+Here is an interesting equality
+\begin{align*}
+	\sum_{Gx \lessdot Gy}^{}\frac{|\{g|gx \lessdot y\}|}{|Stab(x)|}=\sum_{G(x\lessdot y)}^{}1
+\end{align*}
+\end{rem}
+
+\begin{thm}
+Suppose $B_n/G$ has orbits $O_1,\ldots, O_k$ on $[n].$ If the edge counting posets given by restricting the $G$ action to each orbit $O_i$ are symmetric unimodal. Then, $B_n/G$ is symmetric unimodal.
+\end{thm}
+\begin{proof}
+We shall prove this using several following claims. Basically, let's just assume there are 2 orbits.
+\end{proof}
+
+\begin{cor}
+If we would like to show that the edge sequences are always unimodal. We can restrict to considering transitive group actions. In particular, we may assume $|O/X| = 1,$ and hence $\sum_{g\in G}^{}|X^g| = |G|.$
+\end{cor}
+\begin{proof}
+
+\end{proof}
+
+\begin{cor}
+All abelian groups have symmetric, unimodal sequences.
+\end{cor}
+\begin{proof}
+By the theorem, it suffices to show this is true for transitive abelian groups. It's not too hard to see than transitive faithful abelian group actions are actually simply transitive. Then, we can actually describe all abelian group actions $A$ on $[n]$ as $A \times A \rightarrow A,$ if we identify $[n]$ with $A$ as a set. But then, using this identificaiton, we may use the same arguement of computing the $q_i$ and bounding the difference of the $p_i$ from the $q_i$ to explicitly show the sequence is unimodal.
+\end{proof}
+
+\begin{prop}
+Let the orbits be $O_1,O_2$ and let the corresponding unimodal, symmetric edge counting posets be $P,Q.$ In order to show $B_n/G$ is symmetric unimodal, it suffices to show there are more edges eminating from $P_{i+1} \times Q_j$ than from $P_i \times Q_j,$ with $i < rk(P)/2.$
+\end{prop}
+\begin{proof}
+Clearly, if $i+j < n/2,$ we must have either $i < rk(P)/2$ or $j<rk(Q)/2.$ So, just assume $i < rk(P)/2.$ Then, each level of the poset $B_n/G$ is made of a union of elements of the form $P_t \times Q_s$ with $t + s = i+j.$ Again, always one of $t,s$ must be less than $rk(P)/2$ or $rk(Q)/2,$ so if it is $t$ use the assumption to show there are more edges leaving $P_{t+1} \times Q_s$ than $P_t \times Q_s.$ Essentially, we are just creating a trivial order matching here.
+\end{proof}
+
+\begin{prop}
+In order to show  there are more edges eminating from $P_{i+1} \times Q_j$ than from $P_i \times Q_j,$ with $i < rk(P)/2,$ it suffices to show there are more edges from $P_{i+1} \times Q_j$ to $P_{i+2} \times Q_j$ than there are from $P_i \times Q_j$ to $P_{i+1} \times Q_j,$ and that there are more edges from $P_{i+1} \times Q_j$ to $P_{i+1} \times Q_{j+1}$ then there are from $P_i \times Q_j$ to $P_i \times Q_{j+1}.$
+\end{prop}
+\begin{proof}
+All the edges leaving $P_t \times Q_s$ must either go to $P_{t+1} \times Q_s$ or $P_t \times Q_{s+1},$ and if we assume both of these are dominated by the edges one level higher, then we obtain unimodality.
+\end{proof}
+
+\begin{prop}
+there are more edges from $P_{i+1} \times Q_j$ to $P_{i+2} \times Q_j$ than there are from $P_i \times Q_j$ to $P_{i+1} \times Q_j.$
+\end{prop}
+\begin{proof}
+The number of edges from $A$ to $B$ is just the number of pairs $(Ga,Gb) \in A \times B$ with $Ga \lessdot Gb.$ By the unimodality assumption on $P_i,$ taking $A = P_i,B= P_{i+1},C = P_{i+2},$ there are more edges from $A$ to $B$ than from $B$ to $C$, which means there are fewer pairs $Ga \lessdot Gb$ than there are $Gb \lessdot Gc$. Then, note that for any fixed $y \in Q_j,$ the orbit $Gy$ does not intersect the orbit $P_i.$ Therefore, for each $y$ in $Q_j,$ we have that there are fewer pairs $G(a,y) \lessdot G(b,y)$ than there are $G(b,y)\lessdot G(c,y).$ Hence, summing over all $Gy \in Q_j$ gives the proposition.
+\end{proof}
+\begin{prop}
+there are more edges from $P_{i+1} \times Q_j$ to $P_{i+1} \times Q_{j+1}$ than there are from $P_i \times Q_j$ to $P_{i} \times Q_{j+1}.$
+\end{prop}
+\begin{proof}
+We know that there is an order matching $P_i \rightarrow P_{i+1}.$ Hence, for each edge $P_{i+1} \times Q_j$ to $P_{i+1} \times Q_{j+1},$ which is of the form $G(t,x) \lessdot G(t,y),$ we obtain an edge from $P_i \times Q_j$ to $P_{i} \times Q_{j+1}$ of the from  $G(s,x) \lessdot G(s,y),$ where $s$ is the image of $t$ under the order matching. Hence, there are more edges  from $P_{i+1} \times Q_j$ to $P_{i+1} \times Q_{j+1}$ than there are from $P_i \times Q_j$ to $P_{i} \times Q_{j+1}.$
+\end{proof}
 
 \end{document}

@@ -268,7 +268,7 @@ Let me define statistics $p(i,r,n)$ which will denote the number of pairs $(x,y)
 \end{note}
 
 \begin{conj}
-The above case of $r =1$ can be generalized asymptotically as $n \rightarrow \infty$ for $r$ fixed. Obviously, it will fail in small cases, even if $r = 2$ or $3.$
+The above case of $r =1$ can be generalized for the $p(i,r,n)$ as long as $n > 2r.$ The proof is essentially analagous. This time, we can't explicitly compute the $q_i,$ but we can bound them as very close to $\binom n i \cdot \binom i r \cdot \frac{1}{n}.$ We can show that at most a proportion of $\frac{1}{n^2}$ elements have nontrivial stabilizer, which means that we can bound the $q_i$ within a factor of $\frac{1}{n}$ of $\binom n i \cdot \binom i r \cdot \frac{1}{n}.$ We can then look at how the $p_i$ differ from the $q_i.$ This time, we can associate at most $r$ elements to each pair $(x,y)$ which has the special property that $gx \lessdot y,$ but there is no $h$ with $hx = gx, hy = y.$ And then we can count the number of such pairs and bound them by much smaller binomial coefficients, as in the $r = 1$ case.
 \end{conj}
 
 \section{When are quotients of prime order necklace posets peck?}
@@ -312,7 +312,7 @@ If we would like to show that the edge sequences are always unimodal. We can res
 All abelian groups have symmetric, unimodal sequences.
 \end{cor}
 \begin{proof}
-By the theorem, it suffices to show this is true for transitive abelian groups. It's not too hard to see than transitive faithful abelian group actions are actually simply transitive. Then, we can actually describe all abelian group actions $A$ on $[n]$ as $A \times A \rightarrow A,$ if we identify $[n]$ with $A$ as a set. But then, using this identificaiton, we may use the same arguement of computing the $q_i$ and bounding the difference of the $p_i$ from the $q_i$ to explicitly show the sequence is unimodal.
+By the theorem, it suffices to show this is true for transitive abelian groups. It's not too hard to see than transitive faithful abelian group actions are actually simply transitive. Then, we can actually describe all abelian group actions $A$ on $[n]$ as $A \times A \rightarrow A,$ if we identify $[n]$ with $A$ as a set (think of $[n]$ as a torus). But then, using this identificaiton, we may use the same arguement of computing the $q_i$ and bounding the difference of the $p_i$ from the $q_i$ to explicitly show the sequence is unimodal.
 \end{proof}
 
 \begin{prop}

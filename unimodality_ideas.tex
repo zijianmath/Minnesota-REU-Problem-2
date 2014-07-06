@@ -91,6 +91,7 @@
 	\item Are there any ways to combine $G_1,G_2$ where $G_i$ are groups with $p_i = q_i.$
 	\item Are there some characterisations of groups with $q_i,p_i.$
 	\item How to use sage, what can we do with groups?
+	\item Which edge poset definition do we want? Do we include edges containing $y$ or exclude them?
 \end{enumerate}
 \section{Cyclic group edges, this section is wrong.}
 \begin{rem}
@@ -340,6 +341,104 @@ there are more edges from $P_{i+1} \times Q_j$ to $P_{i+1} \times Q_{j+1}$ than 
 \end{prop}
 \begin{proof}
 We know that there is an order matching $P_i \rightarrow P_{i+1}.$ Hence, for each edge $P_{i+1} \times Q_j$ to $P_{i+1} \times Q_{j+1},$ which is of the form $G(t,x) \lessdot G(t,y),$ we obtain an edge from $P_i \times Q_j$ to $P_{i} \times Q_{j+1}$ of the from  $G(s,x) \lessdot G(s,y),$ where $s$ is the image of $t$ under the order matching. Hence, there are more edges  from $P_{i+1} \times Q_j$ to $P_{i+1} \times Q_{j+1}$ than there are from $P_i \times Q_j$ to $P_{i} \times Q_{j+1}.$
+\end{proof}
+
+\section{Attempting to use transitive orbits}
+
+\begin{rem}
+Here is a heuristic computation, which may provide some insight into what is going on? Tried to calculate this assuming independence of the elements in $y,$ but this ends up just corresponding to the trivial group action, where there are $\binom n i \cdot i$ orbits.
+\end{rem}
+
+\section{Trying injective edge poset maps}
+
+\begin{rem}
+Consider the raising operator $$U(Ga,Gb) = \sum_{a \in Ga,b \in Gb|a\lessdot b}^{}\left(\sum_{z\notin b}^{}(G(a\cup z),G(b \cup z))\right).$$
+
+For instance, in the case $G = e$ acts trivially, we get the raising map Vic defined. I wonder if $UD -DU = CI$ for some positive constant C. This does not seem to work, particularly if you have a $G$ action twisting one side. I think it probably fails if we take $G = C_6,$ as can be seen by looking at the edges (13,1) and (12,2).
+\end{rem}
+
+\begin{rem}
+Maybe we can do something tricky where we weight these maps in the previous remark by the $c_{x,y}$ which are integers keeping track of the edge counts.
+\end{rem}
+
+\begin{rem}
+Define $d_{x,y} = |\{(a,b)|(a\lessdot b),Ga = Gx, Gy = Gb\}.$ Then, try the raising operator $$U(Ga,Gb) = \sum_{a \in Ga,b \in Gb|a\lessdot b}^{}\left(\sum_{z\notin b}^{} \frac{1}{d_{a\cup z,b\cup z}} (G(a\cup z),G(b \cup z))\right).$$
+
+Using this map, we can probably see $DU-UD = CI$ for the cyclic group, for example.
+\end{rem}
+\begin{rem}
+
+It would be useful to know when the following statement is true: for any two orbits $G(y,x),G(b,a)$ with $(Gy,Gx)= (Gb,Ga)$ we have $|G(y,x)| = |G(b,a)|.$
+
+Here, we can clearly assume $y = b,$ and so one sufficient condition would be if $h(x) = a,$ then we want $|Stab(y) \cap Stab y/x| = |Stab(y)\cap Stab(y/a).$ I'm not actually sure when this is true. It is true, for example, in the cyclic group, as points always have trivial stabilizer.
+\end{rem}
+
+\begin{lem}
+For all $h \in G,$ there exists $k \in \BN$ such that $h^n = h^{-1},$
+\end{lem}
+\begin{proof}
+This is true for $S_n,$ and so it is true for all embedded subgroups.
+\end{proof}
+
+\section{Showing the $p_i$ are unimodal for all quotients $G.$}
+
+\begin{defn}
+Given a poset $P,$ we define the edge poset $E(P),$ to be the poset whose elements are pairs $(x,y)$ such that $x,y \in P, x \lessdot y.$ We have $(x,y) < (a,b)$ if $x \lessdot a, y\lessdot b$ (possibly with $y \neq a,$ I'm not too sure which is better).
+\end{defn}
+
+\begin{lem}
+\label{symmetric_edge_quotients}
+For $B_n/G$ a symmetric poset, the edge poset $E(B_n/G)$ is symmetric.
+\end{lem}
+\begin{proof}
+Use complementation.
+\end{proof}
+
+
+\begin{rem}
+This notion of $B_2$ full is more related to the other type of edge poset, defined by relations where we have $(x,y) < (a,b)$ if $x \lessdot a, y\lessdot b$ and $y \neq a,$ but it may still be relevant for other things.
+\end{rem}
+
+
+\begin{defn}
+We say a poset is $B_2$ full, if whenever we have $x \lessdot y, x\lessdot z,$ there exists a $w$ with $y \lessdot w, z\lessdot w.$
+\end{defn}
+
+\begin{lem}
+\label{quotients_B2_full}
+For any order preserving, rank preserving group action $G \times B_n \rightarrow B_n,$ the quotient poset $B_n/G$ is $B_2$ full.
+\end{lem}
+\begin{proof}
+Suppose we have $Gy\gtrdot Gx,Gz \gtrdot Gx,$ in the quotient poset. This means, we have $g,h \in G,gy \gtrdot x,hz \gtrdot x.$ Then, $gy \cup hz \gtrdot gy,gy\cup hz \gtrdot hz,$ which implies $G(gy \cup hz) \gtrdot Gy$ and  $G(gy \cup hz) \gtrdot Gz,$ which shows $B_n/G$ is $B_2$ full.
+\end{proof}
+
+\begin{thm}
+\label{injective_edge_maps}
+For $P$ a symmetric poset such that there exist injective maps $U_i:V(P_i) \rightarrow V(P_{i+1}),$ for $i < \frac{n}{2}$,	the edge poset $E(P)$ also has injective maps $V_i:V(E(P)_i)\rightarrow V(E(P)_{i+1})$ for $i < \frac{n}{2}.$
+\end{thm}
+\begin{proof}
+Let $\pi_i : P_{i} \times P_{i} \rightarrow E(P)_{i+1}$ be the projection, by anihillating pairs without an edge between them, and let $i_j:E(P)_j \rightarrow P_j \times P_{j+1}$ be the injection. We know the map $U_i \times U_{i+1} :P \times P_{i+1} \rightarrow P_{i+1} \times P_{i+2}$ is injective. We define $V_i = \pi_{i+1}((U_i \times U_{i+1}) \circ i_i):E(P)_i \rightarrow E(P)_{i+1}.$ We would like to show for $i < \frac{n}{2}$ the $V_i$ are an injection.
+
+Also, for each $x \in P_i,$ define the natural inclusion map $L_i:x \mapsto (x,U_i(x)) \subset E(P)_i.$
+
+First, observe that, $(U_i \times U_{i+1})(V(x_i) \times U_i(V(x_t))) \cap (U_i\times U_{i+1})(V(x_t)^\perp \cap U_i(V(x_t)^\perp)) = 0,\forall i$ simply because the maps $U_i, U_i \times U_{i+1}$ are injective and we certainly know $V(x_i) \cap V(x_i)^\perp = 0.$ Therefore, $\pi_{i+1}(U_i \times U_{i+1})(V(x_i) \times V(U_i(x_i))) \cap \pi_{i+1}(U_i\times U_{i+1})(V(x_i)^\perp \times U_{i+1}(V(x_i)^\perp)) = 0,\forall i.$
+
+By the preceeding paragraph, in order to show $V_i$ is injective, it suffices to show that for a particular $t,$ the restriction $W_{i,t} = V_i|_{\{(y,x) \in E(P)_i|x = x_t\}}$ is injective. Now, taking the appropriate restriction to edges leaving $x_t,$ we know the map $U_i \times U_{i+1}:x_t \times V(y \gtrdot x_t),$ defines an injective map, simply because $U_{i+1}$ is injective.
+
+Now, for a fixed $y \gtrdot x,$ by definition of the perpendicular subspace, $(V(x)\times V(y)) \cap (V(x) \times V(y^\perp)) = 0.$ So, by injectivity of $U_i \times U_{i+1},$ it must be that $(U_i \times U_{i+1})(V(x)\times V(y)) \cap (U_i \times U_{i+1})(V(x) \times V(y^\perp)) = 0.$ This implies that the maps $W_{i,t}$ are indeed injective.
+
+\end{proof}
+
+\begin{thm}
+The sequences $p_i$ are unimodal for all quotients $B_n/G.$ 
+\end{thm}
+\begin{proof}
+First, we know $B_n$ is Unitary Peck. This tells us $B_n/G$ is peck for all $G,$ and therefore, there exists injective maps $\phi_i:V(P_i) \rightarrow V(P_{i+1})$ for $i <\frac{n}{2}$	with $\phi_i$ injective, and in fact $\phi_i \circ \cdots \circ \phi_{n-i-1}:V(P_i) \rightarrow V(P_{n-i})$ an isomorphism.
+
+We won't even need this isomorphism, but maybe it can be used to say something even stronger!
+
+We also know it is symmetric by ~\ref{symmetric_edge_quotients} we also know $E(B_n/G)$ is symmetric. Therefore, it suffices to show that the edge sequence $p_i, i < \frac{n}{2}$ is unimodal. However, by ~\ref{injective_edge_maps}, we obtain injective maps $V_i:V(E(B_n/G)_i)\rightarrow V(E(B_n/G)_{i+1})$ for all $i < \frac{n}{2}.$ Therefore, $p_i,i<\frac{n}{2}$ are unimodal, and hence all $p_i$ are unimodal.
+
 \end{proof}
 
 \end{document}

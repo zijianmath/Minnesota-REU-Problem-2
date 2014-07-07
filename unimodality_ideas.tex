@@ -440,5 +440,40 @@ We won't even need this isomorphism, but maybe it can be used to say something e
 We also know it is symmetric by ~\ref{symmetric_edge_quotients} we also know $E(B_n/G)$ is symmetric. Therefore, it suffices to show that the edge sequence $p_i, i < \frac{n}{2}$ is unimodal. However, by ~\ref{injective_edge_maps}, we obtain injective maps $V_i:V(E(B_n/G)_i)\rightarrow V(E(B_n/G)_{i+1})$ for all $i < \frac{n}{2}.$ Therefore, $p_i,i<\frac{n}{2}$ are unimodal, and hence all $p_i$ are unimodal.
 
 \end{proof}
+\begin{rem}
+THIS PROOF IS COMPLETELY WRONG because for $\pi $ surjective, $\pi A \cap \pi B \neq \pi (A \cap B).$
+
+\end{rem}
+
+\section{Trying to rectify the Above proof of Injective Edge Maps}
+
+\begin{lem}
+If we only look at down trees, with $y$ at the top, the map $E(P)$ is injective when restricted.
+\end{lem}
+\begin{proof}
+This crucially uses that the algebra is a boolean quotient and that it is $B_2$ full.
+\end{proof}
+
+\begin{lem}
+If we only look at up trees with $x$ at the bottom, then the map $E(P)$ is injective when restricted
+\end{lem}
+\begin{proof}
+	
+\end{proof}
+
+\begin{lem}
+An up tree down tree pair can only intersect in at most one edge. Any edge determines an up tree down tree pair.
+\end{lem}
+\begin{proof}
+
+\end{proof}
+
+\section{Some Failed Ideas}
+
+\begin{rem}
+I conjectured that at every vertex, less than or equal to the half way point, there are more edges above it then below it. This is false, as the computer points out, in the case of the dihedral group. Such an example is given by $D_8$ with the element $(0,3,4,5),$ which has three elements below it but only 2 above.
+\end{rem}
+
+
 
 \end{document}

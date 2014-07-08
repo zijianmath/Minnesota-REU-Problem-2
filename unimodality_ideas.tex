@@ -482,4 +482,31 @@ The following argument is clearly wrong, but what is wrong with it? I want to sh
 Why does this not show that the number of edge orbits identified on level $i$ is bigger than the number of edge orbits identified on level $i-1$? Maybe the answer is that somehow two different elements can act the same way on the $i$th level, but differently on the $i-1$? I don't really see this, but looking at the above counterexample, for instance, should help.
 \end{rem}
 
+\section{Computers and the edge poset}
+
+
+\begin{lem}
+If the edge poset of the boolean algebra is peck, then it is unitary peck. 
+\end{lem}
+\begin{proof}
+The symmetry gives us that all $c_y=1$ are the same on a given row.
+\end{proof}
+
+\begin{thm}
+The edge poset of the boolean algebra is unitary peck, for $n > 2$ (in first ordering) or all n in second ordering.
+\end{thm}
+\begin{proof}
+It suffices to show the compositions of these maps define isomorphisms. These maps actually count interesting things. Namely, they count paths along 2-size boolean subalgebras which may either be degenerate, or nondegenerate. You can think of them as faces of a hypercube. If we restrict the up map to be only to edges which do not lie above the top vertex, when we are going from level $i$ to $n-i$ we are counting sub-boolean algebras of size 2i. It is clear that you are traveling along faces of the cube of the boolean algebra, and so there are $2i!$ ways to do this for any give starting point an ending point of distance $2i,$ since you can choose your favorite order to traverse the faces in. If we do the other ordering we get $(n-1)!(2^n-1)$ edges, since we can choose which coordinate to put it in, and then choose the bottom coordinate from 2 choices. 
+
+Let's just talk about the first map. We start with one of $\binom n i$ fixed 1-dim subspaces corresponding to an edge. Then, we just take the map which sends it to the sum over all vectors containing the first i coordinates. There is a very obvious bijection, and there should be an easily describable inverse, given by finding the unique $i$ dimensional subspace in all such $\binom {n-i}i$ spaces.
+
+Perhaps to explain it more clearly, we want to show we can get from the image of this map to a vector with 1's in the first n-i coords, and 0 in the others. We can sum over the images of all $\binom {n-i} i$ dudes of level i which the dude at level $n-i$ contain, which gives us something symmetric in the first $n-i$ and symmetric in the last i. We can subtract from that an appropriate multiple of the sum over everything, which is clearly symmetric in all the variables. This gives us the desired edge, and hence the desired change of basis matrix. 
+
+This gives us an inverse map.
+\end{proof}
+
+\section{Unimodality of $E(B_n/G)$}
+
+Try to exhibit $E(B_n/G)$ as a $G\times G$ quotient of some unitary peck boolean algebra $X.$ It will basically be a disjoint union of edge posets of boolean algebras. The way we get it is as follows. Whenever we have a pair $x \lessdot y,$ and some element $g \in G$ with $gx \cap y = \emptyset.$ We may observe that there are $n-2i-1$ elements in $[n]-gx-y.$ We can then associate an edge poset where $gx,y$ is the base, and to go up, we can add any element $t \in [n]-gx-y$ to the top row, and $g^{-1}t$ to the bottom row. Observe that we can never have $g^{-1}t \in y.$ If $gx \cap y \neq \emptyset,$ then we can remove some element from the top of their intersection, until we eventually get to the bottom of a boolean algebra with $gx \cap y = \emptyset.$ This lets us exhibit this poset $X$ as a disjoint union of boolean algebra edge posets, and hence the quotient $X/G\times G$ is actually Peck, since $X$ is a disjoint union of unitary peck algebras! 
+
 \end{document}

@@ -118,8 +118,8 @@ def print_stats(poset):
 #poset = Poset_quot.edgify(Poset_quot(grp))
 #print_stats(poset)
 
-'''
-k = 13
+
+k = 10
 
 print 'cyclic_groups'
 for i in range(2,k):
@@ -139,13 +139,13 @@ for i in range(2,k):
     print str(('poset dims',i)) +' '+ str(map(len,poset.vertices))
     print str(('matrix dimensions',i)) + ' ' + str(map(np.linalg.matrix_rank,poset.edge_mats))    
     print str(('matrix compositions',i)) +' '+ str(matrix_compositions(poset.edge_mats))
-'''
+
 print 'boolean_algebra'
-for i in range(2,5):
+for i in range(2,k):
     grp = bq.Grp([tuple(range(i))])
     poset = Poset_quot.edgify(Poset_quot(grp))
 #    print_stats(poset)
-#    print str(('poset dims',i)) +' '+ str(map(len,poset.vertices))
-#    print str(('matrix dimensions',i)) + ' ' + str(map(np.linalg.matrix_rank,poset.edge_mats))    
+    print str(('poset dims',i)) +' '+ str(map(len,poset.vertices))
+    print str(('matrix dimensions',i)) + ' ' + str(map(np.linalg.matrix_rank,poset.edge_mats))    
     print str(('matrix compositions',i)) +' '+ str(matrix_compositions(poset.edge_mats))
 

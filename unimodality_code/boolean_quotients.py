@@ -51,6 +51,7 @@ def act(elt,x):
 
 #print act([0,2,1],(0,1))
 
+#returns the set of all elements in the orbit of x
 def orbit(g_lst,x):
     orbit_set = Set([])
     temp_set = Set([x])
@@ -65,6 +66,7 @@ def orbit(g_lst,x):
 
 #print orbit([[1,2,3,0],[1,0,2,3]],(2,3))
 
+#returns the set of all elements in the orbit of (y,x)
 def pair_orbit(g_lst,(y,x)):
     orbit_set = Set([])
     temp_set = Set([(y,x)])
@@ -79,6 +81,7 @@ def pair_orbit(g_lst,(y,x)):
 
 #print pair_orbit([[1,2,3,0]],((2,3),(3,)))
 
+#returns the set of all edges in the G\times G orbit of y,x
 def edge_orbit(g_lst,(y,x)):
     whole_orbit = []
     x_cycles = orbit(g_lst,x)
@@ -91,6 +94,7 @@ def edge_orbit(g_lst,(y,x)):
 
 #print edge_orbit([[1,2,3,0]],((2,3),(3,)))
 
+#returns a list of representatives of the level i orbits
 def vert_by_rank(g_lst,i):
     n = len(g_lst[0])
     level_i_set = map(tuple,pairs(n,i,0))
@@ -104,8 +108,23 @@ def vert_by_rank(g_lst,i):
                 level_i_set.remove(i)
     return reduced_verts
 
+#returns a list of the sets of orbits of all level i elements
+def set_vert_by_rank(g_lst,i):
+    n = len(g_lst[0])
+    level_i_set = map(tuple,pairs(n,i,0))
+    reduced_verts = []
+    while len(level_i_set) > 0:
+        elt = level_i_set.pop()
+        orb = orbit(g_lst,elt)
+        reduced_verts.append(orb)
+        for i in orb:
+            if i in level_i_set:
+                level_i_set.remove(i)
+    return reduced_verts
+
 #print vert_by_rank([[1,2,3,4,5,6,0]],2)
 
+#returns a list of edges, given by representatives
 def edge_by_vert_counted(g_lst,vert_bot,vert_top):
     edge_lst = []
     count_dict = {}
@@ -122,6 +141,20 @@ def edge_by_vert_counted(g_lst,vert_bot,vert_top):
                 edge_lst.append((vert_top[b],vert_bot[a]))
                 count_dict[(vert_top[b],vert_bot[a])]=(count,b,a)
     return edge_lst,count_dict
+
+#returns a list of edges, with their full orbits
+def set_edge_by_vert(g_lst,orb_bot_lst,orb_top_lst):
+    edge_lst = []
+    for a in orb_bot_lst:
+        for b in orb_top_lst:
+            edge_orbit = Set([])
+            for i in a:
+                for j in b:
+                    if set(i).issubset(set(j)):
+                        edge_orbit.add((j,i))
+            if len(edge_orbit)>0:
+                edge_lst.append(edge_orbit)
+    return edge_lst
 
 def edge_by_vert(g_lst,vert_bot,vert_top):
     edge_lst = []
@@ -185,6 +218,13 @@ def symmetric_g_lst(n):
     return lst
 
 
+
+k = 5
+gl = cyclic_g_lst(k)
+
+for i in range(k):
+    print set_edge_by_vert(gl,set_vert_by_rank(gl,i),set_vert_by_rank(gl,i+1))
+
 '''
 n = 9
 gl = [[1,2,0,3,4,5,6,7,8],[0,1,3,4,5,2,6,7,8],[0,1,2,3,4,6,5,7,8],[0,1,2,3,4,5,6,8,7]]
@@ -205,14 +245,4 @@ for i in range(1,(n+1)/2):
         if len(edges_above_vert(gl,j)) - len(edges_below_vert(gl,j)) <0:
             print edges_above_vert(gl,j)
             print edges_below_vert(gl,j)
-'''
-
-'''
-for i in range(9):
-    print len(grp_i_edges_from_vert([[1,2,0,3,4,5,6,7,8],[0,1,3,4,5,2,6,7,8],[0,1,2,3,4,6,5,7,8],[0,1,2,3,4,5,6,8,7]],i))
-
-
-
-for i in range(9):
-    print len(grp_i_edges_no_vert([[1,2,0,3,4,5,6,7,8],[0,1,3,4,5,2,6,7,8],[0,1,2,3,4,6,5,7,8],[0,1,2,3,4,5,6,8,7]],i))
 '''

@@ -79,6 +79,23 @@ class Poset_quot(Poset):
         edge_poset.edge_mats = make_edge_mats(edge_poset.rank,edge_poset.vertices,edge_poset.edges,edge_poset.edge_counts)
         return edge_poset
 
+def matrix_compositions(mat_lst):
+    n = len(mat_lst)
+    bot = (n-1)/2
+    compositions_lst = []
+    if n % 2 == 0:
+        running_mat = np.dot(mat_lst[n-bot-1],mat_lst[bot])
+    else:
+        running_mat = mat_lst[bot]
+    compositions_lst.append(running_mat)
+    bot -= 1
+    while bot >= 0:
+        running_mat = np.dot(running_mat,mat_lst[bot])
+        running_mat = np.dot(mat_lst[n-bot-1],running_mat)
+        compositions_lst.append(running_mat)
+        bot -= 1
+    return compositions_lst
+
 
 def print_stats(poset):
 #    print poset.vertices
@@ -97,14 +114,38 @@ def print_stats(poset):
 
 #grp = bq.Grp([(1,2,3,4,5,6,7,8,0),(0,8,7,6,5,4,3,2,1)])
 #poset = Poset_quot(grp)
-grp = bq.Grp([(1,2,0,3,4,5,6,7,8),(0,1,3,4,5,2,6,7,8),(0,1,2,3,4,6,5,7,8),(0,1,2,3,4,5,6,8,7)])
-poset = Poset_quot.edgify(Poset_quot(grp))
-print_stats(poset)
+#grp = bq.Grp([(1,2,0,3,4,5,6,7,8),(0,1,3,4,5,2,6,7,8),(0,1,2,3,4,6,5,7,8),(0,1,2,3,4,5,6,8,7)])
+#poset = Poset_quot.edgify(Poset_quot(grp))
+#print_stats(poset)
 
 '''
-for i in range(9):
+k = 13
+
+print 'cyclic_groups'
+for i in range(2,k):
+    grp = bq.Grp(bq.cyclic_g_lst(i))
+    poset = Poset_quot.edgify(Poset_quot(grp))
+#    print_stats(poset)
+    print str(('poset dims',i)) +' '+ str(map(len,poset.vertices))
+    print str(('matrix dimensions',i)) + ' ' + str(map(np.linalg.matrix_rank,poset.edge_mats))    
+    print str(('matrix compositions',i)) +' '+ str(matrix_compositions(poset.edge_mats))
+
+
+print 'dihedral_groups'
+for i in range(2,k):
     grp = bq.Grp(bq.dihedral_g_lst(i))
     poset = Poset_quot.edgify(Poset_quot(grp))
-    print_stats(poset)
+#    print_stats(poset)
+    print str(('poset dims',i)) +' '+ str(map(len,poset.vertices))
+    print str(('matrix dimensions',i)) + ' ' + str(map(np.linalg.matrix_rank,poset.edge_mats))    
+    print str(('matrix compositions',i)) +' '+ str(matrix_compositions(poset.edge_mats))
 '''
+print 'boolean_algebra'
+for i in range(2,5):
+    grp = bq.Grp([tuple(range(i))])
+    poset = Poset_quot.edgify(Poset_quot(grp))
+#    print_stats(poset)
+#    print str(('poset dims',i)) +' '+ str(map(len,poset.vertices))
+#    print str(('matrix dimensions',i)) + ' ' + str(map(np.linalg.matrix_rank,poset.edge_mats))    
+    print str(('matrix compositions',i)) +' '+ str(matrix_compositions(poset.edge_mats))
 

@@ -175,6 +175,15 @@ def dihedral_g_lst(n):
     b = [0]+b
     return [tuple(a),tuple(b)]
 
+def symmetric_g_lst(n):
+    lst = []
+    for i in xrange(n-1):
+        t = range(n)
+        t[i] = i+1
+        t[i+1] = i
+        lst.append(tuple(t))
+    return lst
+
 
 '''
 n = 9

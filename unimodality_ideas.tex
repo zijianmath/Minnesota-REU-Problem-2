@@ -506,7 +506,45 @@ This gives us an inverse map.
 \end{proof}
 
 \section{Unimodality of $E(B_n/G)$}
+WRONG!
+Try to exhibit $E(B_n/G)$ as a $G\times G$ quotient of some unitary peck boolean algebra $X.$ It will basically be a disjoint union of edge posets of boolean algebras. The way we get it is as follows. Whenever we have a pair $x \lessdot y,$ and some element $g \in G$ with $gx \cap y = \emptyset.$ We may observe that there are $n-2i-1$ elements in $[n]-gx-y.$ We can then associate an edge poset where $gx,y$ is the base, and to go up, we can add any element $t \in [n]-gx-y$ to the top row, and $g^{-1}t$ to the bottom row. Observe that we can never have $g^{-1}t \in y.$ If $gx \cap y \neq \emptyset,$ then we can remove some element from the top of their intersection, until we eventually get to the bottom of a boolean algebra with $gx \cap y = \emptyset.$ This lets us exhibit this poset $X$ as a disjoint union of boolean algebra edge posets, and hence the quotient $X/G\times G$ is actually Peck, since $X$ is a disjoint union of unitary peck algebras.
 
-Try to exhibit $E(B_n/G)$ as a $G\times G$ quotient of some unitary peck boolean algebra $X.$ It will basically be a disjoint union of edge posets of boolean algebras. The way we get it is as follows. Whenever we have a pair $x \lessdot y,$ and some element $g \in G$ with $gx \cap y = \emptyset.$ We may observe that there are $n-2i-1$ elements in $[n]-gx-y.$ We can then associate an edge poset where $gx,y$ is the base, and to go up, we can add any element $t \in [n]-gx-y$ to the top row, and $g^{-1}t$ to the bottom row. Observe that we can never have $g^{-1}t \in y.$ If $gx \cap y \neq \emptyset,$ then we can remove some element from the top of their intersection, until we eventually get to the bottom of a boolean algebra with $gx \cap y = \emptyset.$ This lets us exhibit this poset $X$ as a disjoint union of boolean algebra edge posets, and hence the quotient $X/G\times G$ is actually Peck, since $X$ is a disjoint union of unitary peck algebras! 
+\section{$B_k$ full}
 
+
+\begin{defn}
+A poset is $B_k$ full if whenever it contains a vertex $v$ and $p$ vertices above $v,$ then it contains a $p$ dimensional hypercube containing $v$.
+\end{defn}
+
+\begin{lem}
+$B_n$ is $B_2$ full. Quotients of $B_n$ are $B_2$ full.
+\end{lem}
+\begin{proof}
+
+\end{proof}
+
+\section{Relation of $p_i$ to $q_i$}
+
+Start with the induced representation $X = Ind_{\Delta (G)}^{G \times G}(V)$. 
+The $p_i$ are gotten by $Res^{G \times G}_{\Delta(G)}(X)/G,$ 
+and the $q_i$ are gotten by quotienting $X/G\times G.$ So, we have have that restriction and quotienting by $G$ commutes with quotienting by $G \times G,$ we have that the $q_i$ are equal to the $p_i.$
+
+\section{Possible Posets}
+
+\begin{enumerate}
+	\item Include pairs $(y,x)$ if $gx \lessdot hy$ for some $g,h \in G\times G.$ Take the relation to be $(b,a) \lessdot (y,x)$ if $a \subset x, b \subset y, b \neq x.$
+	\item Take the quotient as above, and then try to remove additional bad points.
+	\item Try to identify things in $Ind(B_n)$ and then quotient. I might identify the pairs $(y,x)_e$ and $(gy,x)_g$ if $(gy,x)_e$ is an edge. Also, in the factor of $Ind(B_n)_g,$ we have an edge $(x,y)\lessdot(a,b)$ if $g(a / x) = b/y $ 
+	\item What I currently like most is the following. We have pairs $(y,x)_g,$ which is a pair if and only if $gx \subset y.$ We have a $G\times G$ action, where the first $G$ sends $(g,1)(y,x)_h = (gy,gx)_h.$ The second $G$ sends $(1,g)(y,x)_h = (gy,x)_{gh}.$ Finally, we identify a pair $(y,x)_{gh} \equiv (y,x)_h$ if $(g^{-1}y,x)_h$ is an edge. In this action, it is clear that when we further quotient out, we will have identified $(y,x)_e \equiv (y,x)_g \equiv (g^{-1}y,x)_e,$ where the last equivalence is by the second coordinate $1 \times G$ action, acting by $(1,g^{-1}).$ More generally, if $(y,x)_h$ and $(g^{-1}y,x)_h$ are two pairs, then we identify $(y,x)_h \equiv (y,x)_{gh} \equiv (y,ghx)_e \equiv (g^{-1}y,hx)_e \equiv (g^{-1}y,x)_h,$ which is exactly what we wanted to identify.
+	
+	\item Actually, I'm not sure about the above, we get our boolean subalgebras by identifying $(y,x)_e \equiv (gy,x)_g$ I think, with the identification of the boolean subalgebra coming from adding the elements to the top which do not lie above $x,$ that is, we can union any elemet $(z,g^{-1}z)$ to $(y,x)$ as long as $z\notin y \cup x.$ Think about perhaps how to identify these to get the boolean subalgebra.
+\end{enumerate}
+
+\section{Showing Injectivity?}
+
+Idea, first, we know $T:(\mathcal F(B_n))_i \rightarrow \mathcal F(B_n)_{i+1},(x\otimes y) \mapsto \pi \circ (U \otimes U)(x\otimes y) - y \otimes U(y)$ is injective. In fact, it is the lefchetz map, so by Wilson's paper, $\pi \circ (U \otimes U)(x\otimes y) - y \otimes U(y)$ has a Wilson normal form, and it is positive semidefinite. By the same reason, $U_i(y)$ is positive semidefinite, at least when $rk(y) < \frac{n}{2}$ and hence so is $S:(\mathcal F(B_n))_i \rightarrow \mathcal F(B_n)_{i+1},(x,y) \mapsto y \otimes U(y).$ Then, for two positive semidefinite matrices $X,Y$ we have $rank(X+Y) \geq \min (rank(X),rank(Y)).$ Therefore, when $i < \frac{n}{2}$ we obtain that  sum of two positive semidefinite matrices has rank at least the sum. Therefore $S+T:(\mathcal F(B_n))_i \rightarrow \mathcal F(B_n)_{i+1},(x \otimes y) \mapsto \pi(U\otimes U)(x \otimes y)$ is also injective for $i < \frac{n}{2}-1.$ Furthermore, if this did fail to be injective, we would certainly need that $y \otimes U(y)$ is not positive semidefinite. rank $\frac{n}{2}$ is if $ \pi(U\otimes U)(x \otimes y)$ had some negative eigenvalue. This happens, for example for $B_2.$
+
+Read wilson more closely to understand the diagonal form!
+
+Check that we have the right basis, positive semidefiniteness can depend on basis.
 \end{document}

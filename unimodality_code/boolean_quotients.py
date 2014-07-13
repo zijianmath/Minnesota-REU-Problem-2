@@ -218,13 +218,13 @@ def symmetric_g_lst(n):
     return lst
 
 
-
+'''
 k = 5
 gl = cyclic_g_lst(k)
 
 for i in range(k):
     print set_edge_by_vert(gl,set_vert_by_rank(gl,i),set_vert_by_rank(gl,i+1))
-
+'''
 '''
 n = 9
 gl = [[1,2,0,3,4,5,6,7,8],[0,1,3,4,5,2,6,7,8],[0,1,2,3,4,6,5,7,8],[0,1,2,3,4,5,6,8,7]]

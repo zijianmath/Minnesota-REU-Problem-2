@@ -1,5 +1,6 @@
 import boolean_quotients as bq
 import numpy as np
+import random
 
 class Poset:
     def __init(self):
@@ -96,7 +97,6 @@ def matrix_compositions(mat_lst):
         bot -= 1
     return compositions_lst
 
-
 def print_stats(poset):
 #    print poset.vertices
 #    print poset.edges
@@ -107,45 +107,33 @@ def print_stats(poset):
     print 'map ranks'
     for i in xrange(poset.rank):
         print np.linalg.matrix_rank(poset.edge_mats[i])
+#    print poset.edge_mats
+    print 'composition_ranks'
+    mc = matrix_compositions(poset.edge_mats)
+#        print mc
+    print map(np.linalg.matrix_rank,mc)
 #        print poset.edge_mats[i]
 
-#grp = bq.Grp([(1,0,2,3,4,5,6),(0,2,1,3,4,5,6),(0,1,3,2,4,5,6),(0,1,2,4,3,5,6),(0,1,2,3,5,4,6),(0,1,2,3,4,6,5)])
-#grp = bq.Grp([(1,2,3,4,5,6,7,8,9,0),(9,8,7,6,5,4,3,2,1,0)])
+#num_gens > 0
+def rand_grp(n,num_gens):
+    lst = range(n)
+    gens = []
+    temp_lst = range(n)
+    temp_lst.reverse()
+    gens.append(tuple(temp_lst))
+    for i in range(num_gens):
+        random.shuffle(lst)
+        gens.append(tuple(lst))
+    return bq.Grp(gens)
 
-#grp = bq.Grp([(1,2,3,4,5,6,7,8,0),(0,8,7,6,5,4,3,2,1)])
-#poset = Poset_quot(grp)
-#grp = bq.Grp([(1,2,0,3,4,5,6,7,8),(0,1,3,4,5,2,6,7,8),(0,1,2,3,4,6,5,7,8),(0,1,2,3,4,5,6,8,7)])
-#poset = Poset_quot.edgify(Poset_quot(grp))
-#print_stats(poset)
-
-
-k = 10
-
-print 'cyclic_groups'
-for i in range(2,k):
-    grp = bq.Grp(bq.cyclic_g_lst(i))
-    poset = Poset_quot.edgify(Poset_quot(grp))
-#    print_stats(poset)
-    print str(('poset dims',i)) +' '+ str(map(len,poset.vertices))
-    print str(('matrix dimensions',i)) + ' ' + str(map(np.linalg.matrix_rank,poset.edge_mats))    
-    print str(('matrix compositions',i)) +' '+ str(matrix_compositions(poset.edge_mats))
-
-
-print 'dihedral_groups'
-for i in range(2,k):
-    grp = bq.Grp(bq.dihedral_g_lst(i))
-    poset = Poset_quot.edgify(Poset_quot(grp))
-#    print_stats(poset)
-    print str(('poset dims',i)) +' '+ str(map(len,poset.vertices))
-    print str(('matrix dimensions',i)) + ' ' + str(map(np.linalg.matrix_rank,poset.edge_mats))    
-    print str(('matrix compositions',i)) +' '+ str(matrix_compositions(poset.edge_mats))
-
-print 'boolean_algebra'
-for i in range(2,k):
+for i in range(2,10):
     grp = bq.Grp([tuple(range(i))])
-    poset = Poset_quot.edgify(Poset_quot(grp))
-#    print_stats(poset)
-    print str(('poset dims',i)) +' '+ str(map(len,poset.vertices))
-    print str(('matrix dimensions',i)) + ' ' + str(map(np.linalg.matrix_rank,poset.edge_mats))    
-    print str(('matrix compositions',i)) +' '+ str(matrix_compositions(poset.edge_mats))
+    print_stats(Poset_quot.edgify(Poset_quot(grp)))
 
+
+'''
+for i in range(20):
+    grp = rand_grp(9,1)
+    print "Group is " + str(grp.generators)
+    print_stats(Poset_quot.edgify(Poset_quot(grp)))
+'''

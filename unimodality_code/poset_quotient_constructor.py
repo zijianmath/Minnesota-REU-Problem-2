@@ -84,6 +84,7 @@ def matrix_compositions(mat_lst):
     n = len(mat_lst)
     bot = (n-1)/2
     compositions_lst = []
+    shifted_compositions = []
     if n % 2 == 0:
         running_mat = np.dot(mat_lst[n-bot-1],mat_lst[bot])
     else:
@@ -92,10 +93,11 @@ def matrix_compositions(mat_lst):
     bot -= 1
     while bot >= 0:
         running_mat = np.dot(running_mat,mat_lst[bot])
+        shifted_compositions.append(running_mat)
         running_mat = np.dot(mat_lst[n-bot-1],running_mat)
         compositions_lst.append(running_mat)
         bot -= 1
-    return compositions_lst
+    return (compositions_lst,shifted_compositions)
 
 def print_stats(poset):
 #    print poset.vertices
@@ -107,18 +109,18 @@ def print_stats(poset):
     print 'map ranks'
     for i in xrange(poset.rank):
         print np.linalg.matrix_rank(poset.edge_mats[i])
-#    print poset.edge_mats
     print 'composition_ranks'
-    mc = matrix_compositions(poset.edge_mats)
+    mc,mc_shifted = matrix_compositions(poset.edge_mats)
 #        print mc
-    print map(np.linalg.matrix_rank,mc)
-#        print poset.edge_mats[i]
+    print 'normal ' + str(map(np.linalg.matrix_rank,mc))
+    print 'shifted ' + str(map(np.linalg.matrix_rank,mc_shifted))
+
 
 #num_gens > 0
 def rand_grp(n,num_gens):
     lst = range(n)
     gens = []
-    temp_lst = range(n)
+    temp_lst = [6,7,0,1,2,3,4,5]
     temp_lst.reverse()
     gens.append(tuple(temp_lst))
     for i in range(num_gens):
@@ -126,14 +128,20 @@ def rand_grp(n,num_gens):
         gens.append(tuple(lst))
     return bq.Grp(gens)
 
-for i in range(2,10):
+'''
+for i in range(2,6):
     grp = bq.Grp([tuple(range(i))])
     print_stats(Poset_quot.edgify(Poset_quot(grp)))
-
-
 '''
-for i in range(20):
-    grp = rand_grp(9,1)
+
+'''for i in range(20):
+    grp = rand_grp(8,1)
     print "Group is " + str(grp.generators)
     print_stats(Poset_quot.edgify(Poset_quot(grp)))
 '''
+
+grp = bq.Grp([(4,0,1,2,3)])
+print_stats(Poset_quot.edgify(Poset_quot(grp)))
+
+#grp = bq.Grp([(8, 7, 6, 5, 4, 3, 2, 1, 0), (8, 1, 6, 5, 4, 7, 2, 3, 0)])
+#print_stats(Poset_quot.edgify(Poset_quot(grp)))

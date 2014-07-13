@@ -547,4 +547,19 @@ Idea, first, we know $T:(\mathcal F(B_n))_i \rightarrow \mathcal F(B_n)_{i+1},(x
 Read wilson more closely to understand the diagonal form!
 
 Check that we have the right basis, positive semidefiniteness can depend on basis.
+
+A key fact for seeing that $F(B_n)$ with order A relation is unitary peck is the following:
+
+The map $T:(x\otimes y) -> y \otimes U(y), has T^k(x\otimes y) = \sum c_{y,a} a\otimes b,$ where $c_{y,a}$ is just the number of paths from y to a (so I think it's $2^k$ or something like that).
+
+\begin{conj}
+$\mathcal F(B_n)$ is unitary peck. Additionally, the poset $\mathcal F(B_n/G)$ satisfies that its induced order raising maps $\phi=\mathcal F(U\otimes U)$ has $\phi^{n-2i}:\mathcal F(B_n/G)_i \rightarrow \mathcal F(B_n/G)_{n-i-2}$ is injective. Note, it is not an isomorphism because $\dim\mathcal F(B_n/G)_i = \dim \mathcal F(B_n/G)_{n-i-1} <\dim\mathcal F(B_n/G)_{n-i-2}$
+\end{conj}
+
+\begin{conj}
+$\mathcal F(B_n/G)$ is actually Peck when $n$ is even.
+\end{conj}
+
+Something weird is going on for odd n at the middle rank, I don't understand it.
+
 \end{document}

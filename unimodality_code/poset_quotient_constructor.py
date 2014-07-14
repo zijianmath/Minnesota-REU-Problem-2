@@ -111,9 +111,13 @@ def print_stats(poset):
         print np.linalg.matrix_rank(poset.edge_mats[i])
     print 'composition_ranks'
     mc,mc_shifted = matrix_compositions(poset.edge_mats)
-#        print mc
-    print 'normal ' + str(map(np.linalg.matrix_rank,mc))
-    print 'shifted ' + str(map(np.linalg.matrix_rank,mc_shifted))
+    print map(np.linalg.matrix_rank,mc)
+    for i in mc:
+        for j in i:
+            for t in j:
+                print int(t),
+            print ''
+#    print 'shifted ' + str(map(np.linalg.matrix_rank,mc_shifted))
 
 
 #num_gens > 0
@@ -128,8 +132,30 @@ def rand_grp(n,num_gens):
         gens.append(tuple(lst))
     return bq.Grp(gens)
 
+
+def boolean_5_matrix():
+    grp = bq.Grp([tuple(range(5))])
+    poset=Poset_quot.edgify(Poset_quot(grp))
+    mc,mc_shifted = matrix_compositions(poset.edge_mats)
+    mc = mc[0]
+    print poset.vertices[1]
+#    print '{',
+    for i in xrange(len(mc)):
+#        print poset.vertices[3][i],
+#        print '{',
+        for j in xrange(len(mc[0])):
+            if j != len(mc[0])-1:
+                print str(int(mc[i][j])) + ',',
+            if j == len(mc[0])-1:
+                print str(int(mc[i][j])),
+        print ''
+#        print '},'
+#    print '}'
+
+boolean_5_matrix()
+
 '''
-for i in range(2,6):
+for i in range(2,7):
     grp = bq.Grp([tuple(range(i))])
     print_stats(Poset_quot.edgify(Poset_quot(grp)))
 '''
@@ -140,8 +166,8 @@ for i in range(2,6):
     print_stats(Poset_quot.edgify(Poset_quot(grp)))
 '''
 
-grp = bq.Grp([(4,0,1,2,3)])
-print_stats(Poset_quot.edgify(Poset_quot(grp)))
+#grp = bq.Grp([(4,0,1,2,3)])
+#print_stats(Poset_quot.edgify(Poset_quot(grp)))
 
 #grp = bq.Grp([(8, 7, 6, 5, 4, 3, 2, 1, 0), (8, 1, 6, 5, 4, 7, 2, 3, 0)])
 #print_stats(Poset_quot.edgify(Poset_quot(grp)))

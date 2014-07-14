@@ -562,4 +562,27 @@ $\mathcal F(B_n/G)$ is actually Peck when $n$ is even.
 
 Something weird is going on for odd n at the middle rank, I don't understand it.
 
+\section{$F(B_n)$ is peck}
+Let $\beta = \frac{2^k-1}{k}.$
+We know the matrix has rows $v_{a \otimes b} = \sum_{y \subset a}^{}x \otimes y + \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.$
+
+Define $z_b =\frac{1}{\beta(n-2i-2 +1)} \sum_{a,a\subset b}^{}v_{a\otimes b}= \sum_{y\subset b}^{}x\otimes y.$
+
+Define $z_a = \sum_{b,a\subset b}^{}v_{a \otimes b} = \beta i \sum_{y\subset a}^{}x\otimes y+ \sum_{x\subset a,y\not\subset a}^{}x\otimes y.$
+
+Define $w_b = \sum_{a,a\subset b}^{}z_a - \frac{\beta i (n-2i-1)}{n-i}z_b=su$
+
+Define $z_{a,b} = \beta i z_b - z_a = \beta i \sum_{y\subset b,y\not\subset a}^{}x\otimes y - \sum_{x\subset a,y\not\subset a}^{}x\otimes y.$
+
+Define $w_{a,b} = z_a - iv_{a\otimes b}= \sum_{x\subset a,y\not\subset a}^{}x\otimes y - i \sum_{y\subset b,x\subset a,y\not\subset a}^{}x\otimes y$
+
+Define $q_a = \sum_{b,a\subset b}^{}w_{a,b} = \sum_{x\subset a,y\not \subset a}^{}x\otimes y.$
+
+Define $g_a = z_a - q_a = \beta i \sum_{y\subset a}^{}x\otimes y.$
+
+Assuming $i \neq 0,$
+Define $l_a = v_{a\otimes b} - \frac{1}{i}g_a = \sum_{y\subset b,x\subset a,y\not\subset a}^{}x\otimes y.$
+
+You may notice that $l_a$ are in fact the rows of $L^k,$ which we know is an invertible matrix. Hence a full basis lies in the span of $v_{a\otimes b}$ and so $v_{a\otimes b}$ forms a basis, and hence the matrix is invertible, as long as $i \neq 0.$
+
 \end{document}

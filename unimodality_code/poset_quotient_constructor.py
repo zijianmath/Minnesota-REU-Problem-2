@@ -133,29 +133,29 @@ def rand_grp(n,num_gens):
     return bq.Grp(gens)
 
 
-def boolean_5_matrix():
-    grp = bq.Grp([tuple(range(5))])
+def boolean_matrix(n,i):
+    grp = bq.Grp([tuple(range(n))])
     poset=Poset_quot.edgify(Poset_quot(grp))
     mc,mc_shifted = matrix_compositions(poset.edge_mats)
-    mc = mc[0]
-    print poset.vertices[1]
+    mc = mc[n-i-(n+3)/2]
+    print poset.vertices[i]
 #    print '{',
-    for i in xrange(len(mc)):
-#        print poset.vertices[3][i],
+    for t in xrange(len(mc)):
+        print poset.vertices[n-i-1][t],
 #        print '{',
         for j in xrange(len(mc[0])):
             if j != len(mc[0])-1:
-                print str(int(mc[i][j])) + ',',
+                print str(int(mc[t][j])),
             if j == len(mc[0])-1:
-                print str(int(mc[i][j])),
+                print str(int(mc[t][j])),
         print ''
 #        print '},'
 #    print '}'
 
-boolean_5_matrix()
+boolean_matrix(5,1)
 
 '''
-for i in range(2,7):
+for i in range(4,5):
     grp = bq.Grp([tuple(range(i))])
     print_stats(Poset_quot.edgify(Poset_quot(grp)))
 '''

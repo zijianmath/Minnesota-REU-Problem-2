@@ -564,18 +564,23 @@ Something weird is going on for odd n at the middle rank, I don't understand it.
 
 \section{$F(B_n)$ is peck}
 Let $\beta = \frac{2^k-1}{k}.$
-We know the matrix has rows $v_{a \otimes b} = \sum_{y \subset a}^{}x \otimes y + \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.$
+We know the matrix has rows $v_{a \otimes b} =\beta \sum_{y \subset a}^{}x \otimes y + \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.$
 
-Define $z_b =\frac{1}{\beta(n-2i-2 +1)} \sum_{a,a\subset b}^{}v_{a\otimes b}= \sum_{y\subset b}^{}x\otimes y.$
+Define $z_b =\frac{1}{\beta(n-2i-2)+1} \sum_{a,a\subset b}^{}v_{a\otimes b}= \sum_{y\subset b}^{}x\otimes y.$
 
-Define $z_a = \sum_{b,a\subset b}^{}v_{a \otimes b} = \beta i \sum_{y\subset a}^{}x\otimes y+ \sum_{x\subset a,y\not\subset a}^{}x\otimes y.$
+Define $z_a = \sum_{b,a\subset b}^{}v_{a \otimes b} = \sum_{b,a\subset b}^{}(\beta \sum_{y\subset a}^{}x\otimes y + \sum_{y\subset b, x \subset a,y\not\subset a}^{}x \otimes y)= \beta (i+1) \sum_{y\subset a}^{}x\otimes y+ \sum_{x\subset a,y\not\subset a}^{}x\otimes y.$
 
-Define $w_b = \sum_{a,a\subset b}^{}z_a - \frac{\beta i (n-2i-1)}{n-i}z_b=su$
+Define $z_{a,b} = \beta (i+1) z_b - z_a =\beta (i+1) \sum_{y\subset b}^{}x\otimes y - \beta (i+1) \sum_{y\subset a}^{}x\otimes y - \sum_{x\subset a,y\not\subset a}^{}x\otimes y
+=
+\beta (i+1) \sum_{y\subset b,y\not\subset a}^{}x\otimes y - \sum_{x\subset a,y\not\subset a}^{}x\otimes y.$
 
-Define $z_{a,b} = \beta i z_b - z_a = \beta i \sum_{y\subset b,y\not\subset a}^{}x\otimes y - \sum_{x\subset a,y\not\subset a}^{}x\otimes y.$
+Define
+\begin{align*}
+w_{a,b} &= z_a - (i+1)v_{a\otimes b}\\
+&= \sum_{x\subset a,y\not\subset a}^{}x\otimes y - (i+1) \sum_{y\subset b,x\subset a,y\not\subset a}^{}x\otimes y
+\end{align*}
 
-Define $w_{a,b} = z_a - iv_{a\otimes b}= \sum_{x\subset a,y\not\subset a}^{}x\otimes y - i \sum_{y\subset b,x\subset a,y\not\subset a}^{}x\otimes y$
-
+PROBLEM $q_a = 0$!!!!!!!
 Define $q_a = \sum_{b,a\subset b}^{}w_{a,b} = \sum_{x\subset a,y\not \subset a}^{}x\otimes y.$
 
 Define $g_a = z_a - q_a = \beta i \sum_{y\subset a}^{}x\otimes y.$
@@ -583,6 +588,99 @@ Define $g_a = z_a - q_a = \beta i \sum_{y\subset a}^{}x\otimes y.$
 Assuming $i \neq 0,$
 Define $l_a = v_{a\otimes b} - \frac{1}{i}g_a = \sum_{y\subset b,x\subset a,y\not\subset a}^{}x\otimes y.$
 
-You may notice that $l_a$ are in fact the rows of $L^k,$ which we know is an invertible matrix. Hence a full basis lies in the span of $v_{a\otimes b}$ and so $v_{a\otimes b}$ forms a basis, and hence the matrix is invertible, as long as $i \neq 0.$
+Define $t_{a,b} = z_b - v_a\otimes v_b.$
+
+Then, $\beta(i+1)t_{a,b} - z_{a,b} + w_{a,b} = (\beta^2 - 1)(i+1)\sum_{y\subset b,x\subset a,y\not\subset a}^{}x\otimes y$ which is the lefchetz map.
+
+\subsection{Nicer Sums}
+
+Define $z_b =\frac{1}{\beta(n-2i-2)+1} \sum_{a,a\subset b}^{}v_{a\otimes b}= \sum_{y\subset b}^{}x\otimes y.$
+
+Define $g_t = \sum_{a\subset b,t\not\subset b}^{}v_{a \otimes a \cup \{t\}}= \sum_{t \notin y}^{}x\otimes y.$
+Actually, $g_t$ and $z_{[n]\setminus t}$ are the same.
+
+Need to use the connection between complementation of $(x,b),(y,a).$
+
+We can taje $h_{b,i} = \sum_{x\subset b}^{}x \otimes x \cup \{i\} + \beta(i+1)\sum_{y \subset b}^{}x\otimes y.$
+
+Subtracting off $z_b,$ we can obtian
+$\eta_{b,i} = \sum_{x\subset b}^{}x \otimes x \cup \{i\}.$
+
+For any subset $s,|s|>n-i,$ can obtain the sum $\sum_{y \subset s}^{}x\otimes y$ and can obtain $\sum_{x\subset s}^{}x\otimes y \cup \{t\}$ for any choice of $t \notin s.$
+
+Starting again, we can enforce $x \subset b.$ Hence, using inclusion exclusion, can envorce $x$ has a perscribed $i$ elements. Summing over all $x \in a$ gives desired result.
+
+\subsection{Clearer Proof}
+
+\begin{lem}
+For any set $s$ of size at least $n-i,$ the combination $\sum_{y \subset s}^{}x\otimes y$ lies in the span of $v_{a\otimes b}$
+\end{lem}
+\begin{proof}
+Take $\sum_{a,a\subset s}^{}v_{a\otimes b}$
+\end{proof}
+
+\begin{lem}
+For any set $s$ of size at least $n-i,$ the combination $\sum_{x \subset s}^{}x\otimes y$ lies in the span of $v_{a\otimes b}.$
+\end{lem}
+\begin{proof}
+Take $\sum_{a \subset s}^{}v_{a\otimes a \cup \{t\}}.$ This gives us something in terms of $C_1\sum_{y\subset a}^{}x\otimes y + C_2\sum_{x\subset a}^{} x\otimes x\cup \{t\}.$ We can subtract off the first term by the previous lemma. Thus we get $C_2\sum_{x\subset a}^{} x\otimes x\cup \{t\}.$ Unioning over all $t \notin a$, and then adding back the result of the previuos lemma gives the desired result.
+\end{proof}
+
+\begin{lem}
+The sum $\sum_{\{i_1\}\in x}^{}x\otimes y$ lies in the span of $v_{a\otimes b}.$
+\end{lem}
+\begin{proof}
+
+\end{proof}
+
+\begin{lem}
+For $t \leq i,$ the sum $\sum_{\{i_1,\ldots, i_t\}\in x}^{}x\otimes y,$ lies in the span of $v_{a\otimes b}.$
+\end{lem}
+\begin{proof}
+Inclusion exclusion using the previous two lemmas.
+\end{proof}
+
+\begin{cor}
+The sum $\sum_{x = \{j_1,\ldots, j_i\}}^{}x\otimes y$ lies in the span of $v_{a \otimes b}.$
+\end{cor}
+\begin{proof}
+
+\end{proof}
+
+\begin{lem}
+The sum $\sum_{x \subset a}^{}x\otimes y$ lies in the span of $v_{a \otimes b}.$
+\end{lem}
+\begin{proof}
+Sum the previous lemma over all $x \subset a.$
+\end{proof}
+
+\begin{lem}
+We can write $v_{a\otimes b} = C_1\sum_{x\subset a}^{}x\otimes y + C_2\sum_{y \subset a}^{}x\otimes y.$
+\end{lem}
+\begin{proof}
+
+\end{proof}
+
+\begin{lem}
+The sum $\sum_{y \subset a}^{}x\otimes y$ lies in the span of $v_{a \otimes b}.$
+\end{lem}
+\begin{proof}
+Previous lemma.
+\end{proof}
+
+\begin{lem}
+The sum $\sum_{x \subset a,y\not\subset a,y\subset b}^{}x\otimes y$ lies in the span of $v_{a \otimes b}.$
+\end{lem}
+\begin{proof}
+Previous lemma, together with definition of $v_{a\otimes b}.$
+\end{proof}
+
+\begin{lem}
+The $v_{a\otimes b}$ form a basis.
+\end{lem}
+\begin{proof}
+Previous lemma shows the rows of $L^k$ lie in their span.
+\end{proof}
+
 
 \end{document}

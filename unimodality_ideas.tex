@@ -616,14 +616,14 @@ Starting again, we can enforce $x \subset b.$ Hence, using inclusion exclusion, 
 For any set $s$ of size at least $n-i,$ the combination $\sum_{y \subset s}^{}x\otimes y$ lies in the span of $v_{a\otimes b}$
 \end{lem}
 \begin{proof}
-Take $\sum_{a,a\subset s}^{}v_{a\otimes b}$
+Take $\sum_{b,b\subset s}^{}v_{a\otimes b}$
 \end{proof}
 
 \begin{lem}
 For any set $s$ of size at least $n-i,$ the combination $\sum_{x \subset s}^{}x\otimes y$ lies in the span of $v_{a\otimes b}.$
 \end{lem}
 \begin{proof}
-Take $\sum_{a \subset s}^{}v_{a\otimes a \cup \{t\}}.$ This gives us something in terms of $C_1\sum_{y\subset a}^{}x\otimes y + C_2\sum_{x\subset a}^{} x\otimes x\cup \{t\}.$ We can subtract off the first term by the previous lemma. Thus we get $C_2\sum_{x\subset a}^{} x\otimes x\cup \{t\}.$ Unioning over all $t \notin a$, and then adding back the result of the previuos lemma gives the desired result.
+Take $\sum_{a \subset s}^{}v_{a\otimes a \cup \{t\}}.$ This gives us something in terms of $C_1\sum_{y\subset s}^{}x\otimes y + C_2\sum_{x\subset s}^{} x\otimes x\cup \{t\}.$ We can subtract off the first term by the previous lemma. Thus we get $C_2\sum_{x\subset s}^{} x\otimes x\cup \{t\}.$ Unioning over all $t \notin a$, and then adding back the result of the previuos lemma gives the desired result.
 \end{proof}
 
 \begin{lem}
@@ -682,5 +682,14 @@ The $v_{a\otimes b}$ form a basis.
 Previous lemma shows the rows of $L^k$ lie in their span.
 \end{proof}
 
+\section{Peckness of $\mathcal F(B_n/G)$}
 
+I think they are unimodular, as I think unimodularity is preserved under quotients, although I'm not sure about this.
+
+I wonder if we can show for $n$ even that they are edge-labelable. Perhaps we can label them according to something with $G$ orbits?
+
+
+\section{$B_n(q)$ and its Necklace poset}
+
+Can show $\mathcal F(B_n(q))$ is peck by using Hall's marriage theorem, to pair 1 dim spaces and n-1 dim spaces. Then, simply take the relation to be such that the additional basis vector being added lies in that n-1 dim space corresponding to the 1-dim space, and you get that the edge poset is a disjoint union of $[n]_q$ $B_{n-1}(q)$ posets. 
 \end{document}

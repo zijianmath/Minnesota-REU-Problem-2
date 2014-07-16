@@ -152,7 +152,7 @@ def boolean_matrix(n,i):
 #        print '},'
 #    print '}'
 
-boolean_matrix(5,1)
+boolean_matrix(5,)1
 
 '''
 for i in range(4,5):

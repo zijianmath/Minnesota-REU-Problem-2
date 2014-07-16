@@ -331,7 +331,7 @@ Since $U_i,U_{i+1}$ are both injective, $U_i \otimes U_{i+1}$ is as well. It is 
 
 \begin{lem}
 \label{two_equivalent_paths}
-We have an equality of linear transformations $\pi^{G\times G}_{i+1}\circ p_{i+1}\circ(U_i\otimes U_{i+1})\circ j_i\circ k^{G\times G}_i = \mathcal F(U)_i.$
+We have an equality of linear transformations $\pi^{G\times G}_{i+1}\circ p_{i+1}\circ(U_i\otimes U_{i+1})\circ j_i\circ k^{G\times G}_i = \mathcal F(U)^{G\times G}_i.$
 \end{lem}
 \begin{proof}
 By ~\ref{center_commutes}, we have
@@ -342,17 +342,17 @@ By ~\ref{center_commutes}, we have
 Then, by ~\ref{one_sided inverse}, we obtain
 \begin{align*}
 	\pi^{G\times G}_{i+1}\circ p_{i+1}\circ j_{i+1}\circ(U_i\otimes U_{i+1})^{G\times G}\circ k^{G\times G}_i &= \pi^{G\times G}_{i+1}\circ(U_i\otimes U_{i+1})^{G\times G}\circ k^{G\times G}_i\\
-	&= \mathcal F(U)_i
+	&= \mathcal F(U)^{G\times G}_i
 \end{align*}
 Therefore,
 \begin{align*}
-	\pi^{G\times G}_{i+1}\circ p_{i+1}\circ(U_i\otimes U_{i+1})\circ j_i\circ k^{G\times G}_i = \mathcal F(U)_i.
+	\pi^{G\times G}_{i+1}\circ p_{i+1}\circ(U_i\otimes U_{i+1})\circ j_i\circ k^{G\times G}_i = \mathcal F(U)^{G\times G}_i.
 \end{align*}
 \end{proof}
 
 \begin{thm}
 \label{injectivity_thm}
-If $\mathcal F(U)_i,U_i,U_{i+1}$ are injective, then $\mathcal F(U)_i$ is injective.
+If $\mathcal F(U)_i,U_i,U_{i+1}$ are injective, then $\mathcal F(U)^{G\times G}_i$ is injective.
 \end{thm}
 \begin{proof}
 By ~\ref{injective_chain}, we know $\pi^{G\times G}_{i+1}\circ p_{i+1}\circ(U_i\otimes U_{i+1})\circ j_i\circ k^{G\times G}_i$ is injective. But by ~\ref{two_equivalent_paths}, $\pi^{G\times G}_{i+1}\circ p_{i+1}\circ(U_i\otimes U_{i+1})\circ j_i\circ k^{G\times G}_i = \mathcal F(U)_i.$ Therefore, $\mathcal F(U)_i$ is injective.

@@ -191,6 +191,7 @@ where we have $x \lessdot y$ and $Gx \lessdot Gy.$ The maps above are defined on
 \end{note}
 
 \begin{note}
+\label{F_lefchetz}
 We denote
 \begin{align*}
 	\mathcal F(U)_i:\mathcal F(P)_i &\rightarrow \mathcal F(P)_{i+1}\\
@@ -285,6 +286,9 @@ If $\mathcal F(U)_i$ is injective, then $\ker(\pi_i)|_{\im((U_i \otimes U_{i+1})
 \begin{proof}
 Since $\mathcal F(U)_i$ is injective, $\ker \mathcal F(U)_i  = 0.$ Therefore, since $\mathcal F(U)_i = \pi_i \circ (U_i\otimes U_{i+1}) k_i,$ we have $\ker(\pi_i)|_{\im((U_i \otimes U_{i+1})\circ k_i)}=0.$
 \end{proof}
+THE FOLLOWING PROOF IS WRONG, ITS NOT EXACTLY THE $G$ invariant bases, there are really sums of the G invariant basis. TO FIX THIS, WE REALLY HAVE TO GO UP FIRST, then go right. We can take an averaging when we go up, or we can make an arbitrary choice, it won't matter since $U$ commutes with $G.$ What bothers me is that we only seem to have used that $\mathcal F(U)_i$ is injective, even though it seems that sometimes the quotients aren't injective at the middle.
+
+ALSO, WE MIGHT BE ABLE TO GET PECK POSETS IN GENERAL. I think it has to do with $U_i \otimes U_{i+1}$ being injective from the appropriate levels.
 
 \begin{lem}
 \label{no_pi_kernel}
@@ -293,10 +297,10 @@ If $\mathcal F(U)_i,$ are injective, then $\ker \pi_{i+1} \cap \im((U\otimes U)\
 \begin{proof}
 Any element $v \in \im((U\otimes U)\circ j_i\circ k^{G\times G}_i)$ can be written in the form 
 \begin{align*}
-	v=\sum_{x\otimes y}^{}c_{x\otimes y}\left(\frac{1}{|G|}\sum_{g \in G}^{} gx\otimes \frac{1}{|G|}\sum_{h\in G}^{}hy\right).
+	v=\sum_{x\otimes y}^{}c_{x\otimes y}\left(\frac{1}{|G|}\sum_{g \in G}^{} gU(x)\otimes \frac{1}{|G|}\sum_{h\in G}^{}hU(y)\right).
 \end{align*}
 
-Therefore, if $v \in \ker \pi_{i+1},$ we must have $\pi_{i+1}\left(\frac{1}{|G|}\sum_{g \in G}^{} gx\otimes \frac{1}{|G|}\sum_{h\in G}^{}hy\right) = 0$ for all pairs $(x,y),$ such that $x \in Gx,y \in Gy,$ because distinct orbits are disjoint. Hence, it suffices to show that we cannot have $\pi_{i+1}\left(\frac{1}{|G|}\sum_{g \in G}^{} gx\otimes \frac{1}{|G|}\sum_{h\in G}^{}hy\right) = 0.$
+Therefore, if $v \in \ker \pi_{i+1},$ we must have $\pi_{i+1}\left(\frac{1}{|G|}\sum_{g \in G}^{} gU(x)\otimes \frac{1}{|G|}\sum_{h\in G}^{}hU(y)\right) = 0$ for all pairs $(x,y),$ such that $x \in Gx,y \in Gy,$ because distinct orbits are disjoint. BUT WHEN YOU APPLY U THEY ARE NOT DISJOINT! Hence, it suffices to show that we cannot have $\pi_{i+1}\left(\frac{1}{|G|}\sum_{g \in G}^{} gU(x)\otimes \frac{1}{|G|}\sum_{h\in G}^{}hU(y)\right) = 0.$
 
 We know that if $\frac{1}{|G|}\sum_{g \in G}^{} gx\otimes \frac{1}{|G|}\sum_{h\in G}^{}hy \in \im((U\otimes U)\circ j_i\circ k^{G\times G}_i),$ then there must exist some $x \in Gx,y \in Gy$ for which $x \lessdot y.$ However, this implies that $x \otimes y \in Supp\left(\pi_{i+1}\left(\frac{1}{|G|}\sum_{g \in G}^{} gx\otimes \frac{1}{|G|}\sum_{h\in G}^{}hy\right)\right),$ and so in particular $\pi_{i+1}\left(\frac{1}{|G|}\sum_{g \in G}^{} gx\otimes \frac{1}{|G|}\sum_{h\in G}^{}hy\right) \neq 0.$
 \end{proof}
@@ -339,7 +343,7 @@ By ~\ref{center_commutes}, we have
 	\pi^{G\times G}_{i+1}\circ p_{i+1}\circ(U_i\otimes U_{i+1})\circ j_i\circ k^{G\times G}_i = \pi^{G\times G}_{i+1}\circ p_{i+1}\circ j_{i+1}\circ(U_i\otimes U_{i+1})^{G\times G}\circ k^{G\times G}_i.
 \end{align*}
 
-Then, by ~\ref{one_sided inverse}, we obtain
+Then, by ~\ref{one_sided_inverse}, we obtain
 \begin{align*}
 	\pi^{G\times G}_{i+1}\circ p_{i+1}\circ j_{i+1}\circ(U_i\otimes U_{i+1})^{G\times G}\circ k^{G\times G}_i &= \pi^{G\times G}_{i+1}\circ(U_i\otimes U_{i+1})^{G\times G}\circ k^{G\times G}_i\\
 	&= \mathcal F(U)^{G\times G}_i
@@ -359,5 +363,246 @@ By ~\ref{injective_chain}, we know $\pi^{G\times G}_{i+1}\circ p_{i+1}\circ(U_i\
 \end{proof}
 
 \section{The object $\mathcal F(B_n).$}
+
+\begin{note}
+For this section, we will use $L = \mathcal F(U)^{n-2i-1},$ where $\mathcal F(U)^{n-2i-1}:\mathcal F(B_n)_i \rightarrow \mathcal F(B_n)_{n-i-1}$ is the lefchetz map, as defined in ~\ref{F_lefchetz}.
+\end{note}
+\begin{note}
+For the remainder of this section, we shall take $|a| = n-i-1,|b|= n-i,|x| = i,|y| = i+1.$ Additionally, whenever we write an expression of the form $x \otimes y$ or $a \otimes b,$ it is assumed that $x \lessdot y,a \lessdot b.$
+\end{note}
+
+
+\begin{thm}
+The map $L$ satisfies 
+\begin{align*}
+	L(x\otimes y) =(2^k - 1)(k-1)! \sum_{y \not \subset a,x\subset a,y \subset b}^{}a \otimes b + k!\sum_{|b| = n-i,|a| = n-i-1,a \lessdot b,y \subset a}^{}a \otimes b
+\end{align*}
+\end{thm}
+\begin{proof}
+COME BACK TO THIS THEOREM (MAYBE SOMEONE ELSE CAN WRITE IT UP.)
+\end{proof}
+
+\begin{thm}
+The poset $P_n$ whose vertices are pairs $x\otimes y,x \lessdot y,$ and whose relations are $x\otimes y < a\otimes b$ if $y\setminus x = b\setminus a,$ defines a poset which is isomorphic to a disjoint union of $n$ copies of $B_{n-1}.$ Therefore it is unitary peck. Furthermore, composing its lefchetz map $n-2i-1$ times yields $M:(P_n)_i \rightarrow (P_n)_{n-i-1},$ such that $M(x\otimes y)	 = k!\sum_{|b| = n-i,|a| = n-i-1,a \lessdot b,y \subset a}^{}a \otimes b$
+\end{thm}
+\begin{proof}
+
+COME BACK TO THIS THEOREM (MAYBE SOMEONE ELSE CAN WRITE IT UP.)
+\end{proof}
+
+
+\ssec{Proof that $B_n$ is peck}
+
+The aim of this proof will be to show that the matrix produced above is invertible.
+
+\section{The proof from the row point of view}
+
+In this section, we will show the rows of $L$ form a basis by showing we can make a change of basis to a map which is a Lefchetz map on a disjoint union of $n$ copies of $B_{n-1}.$ Since $B_{n-1}$ is unitary peck, it will follow that $L$ is an isomorphism.
+
+\begin{note}
+
+Let $\beta = \frac{2^k-1}{k}.$ Denote 
+\begin{align*}
+	v_{a \otimes b} =\beta \sum_{y \subset a}^{}x \otimes y + \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.
+\end{align*}
+Note that $v_{a \otimes b}$ are simply the rows of $L,$ each divided by the constant $k!.$
+\end{note}
+
+\begin{note}
+For any set $s$ of size at least $n-i,$
+\begin{align*}
+	z_s = \frac{1}{\beta\binom {|s|-i-1}{n-2i-2}(|s|-n+i+1)+\binom{|s|-i-1}{n-2i-1}} \sum_{b\subset s,a \subset b}^{}v_{a\otimes b}
+\end{align*}
+\end{note}
+
+
+
+\begin{lem}
+\label{z_equivalence}
+For any set $s$ of size at least $n-i,$ we have $z_s = \sum_{y \subset s}^{}x\otimes y.$ In particular, $\sum_{y \subset s}^{}x\otimes y$ lies in the span of $v_{a\otimes b}$
+\end{lem}
+\begin{proof}
+We have 
+\begin{align*}
+	&\left(\beta\binom {|s|-i-1}{n-2i-2}(|s|-n+i+1)+\binom{|s|-i-1}{n-2i-1}\right) z_s \\
+	&= \sum_{b\subset s,a \subset b}^{}v_{a\otimes b}\\
+	&=\sum_{b\subset s,a \subset b}^{} \left(\beta \sum_{y \subset a}^{}x \otimes y + \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.\right)\\
+	&= \sum_{b\subset s,a \subset b}^{} \beta \sum_{y \subset a}^{}x \otimes y + \sum_{b\subset s,a \subset b}^{} \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.\\
+	&= \beta\binom {|s|-i-1}{n-2i-2}(|s|-n+i+1) \sum_{y \subset s}^{}x \otimes y+ \sum_{b\subset s,a \subset b}^{} \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.\\
+	&= \beta\binom {|s|-i-1}{n-2i-2}(|s|-n+i+1) \sum_{y \subset s}^{}x \otimes y + \binom{|s|-i-1}{n-2i-1}\sum_{y\subset s}^{}x\otimes y\\
+	& =\left(\frac{1}{\beta\binom {|s|-i-1}{n-2i-2}(|s|-n+i+1)+\binom{|s|-i-1}{n-2i-1}}\right) \sum_{y \subset s}^{}x\otimes y.
+\end{align*}
+In going between the fourth line and the fifth line, I counted the number of $y$ satisfying $y \subset a \subset b\subset s.$ If we fix $s,a$ there are $(|s|-n+i+1)$ choices for the element $b,$ since it can add any element in $s$ but not in $a.$ Then, we need to count the number of $a$ with $y \subset a \subset s.$ This is exactly $\binom {|s|-i-1}{n-2i-2}(|s|-n+i+1).$
+
+In going from the fifth line to the sixth line, for $y,s$ fixed, we count the number of $b$ with $y \subset b \subset s.$ This is exactly $\binom{|s|-i-1}{n-2i-1}$.
+\end{proof}
+
+\begin{note}
+For any set $s$ of size at least $n-i,$ let $w_s = \sum_{a \subset s,t\notin s}^{}v_{a \otimes a \cup \{t\}}.$
+\end{note}
+
+\begin{lem}
+\label{w_equivalence}
+We have 
+\begin{align*}
+	w_s = \sum_{t\notin s}^{} \left(\beta \binom {|s|-i-1}{n-2i-2}	\sum_{y \subset s}^{}x\otimes x \cup \{t\}  + \binom {|s|-i}{n-2i-1} \sum_{x \subset s}^{}x \otimes x \cup \{t\} \right).
+\end{align*}
+\end{lem}
+
+\begin{proof}
+\begin{align*}
+	w_s &= \sum_{a \subset s,t\notin s}^{}v_{a \otimes a \cup \{t\}}\\
+	&= \sum_{a \subset s,t\notin s}^{}\left(\beta \sum_{y \subset a}^{}x \otimes y + \sum_{y\subset b,x \subset a,y\not\subset a \cup \{t\}}^{}x\otimes y \right)\\
+	&= \sum_{t\notin s}^{}\left(\sum_{a \subset s}^{}\beta \sum_{y \subset a}^{}x \otimes y + \sum_{a \subset s}^{}\sum_{y\subset b,x \subset a,y\not\subset a \cup \{t\}}^{}x\otimes y \right)\\
+	&=\sum_{t\notin s}^{}\left(\beta \binom {|s|-i-1}{n-2i-2}\sum_{y \subset s}^{}x\otimes y + \sum_{a \subset s}^{}\sum_{y\subset b,x \subset a,y\not\subset a \cup \{t\}}^{}x\otimes y \right)\\
+	&=\sum_{t\notin s}^{} \left(\beta \binom {|s|-i-1}{n-2i-2}\sum_{y \subset s}^{}x\otimes y + \binom {|s|-i}{n-2i-1}\sum_{x \subset s}^{}x \otimes x \cup \{t\} \right)
+\end{align*}
+The equalities between lines three and four, and four and five hold for similar reasons as the equalities between lines four and five, and five and six in ~\ref{z_equivalence}
+\end{proof}
+
+\begin{note}
+Let $u_s = \frac{w_s - (n - |s|)\beta \binom {|s|-i-1}{n-2i-2} z_s}{\binom {|s|-i}{n-2i-1}} + z_s.$
+\end{note}
+
+\begin{lem}
+\label{u_equivalence}
+We have $u_s = \sum_{x\subset s,y\supset x}^{}x\otimes y.$ In particular, $\sum_{x\subset s,y\supset x}^{}x\otimes y$ lies in the span of $v_{a\otimes b}.$
+\end{lem}
+\begin{proof}
+By ~\ref{w_equivalence} and ~\ref{z_equivalence} we have
+\begin{align*}
+	u_s &= \frac{w_s - (n - |s|)\beta \binom {|s|-i-1}{n-2i-2} z_s}{\binom {|s|-i}{n-2i-1}} + z_s\\
+	&= \frac{\sum_{t\notin s}^{} \left(\beta \binom {|s|-i-1}{n-2i-2}\sum_{y \subset s}^{}x\otimes y + \binom {|s|-i}{n-2i-1}\sum_{x \subset s}^{}x \otimes x \cup \{t\} \right) - (n - |s|)\beta \binom {|s|-i-1}{n-2i-2} \sum_{y \subset s}^{}x\otimes y}{\binom {|s|-i}{n-2i-1}} + \sum_{y \subset s}^{}x\otimes y \\
+	&=  \frac{\sum_{t\notin s}^{} \left(\sum_{x \subset s}^{}x \otimes x \cup \{t\} \right)}{\binom {|s|-i}{n-2i-1}} + \sum_{y \subset s}^{}x\otimes y \\
+	&= \sum_{t\notin s}^{} \left(\binom {|s|-i}{n-2i-1}\sum_{x \subset s}^{}x \otimes x \cup \{t\} \right) + \sum_{y \subset s}^{}x\otimes y \\
+	&=  \sum_{x\subset s,y\supset x}^{}x\otimes y
+\end{align*}
+The penultimate line is equal to the ultimate line because any element $x\otimes y$ with $x \subset s$ must either have $y \subset s$ or else $y \subset s \cup \{t\}$ for $t \notin s.$ The two terms on the penultimate line cover precisely these two cases.
+\end{proof}
+
+\begin{note}
+For any $s \subset [n],$ with $|s| \leq n-i,$ define $h_s = z_{[n]} - u_s.$
+\end{note}
+
+\begin{lem}
+\label{h_equivalence}
+With $h_s$ as defined above $h_s = \sum_{x\not\subset s}^{}x\otimes y$
+\end{lem}
+\begin{proof}
+Using ~\ref{z_equivalence} and ~\ref{u_equivalence}
+\begin{align*}
+	h_s &= z_{[n]} - u_s \\
+	&= \sum_{x\subset y}^{}x\otimes y-\sum_{x\subset s,x\subset y}^{}x\otimes y\\
+	&= \sum_{x\not\subset s}^{}x\otimes y
+\end{align*}
+\end{proof}
+\begin{note}
+For $I \subset[n],$ let $I^c = [n]\setminus I,$ the complement of $I$ in $[n].$
+\end{note}
+
+
+\begin{note}
+For $I,J$ with $I\subset J \subset [n],$ and $I \neq \emptyset.$ such that $|J| \leq i,$ define $l_{J,I}= \sum_{x \supset J, J \cap x = I}^{}x\otimes y.$
+\end{note}
+
+\begin{lem}
+\label{l_base_case}
+Assuming $i \neq 0,$ for $|s| = n-1,$ it follows that $h_s = l_{s^c,s^c}.$
+\end{lem}
+\begin{proof}
+By ~\ref{h_equivalence},
+\begin{align*}
+	h_s &=\sum_{x\not\subset s}^{}x\otimes y\\
+  	&=\sum_{s^c \subset x}^{} x\otimes y\\
+  	&=l_{s^c,s^c}
+\end{align*}
+In equating the first line with the second line, we are crucially using that $|s^c| = 1,$ because then $x \not \subset s \Leftrightarrow s^c \subset x.$ 
+\end{proof}
+
+\begin{lem}
+\label{l_induction_step}
+$l_{s^c,s^c} = h_s - \sum_{I \subset s^c, I \neq s^c,I \neq\emptyset}^{}l_{s^c,I}.$
+\end{lem}
+\begin{proof}
+We have
+\begin{align*}
+	h_s & = \sum_{x\not\subset s}^{}x\otimes y\\
+	&= \sum_{x\cap s^c \neq \emptyset}^{}x\otimes y\\
+	&= \sum_{I \subset s^c,I \neq \emptyset,x\cap s^c = I}^{}x\otimes y\\
+	&= \sum_{x\cap s^c = s^c}^{}x\otimes y+\sum_{I \subset s^c,I \neq s^c,I \neq \emptyset,x\cap s^c = I}^{}x\otimes y\\
+	&= l_{s^c,s^c} + \sum_{I \subset s^c, I \neq s^c,I \neq \emptyset}^{}l_{s^c,I}
+\end{align*}
+\end{proof}
+
+\begin{lem}
+For all $J \subset [n],$ with $|J| \leq i,$ we have $l_{J,J}$ lies in the span of $v_{a \otimes b}.$ 
+\end{lem}
+\begin{proof}
+By ~\ref{l_base_case} we have that for any $s,|s| = n-1,$ we have $l_{s^c,s^c}$ lies in the span of $v_{a\otimes b}.$ Inductively assume that we have shown $l_{s^c,s^c}$ lies in the span of $v_{a\otimes b}$ for $|s| > j.$ Then, for $|s| = j$ we can use ~\ref{l_induction_step} to write $l_{s^c,s^c}$ in terms of $h_s$ and $l_{r^c,r^c}$ where $|r|>j.$ Since we know both  $h_s$ and $l_{r^c,r^c}$ lie in the span of $v_{a\otimes b},$ so does $l_{s^c,s^c}$ for all $s,|s| > n-i.$
+\end{proof}
+
+\begin{lem}
+\label{l_diag_equivalence}
+For $|x| = i,$ we have $l_{x,x} = \sum_{y \supset x}^{}y\otimes x.$
+\end{lem}
+\begin{proof}
+By definition, $l_{\bar x,\bar x} = \sum_{\bar x\subset x,\bar x \cap x = \bar x,x\subset y}^{}x\otimes y = \sum_{\bar x\subset y}^{}\bar x\otimes y.$ Replacing $\bar x$ by $x$ gives the result.
+\end{proof}
+
+\begin{note}
+Define $m_a = \sum_{x \subset a}^{}l_{x,x}.$
+\end{note}
+
+\begin{lem}
+With $m_a$ as defined above, we have $m_a = \sum_{x\subset a}^{}x\otimes y.$
+\end{lem}
+\begin{proof}
+By ~\ref{l_diag_equivalence}, we obtain
+$$m_a = \sum_{x \subset a}^{}l_{x,x} = \sum_{x \subset a}^{}\sum_{y \supset x}^{}y\otimes x= \sum_{x\subset a}^{}x\otimes y$$
+\end{proof}
+
+\begin{note}
+Denote $r_a = \sum_{b,b\subset a}^{} a \otimes b.$
+\end{note}
+
+\begin{lem}
+With $r_a$ as defined above, we have $r_a = C_1\sum_{y\subset a}^{}x\otimes y + C_2 \sum_{x\subset a}^{}x\otimes y.$
+\end{lem}
+\begin{proof}
+
+\end{proof}
+\begin{note}
+
+Define $t_a = \frac{r_a - C_2 m_a}{C_1} = \sum_{y\subset a}^{}x\otimes y $
+\end{note}
+
+\begin{note}
+Let $q_{a,b} = v_{a\otimes b} - t_a.$
+\end{note}
+
+\begin{lem}
+We have $q_{a,b} = \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.$
+\end{lem}
+\begin{proof}
+
+\end{proof}
+
+\begin{thm}
+The matrix $L$ is invertible.
+\end{thm}
+\begin{proof}
+We saw that $q_{a,b} = \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y$ lie in the span of $v_{a\otimes b}.$ However, $q_{a,b}$ are exactly the rows of a lefchetz map on a disjoint union of $n$ copies of $B_{n-1}.$ Since the lefchetz map on $B_{n-1}$ is invertible, this means the $q_{a,b}$ form a basis for $\mathcal F(B_n)_{i}$ and therefore the $v_{a\otimes b}$ do as well. Therefore, $L$ is invertible. 
+\end{proof}
+
+
+
+\begin{lem}
+With $t_a$ as defined above, $t_a = \frac{r_a - C_1 m_a}{C_2}.$
+\end{lem}
+\begin{proof}
+
+\end{proof}
+
+
 
 \end{document}

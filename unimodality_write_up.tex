@@ -107,16 +107,27 @@ We assume all posets are ranked posets, and $G$ actions are rank preserving, ord
 \end{rem}
 
 \begin{defn}
-Define the poset category $\mathcal P_r,$ where the objects $P \in \mathcal P_r$ are ranked poset, and the morphisms $Mor(P,Q)$ are rank preserving, order preserving maps, which send all $B_{r+1}$ to other $B_{r+1}$.
+Define the {\it poset category} $\mathcal P,$ where the objects $P \in \mathcal P$ are ranked poset, and the morphisms $Mor(P,Q)$ are rank preserving, order preserving maps.
 \end{defn}
 
 \begin{defn}
-Define the {\it Functor of Faces} $\mathcal F:\mathcal P \rightarrow \mathcal P,$ that associates to any poset $P \in \mathcal P$ a poset $\mathcal F(P),$ where the vertices of $\mathcal F(P)$ are pairs $(x,y)\in P \times P,x \lessdot y,$ and the ordering in $\mathcal F(P)$ is given by $(x,y)\leq (a,b)$ if $x \leq a,y\leq b.$ For $f \in Mor(P,Q),$ the corresponding morphism $\mathcal F(f):\mathcal F(P) \rightarrow \mathcal F(Q),$ given by $\mathcal F(f)(x,y) = (f(x),f(y)).$
+Define the {\it Functor of Faces} $\mathcal F:\mathcal P \rightarrow \mathcal P,$ that associates to any poset $P \in \mathcal P$ a poset $\mathcal F(P),$ where the vertices of $\mathcal F(P)$ are pairs $(x,y)\in P \times P,x \lessdot y,$ and the ordering in $\mathcal F(P)$ is given by $(x,y)\lessdot (a,b)$ if $x \lessdot a,y\lessdot b.$ For $f \in Mor(P,Q),$ the corresponding morphism $\mathcal F(f):\mathcal F(P) \rightarrow \mathcal F(Q),$ given by $\mathcal F(f)(x,y) = (f(x),f(y)).$
 \end{defn}
 
 \begin{conj}
 The Functor of faces $\mathcal F$ is fully faithful.
 \end{conj}
+
+\begin{defn}
+Define the {\it weak poset category} $\mathcal W,$ where the objects $P \in \mathcal W$ are ranked poset, and the morphisms $f\in Mor(P,Q)$ are rank preserving, order preserving maps, and if $a \lessdot b,a\lessdot c,$ then $f(b)\neq f(c).$
+\end{defn}
+
+
+\begin{defn}
+Define the {\it Weak Functor of Faces} $\mathcal g:\mathcal W \rightarrow \mathcal W,$ that associates to any poset $P \in \mathcal W$ a poset $\mathcal G(P),$ where the vertices of $\mathcal G(P)$ are pairs $(x,y)\in P \times P,x \lessdot y,$ and the ordering in $\mathcal F(P)$ is given by $(x,y)\lessdot (a,b)$ if $x \lessdot a,y\lessdot b,a\neq y.$ For $f \in Mor(P,Q),$ the corresponding morphism $\mathcal G(f):\mathcal G(P) \rightarrow \mathcal G(Q),$ given by $\mathcal G(f)(x,y) = (f(x),f(y)).$
+\end{defn}
+
+
 
 \section{Quotient Edges}
 
@@ -365,7 +376,7 @@ By ~\ref{injective_chain}, we know $\pi^{G\times G}_{i+1}\circ p_{i+1}\circ(U_i\
 \section{The object $\mathcal F(B_n).$}
 
 \begin{note}
-For this section, we will use $L = \mathcal F(U)^{n-2i-1},$ where $\mathcal F(U)^{n-2i-1}:\mathcal F(B_n)_i \rightarrow \mathcal F(B_n)_{n-i-1}$ is the lefchetz map, as defined in ~\ref{F_lefchetz}.
+For this section, we will use $M^{n-2i-1} = \mathcal F(U)^{n-2i-1},$ where $\mathcal F(U)^{n-2i-1}:\mathcal F(B_n)_i \rightarrow \mathcal F(B_n)_{n-i-1}$ is the lefchetz map, as defined in ~\ref{F_lefchetz}.
 \end{note}
 \begin{note}
 For the remainder of this section, we shall take $|a| = n-i-1,|b|= n-i,|x| = i,|y| = i+1.$ Additionally, whenever we write an expression of the form $x \otimes y$ or $a \otimes b,$ it is assumed that $x \lessdot y,a \lessdot b.$
@@ -373,9 +384,9 @@ For the remainder of this section, we shall take $|a| = n-i-1,|b|= n-i,|x| = i,|
 
 
 \begin{thm}
-The map $L$ satisfies 
+The map $M$ satisfies 
 \begin{align*}
-	L(x\otimes y) =(2^k - 1)(k-1)! \sum_{y \not \subset a,x\subset a,y \subset b}^{}a \otimes b + k!\sum_{|b| = n-i,|a| = n-i-1,a \lessdot b,y \subset a}^{}a \otimes b
+	M^{n-2i-1}(x\otimes y) =(2^k - 1)(k-1)! \sum_{y \not \subset a,x\subset a,y \subset b}^{}a \otimes b + k!\sum_{|b| = n-i,|a| = n-i-1,a \lessdot b,y \subset a}^{}a \otimes b
 \end{align*}
 \end{thm}
 \begin{proof}
@@ -383,12 +394,25 @@ COME BACK TO THIS THEOREM (MAYBE SOMEONE ELSE CAN WRITE IT UP.)
 \end{proof}
 
 \begin{thm}
-The poset $P_n$ whose vertices are pairs $x\otimes y,x \lessdot y,$ and whose relations are $x\otimes y < a\otimes b$ if $y\setminus x = b\setminus a,$ defines a poset which is isomorphic to a disjoint union of $n$ copies of $B_{n-1}.$ Therefore it is unitary peck. Furthermore, composing its lefchetz map $n-2i-1$ times yields $M:(P_n)_i \rightarrow (P_n)_{n-i-1},$ such that $M(x\otimes y)	 = k!\sum_{|b| = n-i,|a| = n-i-1,a \lessdot b,y \subset a}^{}a \otimes b$
+\label{gbn_decomposition}
+The poset $\mathcal G(B_n)$ is isomorphic to a disjoint union of $n$ copies of $B_{n-1}.$ In particular, it is unitary peck.
 \end{thm}
 \begin{proof}
 
 COME BACK TO THIS THEOREM (MAYBE SOMEONE ELSE CAN WRITE IT UP.)
 \end{proof}
+
+\begin{thm}
+\label{explicit_gbn_lefchetz}
+Defining $L$ to be the lefchetz map $\mathcal G(B_n) \rightarrow \mathcal G(B_n),$ we have $L^{n-2i-1}:\mathcal G(B_n)_i \rightarrow \mathcal G(B_n)_{n-i-1},$ and explicitly 
+\begin{align*}
+	L^{n-2i-1}(x\otimes y)= k!\sum_{|b| = n-i,|a| = n-i-1,a \lessdot b,y \subset a}^{}a \otimes b.
+\end{align*}
+\end{thm}
+\begin{proof}
+COME BACK TO THIS THEOREM (MAYBE SOMEONE ELSE CAN WRITE IT UP.)
+\end{proof}
+
 
 
 \ssec{Proof that $B_n$ is peck}
@@ -397,7 +421,7 @@ The aim of this proof will be to show that the matrix produced above is invertib
 
 \section{The proof from the row point of view}
 
-In this section, we will show the rows of $L$ form a basis by showing we can make a change of basis to a map which is a Lefchetz map on a disjoint union of $n$ copies of $B_{n-1}.$ Since $B_{n-1}$ is unitary peck, it will follow that $L$ is an isomorphism.
+In this section, we will show the rows of $M$ form a basis by showing we can make a change of basis to a map which is a Lefchetz map on a disjoint union of $n$ copies of $B_{n-1}.$ Since $B_{n-1}$ is unitary peck, it will follow that $M$ is an isomorphism.
 
 \begin{note}
 
@@ -405,7 +429,7 @@ Let $\beta = \frac{2^k-1}{k}.$ Denote
 \begin{align*}
 	v_{a \otimes b} =\beta \sum_{y \subset a}^{}x \otimes y + \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.
 \end{align*}
-Note that $v_{a \otimes b}$ are simply the rows of $L,$ each divided by the constant $k!.$
+Note that $v_{a \otimes b}$ are simply the rows of $M^{n-2i-1},$ each divided by the constant $k!.$
 \end{note}
 
 \begin{note}
@@ -554,6 +578,7 @@ Define $m_a = \sum_{x \subset a}^{}l_{x,x}.$
 \end{note}
 
 \begin{lem}
+\label{m_equivalence}
 With $m_a$ as defined above, we have $m_a = \sum_{x\subset a}^{}x\otimes y.$
 \end{lem}
 \begin{proof}
@@ -562,45 +587,65 @@ $$m_a = \sum_{x \subset a}^{}l_{x,x} = \sum_{x \subset a}^{}\sum_{y \supset x}^{
 \end{proof}
 
 \begin{note}
-Denote $r_a = \sum_{b,b\subset a}^{} a \otimes b.$
+Denote $r_a = \sum_{b,b\subset a}^{} v_{a \otimes b}.$
 \end{note}
 
 \begin{lem}
-With $r_a$ as defined above, we have $r_a = C_1\sum_{y\subset a}^{}x\otimes y + C_2 \sum_{x\subset a}^{}x\otimes y.$
+\label{r_equivalence}
+With $r_a$ as defined above, we have $r_a = ((i+1)\beta-1)\sum_{y\subset a}^{}x\otimes y +\sum_{x\subset a}^{}x\otimes y.$
 \end{lem}
 \begin{proof}
-
+\begin{align*}
+	r_a &= \sum_{b\supset a}^{}v_{a\otimes b}\\
+	&=\sum_{b\supset a}^{} \left(\beta \sum_{y \subset a}^{}x \otimes y + \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.\right)\\
+	&= \sum_{b\supset a}^{} \beta \sum_{y \subset a}^{}x \otimes y + \sum_{b\supset a}^{} \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.\\
+	&= (i+1)\beta \sum_{y \subset a}^{}x \otimes y + \sum_{b\supset a}^{} \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.\\
+	&= (i+1)\beta \sum_{y \subset a}^{}x \otimes y + \sum_{x \subset a,y\not\subset a}^{}x\otimes y.\\
+	&= ((i+1)\beta-1) \sum_{y \subset a}^{}x \otimes y + \left( \sum_{x \subset a,y\not\subset a}^{}x\otimes y+\sum_{y \subset a}^{}x \otimes y\right).\\
+	&= ((i+1)\beta-1) \sum_{y \subset a}^{}x \otimes y + \sum_{x \subset a}^{}x\otimes y.\\
+\end{align*}
 \end{proof}
 \begin{note}
-
-Define $t_a = \frac{r_a - C_2 m_a}{C_1} = \sum_{y\subset a}^{}x\otimes y $
+Assuming we do not have $(i+1)\beta = 1,$ define $t_a = \frac{r_a - m_a}{(i+1)\beta - 1}$
 \end{note}
 
+\begin{lem}
+\label{t_equivalence}
+With $t_a$ as defined above, $t_a= \sum_{y\subset a}^{}x\otimes y $
+\end{lem}
+\begin{proof}
+By ~\ref{r_equivalence} and ~\ref{m_equivalence}, we have
+\begin{align*}
+	t_a &= \frac{r_a - m_a}{(i+1)\beta - 1}\\
+	&= \frac{((i+1)\beta-1)\sum_{y\subset a}^{}x\otimes y +\sum_{x\subset a}^{}x\otimes y-\sum_{x\subset a}^{}x\otimes y }{(i+1)\beta - 1}\\
+	&= \frac{((i+1)\beta-1)\sum_{y\subset a}^{}x\otimes y}{(i+1)\beta - 1}\\
+	&= \sum_{y\subset a}^{}x\otimes y
+\end{align*}
+\end{proof}
+
+
+
 \begin{note}
-Let $q_{a,b} = v_{a\otimes b} - t_a.$
+Assuming $\beta(i+1) \neq 1,$ let $q_{a,b} = v_{a\otimes b} - \beta t_a.$
 \end{note}
 
 \begin{lem}
 We have $q_{a,b} = \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.$
 \end{lem}
 \begin{proof}
-
+Using ~\ref{t_equivalence}
+\begin{align*}
+	q_{a,b} &= v_{a\otimes b} - \beta t_a \\
+	&= \beta \sum_{y \subset a}^{}x \otimes y + \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y - \beta\sum_{y\subset a}^{}x\otimes y\\
+	&= \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y
+\end{align*}
 \end{proof}
 
 \begin{thm}
-The matrix $L$ is invertible.
+For $n >2,$ the matrix $M^{n-2i-1}$ is invertible.
 \end{thm}
 \begin{proof}
-We saw that $q_{a,b} = \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y$ lie in the span of $v_{a\otimes b}.$ However, $q_{a,b}$ are exactly the rows of a lefchetz map on a disjoint union of $n$ copies of $B_{n-1}.$ Since the lefchetz map on $B_{n-1}$ is invertible, this means the $q_{a,b}$ form a basis for $\mathcal F(B_n)_{i}$ and therefore the $v_{a\otimes b}$ do as well. Therefore, $L$ is invertible. 
-\end{proof}
-
-
-
-\begin{lem}
-With $t_a$ as defined above, $t_a = \frac{r_a - C_1 m_a}{C_2}.$
-\end{lem}
-\begin{proof}
-
+We saw that if $\beta(i+1) \neq 1,$ we have that $q_{a,b} = \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y$ lie in the span of $v_{a\otimes b}.$ It is the case that $\beta \geq 1,i \geq 0.$ The only time in which $\beta = 1,i=0$ is when $n = 2.$ Therefore, $q_{a,b}$ are always defined for $n > 2.$ However, $q_{a,b}$ are exactly the rows of $L^{n-2i-1}$ as defined in Theorem ~\ref{explicit_gbn_lefchetz}. Using Theorem ~\ref{gbn_decomposition}, we know $\mathcal G(B_n)$ is unitary peck, and therefore the rows of $L^{n-2i-1}$ are independent. Therefore, the rows of $M^{n-2i-1}$ span an independent set in a vector space of the same dimension. So, the rows of $M^{n-2i-1}$ are indepenent. Hence, $M^{n-2i-1}$ is indeed an isomorphism, when $n > 2.$
 \end{proof}
 
 

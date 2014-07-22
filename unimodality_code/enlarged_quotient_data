@@ -1,0 +1,205 @@
+edge counts
+2
+2
+map ranks
+1
+composition_ranks
+shifted_compositions []
+edge counts
+3
+6
+3
+map ranks
+3
+3
+composition_ranks
+shifted_compositions [3]
+edge counts
+4
+12
+12
+4
+map ranks
+4
+12
+4
+composition_ranks
+shifted_compositions [4]
+edge counts
+5
+20
+30
+20
+5
+map ranks
+5
+20
+20
+5
+composition_ranks
+shifted_compositions [20, 5]
+edge counts
+6
+30
+60
+60
+30
+6
+map ranks
+6
+30
+60
+30
+6
+composition_ranks
+shifted_compositions [30, 6]
+edge counts
+7
+42
+105
+140
+105
+42
+7
+map ranks
+7
+42
+105
+105
+42
+7
+composition_ranks
+shifted_compositions [105, 42, 7]
+edge counts
+8
+56
+168
+280
+280
+168
+56
+8
+map ranks
+8
+56
+168
+280
+168
+56
+8
+composition_ranks
+shifted_compositions [168, 56, 8]
+edge counts
+9
+72
+252
+504
+630
+504
+252
+72
+9
+map ranks
+9
+72
+252
+504
+504
+252
+72
+9
+composition_ranks
+shifted_compositions [504, 252, 72, 9]
+
+cyclic_group
+edge counts
+2
+2
+map ranks
+1
+composition_ranks
+shifted_compositions []
+edge counts
+3
+9
+3
+map ranks
+3
+3
+composition_ranks
+shifted_compositions [3]
+edge counts
+4
+24
+24
+4
+map ranks
+4
+16
+4
+composition_ranks
+shifted_compositions [4]
+edge counts
+5
+50
+100
+50
+5
+map ranks
+5
+50
+50
+5
+composition_ranks
+shifted_compositions [50, 5]
+edge counts
+6
+90
+264
+264
+90
+6
+map ranks
+6
+90
+196
+90
+6
+composition_ranks
+shifted_compositions [90, 6]
+edge counts
+7
+147
+588
+833
+588
+147
+7
+map ranks
+7
+147
+582
+582
+147
+7
+composition_ranks
+shifted_compositions [582, 147, 7]
+edge counts
+8
+224
+1056
+2000
+2000
+1056
+224
+8
+map ranks
+8
+224
+1056
+1941
+1056
+224
+8
+composition_ranks
+shifted_compositions [1056, 224, 8]

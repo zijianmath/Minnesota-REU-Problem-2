@@ -30,6 +30,7 @@ class Grp:
 #grp = Grp([(1,0,2,3,4,5,6),(0,2,1,3,4,5,6),(0,1,3,2,4,5,6),(0,1,2,4,3,5,6),(0,1,2,3,5,4,6),(0,1,2,3,4,6,5)])
 #print len(grp.group_set)
 
+#computes all pairs in the boolean algebra
 def pairs(n,i,r):
     lst = range(n)
     if r == 0:
@@ -122,7 +123,7 @@ def set_vert_by_rank(g_lst,i):
                 level_i_set.remove(i)
     return reduced_verts
 
-#print vert_by_rank([[1,2,3,4,5,6,0]],2)
+#print set_vert_by_rank([[1,2,3,4,5,6,0]],2)
 
 #returns a list of edges, given by representatives
 def edge_by_vert_counted(g_lst,vert_bot,vert_top):

@@ -1,14 +1,13 @@
 import boolean_quotients as bq
 import numpy as np
 import random
+from itertools import *
 
 class Poset:
     def __init(self):
         self.rank = 0
         self.vertices = []
         self.edges = []
-        self.edge_counts = []
-        self.edge_mats = []
 
 def make_edge_mats(rank,vertices,edges,edge_counts):
     edge_mats = []
@@ -26,6 +25,55 @@ def vert_dict(vertices):
         for j in range(len(vertices[i])):
             vert_dict[vertices[i][j]] = j
     return vert_dict
+
+class Boolean_enlarge(Poset):
+    def __init__(self,group):
+        self.group = group
+        self.rank = group.action_size
+        self.vertices = []
+        self.edges = []
+        self.edge_counts = {}
+        
+        for i in xrange(self.rank+1):
+            self.vertices.append(combinations(range(self.rank),i))
+
+        ranked_orbits= []
+        for i in xrange(self.rank+1):
+            ranked_orbits.append(bq.set_vert_by_rank(group.generators,i))
+        
+        for i in xrange(self.rank):
+            edge_i = []
+            for a in ranked_orbits[i]:
+                for b in ranked_orbits[i+1]:
+                    if any(set(p).issubset(set(q)) for p in a for q in b):
+                        for m in a:
+                            for n in b:
+                                edge_i.append((n,m))
+            self.edges.append(edge_i)
+
+    def edgify(self):
+        edge_poset = Boolean_enlarge(self.group)
+        edge_poset.rank = self.rank - 1
+        edge_poset.vertices = self.edges
+        edge_poset.edges = []
+        edge_poset.edge_counts = {}
+        edge_poset.edge_mats = []
+        vert_d = vert_dict(edge_poset.vertices)
+
+        for i in xrange(edge_poset.rank):
+            edge_i = []
+            for (y,x) in edge_poset.vertices[i]:
+                for (b,a) in edge_poset.vertices[i+1]:
+                    if set(y).issubset(set(b)) and set(x).issubset(set(a)):
+                        edge_i.append(((b,a),(y,x)))
+                        edge_poset.edge_counts[((b,a),(y,x))] = (1,vert_d[(b,a)],vert_d[(y,x)])
+            edge_poset.edges.append(edge_i)
+    
+        edge_poset.edge_mats = make_edge_mats(edge_poset.rank,edge_poset.vertices,edge_poset.edges,edge_poset.edge_counts)
+
+        return edge_poset
+
+        
 
 class Poset_quot(Poset):
     def __init__(self,group):
@@ -81,22 +129,36 @@ class Poset_quot(Poset):
         return edge_poset
 
 def matrix_compositions(mat_lst):
-    n = len(mat_lst)
-    bot = (n-1)/2
+    n = len(mat_lst)+1
+    bot = (n-2)/2
+    top = (n-1)/2
+#    print 'bot '+ str(bot)
+#    print 'top ' +str(top)
     compositions_lst = []
     shifted_compositions = []
     if n % 2 == 0:
-        running_mat = np.dot(mat_lst[n-bot-1],mat_lst[bot])
-    else:
         running_mat = mat_lst[bot]
+    else:
+#        print 'mat_lst_top_shape ' + str(mat_lst[top].shape)
+#        print 'mat_lst_bot_shape ' + str(mat_lst[bot].shape)
+        shifted_compositions.append(mat_lst[bot])
+        running_mat = np.dot(mat_lst[top],mat_lst[bot])
+#    print 'shape ' + str(running_mat.shape)
     compositions_lst.append(running_mat)
     bot -= 1
+    top += 1
     while bot >= 0:
+#        print bot
+#        print 'running_mat_shape ' + str(running_mat.shape)
+#        print 'mat_lst_bot_shape ' + str(mat_lst[bot].shape)
         running_mat = np.dot(running_mat,mat_lst[bot])
         shifted_compositions.append(running_mat)
-        running_mat = np.dot(mat_lst[n-bot-1],running_mat)
+#        print 'running_mat_shape ' + str(running_mat.shape)
+#        print 'mat_lst_top_shape ' + str(mat_lst[top].shape)
+        running_mat = np.dot(mat_lst[top],running_mat)
         compositions_lst.append(running_mat)
         bot -= 1
+        top += 1
     return (compositions_lst,shifted_compositions)
 
 def print_stats(poset):
@@ -111,25 +173,54 @@ def print_stats(poset):
         print np.linalg.matrix_rank(poset.edge_mats[i])
     print 'composition_ranks'
     mc,mc_shifted = matrix_compositions(poset.edge_mats)
-    print map(np.linalg.matrix_rank,mc)
-    for i in mc:
-        for j in i:
-            for t in j:
-                print int(t),
-            print ''
+    print 'shifted_compositions '+ str(map(np.linalg.matrix_rank,mc_shifted))
+#    print 'normal_compositions ' +str(map(np.linalg.matrix_rank,mc))
+#    for i in mc:
+#        for j in i:
+#            for t in j:
+#                print int(t),
+#            print ''
 #    print 'shifted ' + str(map(np.linalg.matrix_rank,mc_shifted))
 
+def check_unimodality(lst):
+    for i in range(len(lst)):
+        if len(lst[i]) != len(lst[len(lst)-i-1]):
+            print lst[i],lst[len(lst)-i-1]
+            return False
+    for i in range(len(lst)/2):
+        if len(lst[i]) > len(lst[i+1]):
+            print len(lst[i]),len(lst[i+1])
+            return False
+    return True
+
+def gen_rand_period(n,period):
+    lst = range(n)
+    perm = [0]*n
+    while len(lst) >= period:
+        cycle = random.sample(lst,period)
+#        print cycle
+#        print sorted_cycle
+        for i in xrange(period):
+            perm[cycle[i]] = cycle[(i+1) % period]
+#        print perm
+        for x in cycle:
+            lst.remove(x)
+#        print perm
+    for i in lst:
+        perm[i] = i
+    return perm
+    
+
+#print gen_rand_period(7,3)
 
 #num_gens > 0
-def rand_grp(n,num_gens):
+#gen_size_list is a list with the periods of the generators
+def rand_grp(n,gen_size_lst):
     lst = range(n)
     gens = []
-    temp_lst = [6,7,0,1,2,3,4,5]
-    temp_lst.reverse()
-    gens.append(tuple(temp_lst))
-    for i in range(num_gens):
-        random.shuffle(lst)
-        gens.append(tuple(lst))
+    for i in gen_size_lst:
+        single_gen = gen_rand_period(n,i)
+        gens.append(tuple(single_gen))
     return bq.Grp(gens)
 
 
@@ -152,22 +243,33 @@ def boolean_matrix(n,i):
 #        print '},'
 #    print '}'
 
-boolean_matrix(5,1)
+#boolean_matrix(5,1)
+
+print 'cyclic_group'
+for i in range(2,10):
+    grp = bq.Grp(bq.cyclic_g_lst(i))
+    print_stats(Boolean_enlarge.edgify(Boolean_enlarge(grp)))
+
 
 '''
-for i in range(4,5):
-    grp = bq.Grp([tuple(range(i))])
-    print_stats(Poset_quot.edgify(Poset_quot(grp)))
+for j in range(19,10):
+    for k in range(2,4):
+        for l in range(k,4):
+            for i in range(5):
+                grp = rand_grp(j,[k,l])
+                poset = Poset_quot.edgify(Poset_quot(grp))
+                if not(check_unimodality(poset.vertices)):
+                    print "Group is " + str(grp.generators)
+                print str(i) + 'i done'
+            print str(l) + 'l done'
+        print str(k) + 'k done'
+    print str(j) + 'i done'
 '''
 
-'''for i in range(20):
-    grp = rand_grp(8,1)
-    print "Group is " + str(grp.generators)
-    print_stats(Poset_quot.edgify(Poset_quot(grp)))
+
 '''
-
-#grp = bq.Grp([(4,0,1,2,3)])
-#print_stats(Poset_quot.edgify(Poset_quot(grp)))
-
+grp = bq.Grp([(5, 4, 0, 1, 3, 2, 7, 8, 6), (6, 4, 0, 7, 5, 1, 2, 8, 3)])
+print_stats(Poset_quot.edgify(Poset_quot(grp)))
+'''
 #grp = bq.Grp([(8, 7, 6, 5, 4, 3, 2, 1, 0), (8, 1, 6, 5, 4, 7, 2, 3, 0)])
 #print_stats(Poset_quot.edgify(Poset_quot(grp)))

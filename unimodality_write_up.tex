@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%
+ 	%%%%%%%%%%%%%%%%%%%%%
 %   AMS packages    %
 %%%%%%%%%%%%%%%%%%%%%
 \documentclass{amsart}
@@ -113,10 +113,6 @@ Define the {\it poset category} $\mathcal P,$ where the objects $P \in \mathcal 
 \begin{defn}
 Define the {\it Functor of Faces} $\mathcal F:\mathcal P \rightarrow \mathcal P,$ that associates to any poset $P \in \mathcal P$ a poset $\mathcal F(P),$ where the vertices of $\mathcal F(P)$ are pairs $(x,y)\in P \times P,x \lessdot y,$ and the ordering in $\mathcal F(P)$ is given by $(x,y)\lessdot (a,b)$ if $x \lessdot a,y\lessdot b.$ For $f \in Mor(P,Q),$ the corresponding morphism $\mathcal F(f):\mathcal F(P) \rightarrow \mathcal F(Q),$ given by $\mathcal F(f)(x,y) = (f(x),f(y)).$
 \end{defn}
-
-\begin{conj}
-The Functor of faces $\mathcal F$ is fully faithful.
-\end{conj}
 
 \begin{defn}
 Define the {\it weak poset category} $\mathcal W,$ where the objects $P \in \mathcal W$ are ranked poset, and the morphisms $f\in Mor(P,Q)$ are rank preserving, order preserving maps, and if $a \lessdot b,a\lessdot c,$ then $f(b)\neq f(c).$
@@ -562,7 +558,7 @@ We have
 For all $J \subset [n],$ with $|J| \leq i,$ we have $l_{J,J}$ lies in the span of $v_{a \otimes b}.$ 
 \end{lem}
 \begin{proof}
-By ~\ref{l_base_case} we have that for any $s,|s| = n-1,$ we have $l_{s^c,s^c}$ lies in the span of $v_{a\otimes b}.$ Inductively assume that we have shown $l_{s^c,s^c}$ lies in the span of $v_{a\otimes b}$ for $|s| > j.$ Then, for $|s| = j$ we can use ~\ref{l_induction_step} to write $l_{s^c,s^c}$ in terms of $h_s$ and $l_{r^c,r^c}$ where $|r|>j.$ Since we know both  $h_s$ and $l_{r^c,r^c}$ lie in the span of $v_{a\otimes b},$ so does $l_{s^c,s^c}$ for all $s,|s| > n-i.$
+By ~\ref{l_base_case} we have that for any $s,|s| = n-1,$ we have $l_{s^c,s^c}$ lies in the span of $v_{a\otimes b}.$ Inductively assume that we have shown $l_{s^c,s^c}$ lies in the span of $v_{a\otimes b}$ for $|s| > j.$ Then, for $|s| = j$ we can use ~\ref{l_induction_step} and the principle of inclusion exclusion to write $l_{s^c,s^c}$ in terms of $h_s$ and $l_{r^c,r^c}$ where $|r|>j.$ Since we know both  $h_s$ and $l_{r^c,r^c}$ lie in the span of $v_{a\otimes b},$ so does $l_{s^c,s^c}$ for all $s,|s| > n-i.$
 \end{proof}
 
 \begin{lem}

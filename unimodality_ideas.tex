@@ -316,6 +316,9 @@ All abelian groups have symmetric, unimodal sequences.
 By the theorem, it suffices to show this is true for transitive abelian groups. It's not too hard to see than transitive faithful abelian group actions are actually simply transitive. Then, we can actually describe all abelian group actions $A$ on $[n]$ as $A \times A \rightarrow A,$ if we identify $[n]$ with $A$ as a set (think of $[n]$ as a torus). But then, using this identificaiton, we may use the same arguement of computing the $q_i$ and bounding the difference of the $p_i$ from the $q_i$ to explicitly show the sequence is unimodal.
 \end{proof}
 
+THERE IS A BIG PROBLEM HERE NEAR THE MIDDLE, THERE IS NOT AN ORDER MATCHING.
+However, you may be able to fix this using the following. The edges from $W_{i,j} $ to $W_{i+1,j}$ are the number of edges from $P_i,P_{i+1}$ times the number of points in $Q_j.$ Then, use rearrangement inequality.
+
 \begin{prop}
 Let the orbits be $O_1,O_2$ and let the corresponding unimodal, symmetric edge counting posets be $P,Q.$ In order to show $B_n/G$ is symmetric unimodal, it suffices to show there are more edges eminating from $P_{i+1} \times Q_j$ than from $P_i \times Q_j,$ with $i < rk(P)/2.$
 \end{prop}
@@ -562,6 +565,15 @@ $\mathcal F(B_n/G)$ is actually Peck when $n$ is even.
 
 Something weird is going on for odd n at the middle rank, I don't understand it.
 
+This is false!
+
+\begin{rem}
+It would be really nice if we could make it so that in $U(x) \otimes U(y),$ the constant in front of any $u \otimes v$ is independent of the choice $Gu,Gv$ for $u \otimes v$ and edges.
+\end{rem}
+
+There are two sorts of cases. Either $u  \in Gy,$ in which case we get a constant of $|\{w | Gw = Gv,u \subset w\}|,$ that is, it's basically the number of elements in $Gu \otimes Gv.$ Alternatively, it could be a constant of 1 if $u \notin Gy.$
+
+
 \section{$F(B_n)$ is peck}
 Let $\beta = \frac{2^k-1}{k}.$
 We know the matrix has rows $v_{a \otimes b} =\beta \sum_{y \subset a}^{}x \otimes y + \sum_{y\subset b,x \subset a,y\not\subset a}^{}x\otimes y.$
@@ -691,5 +703,10 @@ I wonder if we can show for $n$ even that they are edge-labelable. Perhaps we ca
 
 \section{$B_n(q)$ and its Necklace poset}
 
-Can show $\mathcal F(B_n(q))$ is peck by using Hall's marriage theorem, to pair 1 dim spaces and n-1 dim spaces. Then, simply take the relation to be such that the additional basis vector being added lies in that n-1 dim space corresponding to the 1-dim space, and you get that the edge poset is a disjoint union of $[n]_q$ $B_{n-1}(q)$ posets. 
+Can show $\mathcal F(B_n(q))$ is peck by using Hall's marriage theorem, to pair 1 dim spaces and n-1 dim spaces. Then, simply take the relation to be such that the additional basis vector being added lies in that n-1 dim space corresponding to the 1-dim space, and you get that the edge poset is a disjoint union of $[n]_q$ $B_{n-1}(q)$ posets.
+
+\section{$q_i$ importance in relation to another paper}
+
+See http://arxiv.org/pdf/math/0310055.pdf. This defines quotients differently than normal, using colimits. It associates a barycentricsubdivision poset, whose elements are k-chains (or nerves) and are ordered by inclusion. Our result on $q_i$ being unimodal, and in general $q_i^r$ being unimodal, shows that we can partition this set into $k$ chains whose bottommost element is at a fixed rank, and these form a unimodal sequence, for a fixed r.
+ 
 \end{document}

@@ -1,0 +1,181 @@
+%%%%%%%%%%%%%%%%%%%%%
+%   AMS packages    %
+%%%%%%%%%%%%%%%%%%%%%
+\documentclass{amsart}
+\usepackage{amsmath}
+\usepackage{amsxtra}
+\usepackage{amscd}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage[all]{xy}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{amssymb}
+
+\newtheorem{cor}[subsubsection]{Corollary}
+\newtheorem{lem}[subsubsection]{Lemma}
+\newtheorem{prop}[subsubsection]{Proposition}
+\newtheorem{propconstr}{Proposition-Construction}
+\newtheorem{ax}{Axiom}
+\newtheorem{conj}{Conjecture}
+\newtheorem{thm}[subsubsection]{Theorem}
+\newtheorem{defn}[subsubsection]{Definition}
+\newtheorem{rem}[subsubsection]{Remark}
+\newtheorem{eg}[subsubsection]{Example}
+\newtheorem{ex}[subsubsection]{Exercise}
+\newtheorem{note}[subsubsection]{Notation}
+\newtheorem{alg}[subsubsection]{Algorithm}
+\newtheorem{fact}[subsubsection]{Fact}
+
+\newcommand\nc{\newcommand}
+\nc\on{\operatorname}
+\nc\renc{\renewcommand}
+\newcommand\ssec{\subsection}
+\newcommand\sssec{\subsubsection}
+\newcommand\bO{{\mathbf O}}
+\newcommand\CC{{\mathcal C}}
+\newcommand\BN{{\mathbb N}}
+\newcommand\BC{{\mathbb C}}
+\newcommand\BF{{\mathbb F}}
+\newcommand\BR{{\mathbb R}}
+\newcommand\BQ{{\mathbb Q}}
+\newcommand\BBZ{{\mathbb Z}}
+\newcommand\uR{\underline{R}}
+\newcommand\uZ{\underline{\BBZ}}
+\newcommand\CF{{\mathcal F}}
+\newcommand\uCF{\underline{{\mathcal F}}}
+\newcommand\BZ{{\mathbb Z}}
+\newcommand\BA{{\mathbb A}}
+\newcommand\BP{{\mathbb P}}
+\newcommand\fa{{\mathfrak a}}
+\newcommand\fp{{\mathfrak p}}
+\newcommand\fq{{\mathfrak q}}
+\newcommand\fm{{\mathfrak m}}
+\newcommand\pt{\mathrm{pt}}
+\nc{\bd}{\mathbf{d}}
+\nc{\Hom}{\on{Hom}}
+\nc{\End}{\on{End}}
+\nc{\Spec}{\on{Spec}}
+\nc{\Reg}{\on{Reg}}
+\nc{\Specm}{\on{Specm}}
+\nc\ol{\overline}
+\nc\wt{\widetilde}
+\nc{\one}{{\mathbf{1}}}
+\renc{\mod}{\on{-mod}}
+\newcommand{\id}{\mathrm{id}}
+\nc{\ul}{\underline}
+\nc{\uHom}{\ul\Hom}
+\nc{\tHom}{\ul\uHom}
+\nc{\wh}{\widehat}
+\nc{\Vect}{\on{Vect}}
+\nc{\Res}{\on{Res}}
+\nc{\Ind}{\on{Ind}}
+
+\title{Unimodality Ideas}
+\author{Aaron Landesman}
+\usepackage{amsmath}
+\begin{document}
+
+\maketitle
+\section{Directions to move}
+\begin{enumerate}
+	\item Look at generalising $p_i^r$ for general r.
+	\item Generalizing to $q$ analog of cyclic group.
+	\item Try relating $p_i,q_i.$
+	\item Coding which groups $G$ we have $p_i=q_i.$
+	\item When are $p_i = q_i.$
+	\item Try to compute $q_i.$
+	\item Look at simple groups, and maybe solvable groups, try quotienting by normal subgroups?
+	\item Are there any ways to combine $G_1,G_2$ where $G_i$ are groups with $p_i = q_i.$
+	\item Are there some characterisations of groups with $q_i,p_i.$
+	\item How to use sage, what can we do with groups?
+	\item Which edge poset definition do we want? Do we include edges containing $y$ or exclude them?
+	\item Look at $B_n(q).$ 
+	\item Look at generalizing $F_r(B_n)$ to arbitrary posets
+	\item Try relating Wilson's Normal Form to our posets?
+\end{enumerate}
+
+\section{Edge Functor}
+\begin{rem}
+We assume all posets are ranked posets, and $G$ actions are rank preserving, order preserving actions.
+\end{rem}
+
+\begin{defn}
+Define the poset category $\mathcal P_r,$ where $P \in \mathcal P_r$ is a ranked poset, and the morphisms $Mor(P,Q)$ are rank preserving, order preserving maps, which send all $B_{r+1}$ to other $B_{r+1}$.
+\end{defn}
+
+\begin{defn}
+Define the Faces functors (there is one for each r) $\mathcal F_r:\mathcal P_r \rightarrow \mathcal P_r,$ which takes a poset to the poset of its $i$ faces. That is, for each $B_k$ subalgebra of $P_r,$ we associate a point. We say a point $p \lessdot q$ if $p$ and $q$ are nonintersecting boolean subalgebras, and the bottommost point of the cube representing $p$ is right below the bottommost point of the cube representing $q$. It takes a map of posets to the induced map on cubes, by definition of the morphisms in $\mathcal P_r.$ For ease of notation, we shall use $\mathcal F$ for $\mathcal F_1.$
+\end{defn}
+
+\section{The Picture for $B_n$}
+
+\begin{thm}
+\label{boolean_edge_peck}
+For $B_n$ the boolean algebra, $\mathcal F(B_n)$ is unitary peck.
+\end{thm}
+\begin{proof}
+$\mathcal F(B_n)$ is actually just a disjoint union of $n$ copies of $B_{n-1},$ where each copy is indexed as corresponding to the set of pairs $B_{n-1} \cong (\mathcal F(B_n))_{(i)} =\{(y,x)|y\gtrdot x,y/x = i\},$ where $i \in [n].$
+\end{proof}
+\begin{note}
+Let $\Delta(G) \subset G\times G$ denote the diagonal subgroup.
+Define $X_G(P) = Ind_{\Delta(G)}^{G\times G}(\mathcal F(V(P)))/(G\times G)$
+\end{note}
+
+\begin{note}
+Let $V(P)$ denote the graded vector space with basis $p \in P.$ The grading is given by the rank of $p.$
+\end{note}
+
+\begin{thm}
+\label{xg_isomorphism} We then have an isomorphism of graded vector spaces $\mathcal F(V(P)/G)\cong X_G(P).$
+\end{thm}
+\begin{proof}
+The basis for $F(V(P)/G)$ is exactly given by the edges of $V(P)/G.$ By definition, we have an edge $(Gx,Gy)$ in $V(P)/G$ if and only if and $\exists g,h \in G$ with $gx \lessdot hy.$ Next, $Ind_{\Delta(G)}^{G\times G}(\mathcal F(V(P)))$ is precisely the set of all edges of the form $gx,hy$ for $g,h \in G.$ And hence, we have a natural $G \times G$ action on it. Then, by definition, if we quotient by the $G\times G$ action, we obtain the exact same set of edges as in $\mathcal F(V(P)/G).$ Since ranks are always preserved under these maps, we obtain the claimed isomorphism of graded vector spaces.
+\end{proof}
+
+\begin{lem}
+\label{unitary_peck_induction}
+The poset corresponding the the graded vector space $Ind_{\Delta(G\times G)}^{G\times G}(F\mathcal (V(P)))$ is unitary peck. 
+\end{lem}
+\begin{proof}
+First, by ~\ref{boolean_edge_peck}, we know $\mathcal F(V(P))$ is unitary peck. Then, induction simply makes $|G|$ disjoint copies of $F(V(P)).$ Therefore, we can take the corresponding blcok diagonal raising operators for each disjoint copy, and they obviously provide isomorphisms from level $i$ to $n-i.$
+\end{proof}
+
+\begin{thm}
+\label{quotient_is_peck}
+(Stanley) The quotient of a unitary peck poset by an order preserving, rank preserving group action G, is peck.
+\end{thm}
+
+\begin{cor}
+\label{xg_peck}
+The $X_G(P)$ are vector spaces with an underlying peck poset structure.
+\end{cor}
+\begin{proof}
+By ~\ref{unitary_peck_induction}, we have $Ind_{\Delta(G)}^{G\times G}(\mathcal F(V(P)))$ is unitary peck. But then, since $X_G(P) = Ind_{\Delta(G)}^{G\times G}(\mathcal F(V(P)))/(G\times G),$ by ~\ref{quotient_is_peck} we obtain the poset corresponding to $X_G(P)$ is peck. 
+\end{proof}
+
+\begin{cor}
+\label{edges_peck}
+The poset of edges $\mathcal F(V(P)/G)$ is unitary peck.
+\end{cor}
+\begin{proof}
+By ~\ref{xg_peck} we know $X_G(P)$ is peck, but by ~\ref{xg_isomorphism} we have $\mathcal F(V(P)/G)\cong X_G(P),$ and so $\mathcal F(V(P)/G)$ is peck as well.
+\end{proof}
+
+\begin{note}
+For any poset $P,$ define $p_i$ to be the number of edges from the ith level set $P_i$ to the $i+1$th level set $P_{i+1},$
+\end{note}
+
+\begin{cor}
+The sequence $p_i$ is unimodal and symmetric.
+\end{cor}
+\begin{proof}
+By definition, the rank of the ith level set of $\mathcal F(V(P)/G)$ is exactly the number of edges from levels i to i+1 of $P.$ That is $\dim(\mathcal F(V(P)/G)_i) = p_i.$ Since by ~\ref{edges_peck}, $\mathcal F(V(P)/G)$ is peck, it is in particular symmetric and unimodal, and so the $p_i$ are symmetric and unimodal.
+\end{proof}
+
+
+
+
+\end{document}

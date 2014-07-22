@@ -1,0 +1,17 @@
+import boolean_quotients as bq
+
+class Poset_quot:
+    def __init__(self,group):
+        self.group = group
+        self.rank = group.action_size
+        self.vertices = []
+        for i in xrange(self.rank+1):
+            self.vertices.append(bq.vert_by_rank(group.generators,i))
+        self.edges = []
+        for i in xrange(self.rank):
+            self.edges.append(bq.edge_by_vert(group.generators,self.vertices(i),self.vertices(i+1)))
+
+grp = bq.Grp([(1,0,2,3,4,5,6),(0,2,1,3,4,5,6),(0,1,3,2,4,5,6),(0,1,2,4,3,5,6),(0,1,2,3,5,4,6),(0,1,2,3,4,6,5)])
+poset = Poset_quot(grp)
+print poset_quot.vertices
+print poset_quot.edges

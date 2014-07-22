@@ -244,12 +244,12 @@ def boolean_matrix(n,i):
 #    print '}'
 
 #boolean_matrix(5,1)
-
+'''
 print 'cyclic_group'
 for i in range(2,10):
     grp = bq.Grp(bq.cyclic_g_lst(i))
     print_stats(Boolean_enlarge.edgify(Boolean_enlarge(grp)))
-
+'''
 
 '''
 for j in range(19,10):

@@ -73,7 +73,13 @@ class Boolean_enlarge(Poset):
 
         return edge_poset
 
-        
+class Poset_edge_quot(Poset):
+    def __init__(self,group):
+        self.group = group
+        self.rank = group.action_size
+        self.vertices = []
+        for i in range(self.rank):
+            self.vertices.append(bq.pair_orbits(group.generators,self.rank,i+1,1))
 
 class Poset_quot(Poset):
     def __init__(self,group):
@@ -160,6 +166,17 @@ def matrix_compositions(mat_lst):
         bot -= 1
         top += 1
     return (compositions_lst,shifted_compositions)
+    
+def gen_p_lst(grp):
+    poset = Poset_quot(grp)
+#    vertex_orbits = map(lambda x: map(lambda z:bq.orbit(grp.generators,z),x),poset.vertices)
+    edge_poset = Poset_quot.edgify(Poset_quot(grp))
+#    edge_orbits = map(lambda x: map(lambda z: bq.edge_orbit(grp.generators,z),x) ,poset.vertices)
+    return map(len,edge_poset.vertices),poset.vertices,edge_poset.vertices
+    
+def gen_q_lst(grp):
+    poset = Poset_edge_quot(grp)
+    return map(len,map(list,poset.vertices))
 
 def print_stats(poset):
 #    print poset.vertices
@@ -243,28 +260,51 @@ def boolean_matrix(n,i):
 #        print '},'
 #    print '}'
 
+def full_size(grp):
+    if len(list(set(grp.generators))) != len(grp.generators):
+        return False
+    for i in xrange(grp.action_size):
+        if all(g[i]==i for g in grp.generators):
+            return False
+    return True
+
 #boolean_matrix(5,1)
-'''
-print 'cyclic_group'
-for i in range(2,10):
-    grp = bq.Grp(bq.cyclic_g_lst(i))
-    print_stats(Boolean_enlarge.edgify(Boolean_enlarge(grp)))
-'''
 
 '''
-for j in range(19,10):
-    for k in range(2,4):
-        for l in range(k,4):
+for i in range(3,10):
+    grp = bq.Grp(bq.cyclic_g_lst(i))
+    print gen_p_lst(grp)
+    print gen_q_lst(grp)    
+'''
+
+n = 9
+for j in range(0,n):
+    for k in range(2,n):
+        for l in range(k,n):
             for i in range(5):
                 grp = rand_grp(j,[k,l])
-                poset = Poset_quot.edgify(Poset_quot(grp))
-                if not(check_unimodality(poset.vertices)):
-                    print "Group is " + str(grp.generators)
-                print str(i) + 'i done'
-            print str(l) + 'l done'
-        print str(k) + 'k done'
-    print str(j) + 'i done'
-'''
+                if full_size(grp):
+                    p_lst,vertex_reps,edge_reps = gen_p_lst(grp)
+                    q_lst = gen_q_lst(grp)
+                    if any(i != 1 for i in q_lst):
+#                if any(i != 1 for i in q_lst) and p_lst == q_lst:
+                        print "Group order is " + str(len(grp.group_set))
+                        print "Group is " + str(grp.generators)
+                        print 'k: '+ str(k)
+                        print 'l: '+str(l)
+                        print "p_lst: " + str(p_lst)
+                        print "q_lst: " + str(q_lst)
+                        print 'vertex_lengths: '+ str(map(len,vertex_reps))
+                        print 'vertex_orbits: ' +str(vertex_reps)
+                        print 'edge_orbits: '+ str(edge_reps)
+                        print ''
+                        print ''
+                    
+#                print str(i) + 'i done'
+#            print str(l) + 'l done'
+#        print str(k) + 'k done'
+#    print str(j) + 'i done'
+
 
 
 '''

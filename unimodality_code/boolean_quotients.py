@@ -27,7 +27,7 @@ class Grp:
         self.action_size = len(tpl_lst[0])
         self.group_set = compute_group(self.generators)
 
-#grp = Grp([(1,0,2,3,4,5,6),(0,2,1,3,4,5,6),(0,1,3,2,4,5,6),(0,1,2,4,3,5,6),(0,1,2,3,5,4,6),(0,1,2,3,4,6,5)])
+#grp = Grp([(7, 4, 5, 0, 2, 1, 3, 6), (5, 4, 2, 0, 6, 1, 3, 7)])
 #print len(grp.group_set)
 
 #computes all pairs in the boolean algebra
@@ -79,8 +79,22 @@ def pair_orbit(g_lst,(y,x)):
             if (gt,gr) not in orbit_set:
                 temp_set.add((gt,gr))
     return orbit_set
-
+    
 #print pair_orbit([[1,2,3,0]],((2,3),(3,)))
+
+def pair_orbits(g_lst,n,i,r):
+    level_i_set = pairs(n,i,r)
+    reduced_verts = []
+    while len(level_i_set) > 0:
+        elt = level_i_set.pop()
+        reduced_verts.append(elt)
+        orb = pair_orbit(g_lst,elt)
+        for i in orb:
+            if i in level_i_set:
+                level_i_set.remove(i)
+    return reduced_verts
+ 
+#print pair_orbits([(1,2,3,0)],4,3,1)
 
 #returns the set of all edges in the G\times G orbit of y,x
 def edge_orbit(g_lst,(y,x)):

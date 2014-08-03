@@ -361,7 +361,7 @@ While $\mathcal F^r:\mathcal P \rightarrow \mathcal P$ is a functor, $\mathcal H
   \node (b) at (90:1cm) {$2$};
   \node (a) at (270:1cm) {$1$};
 \end{tikzpicture}
-
+\todo{Put all pictures in figures, and make them look nicer}
 However, it is still true that $\mathcal H^r(P)$ can be viewed as a graded poset with $rk_{\mathcal H^r(P)}(x\otimes y) = rk_P(x).$
 \end{warning}
 
@@ -1095,15 +1095,17 @@ In this section, we show that for $G = C_n$ the cyclic group of order $n$, the p
 We will bound $|\mathcal F^1(B_n/C_n)|_{i}$ by  $|\mathcal F^1 (B_n)/C_n|_{i}$ to obtain the unimodality. 
 
 
-\begin{note} Throughout the section, we fix an arbitrary $n$ to start with, and set $$q_i = |\mathcal F^1 (B_n)/C_n|_{i}, \quad p_i = |\mathcal F^1(B_n/C_n)|_{i}. $$  
+\begin{note} Throughout the section, we fix an arbitrary $n$ to start with, and set $$q_i = |\mathcal F^1 (B_n)/C_n|_{i}, \quad p_i = |\mathcal F^1(B_n/C_n)|_{i}. $$
+\todo{ $ |\mathcal F^1(B_n/C_n)|_{i}$ should probably be notated as $ |\mathcal F^1(B_n/C_n)_{i}|$, since it is the size of the ith rank of the poset. You should check to make sure you did not do this anywhere else (it is also done in the q-analog case, currently in ~\ref{q:number_subspaces}, for instance) }
+\todo{It might be clearer to say: fix $P(n) = \mathcal F^1(B_n)/C_n,Q(n) = \mathcal F^1(B_n/C_n),$ and notate $p(i,n) = |P(n)_i|,q(i,n) = |Q(n)_i|.$ When the $n$ is clear, we shall write $p_i,q_i$ for $p(i,n),q(i,n).$}  
 \end{note}
 
 
-The quotient $B_n /C_n$ is the well-studied necklace poset, where the elements in the poset is represented by $n$ filled or empty beads ordered cyclically. Label the positions of the beads in the necklace by $1, 2, ..., n$. More specifically, since each element $x \in B_n$ is represented by a sequence of empty or filled beads, an element $G(x) \in B_n/C_n$ is represented by such a combination up to rotational equivalence.  Similarly, an element $Gx \otimes Gy \in [\mathcal F^1(B_n)/C_n]_{i}$ where $x \lessdot y$ can be regarded as a necklace where $i+1$ beads out of $n$ are filled (which represents $y$), and $1$ of the filled bead is distinct from all others (so the other $i$ beads represent $x$).
+The quotient $B_n /C_n$ is the well-studied necklace poset. The elements in the poset are represented by $n$ filled or empty beads ordered cyclically. Label the positions of the beads in the necklace by $1, 2, ..., n$. More specifically, since each element $x \in B_n$ is represented by a sequence of empty or filled beads, an element $G(x) \in B_n/C_n$ is represented by such a sequence up to rotational equivalence.  Similarly, an element $Gx \otimes Gy \in [\mathcal F^1(B_n)/C_n]_{i}$ \todo{I think you should write $(P)_i$ instead of $[P]_i$ for the ith rank of $P$ above I used the notation $[f(x,y)]_x^a$ for the coefficient of $x^a$ in $f(x,y),$ and we have also been using parentheses above for this. Again, this is something that appears several times in this and the next section, and if you agree, you should make sure to change it everywhere.} where $x \lessdot y$ can be regarded as a necklace where $i+1$ beads out of $n$ are filled (which represent $y$), and $1$ of the filled bead is distinct from all others (so the other $i$ beads represent $x$).
 
 
 \begin{note}
-We fix $\sigma_0 = (1 \: 2 \: ... \: n),$ and call $\sigma_0$ the {\it $1$-click rotation,} which generates the group $C_n$.
+We fix $\sigma_0 = (1 \: 2 \: ... \: n),$ and call $\sigma_0$ the {\it $1$-click rotation,} which generates the group $C_n$.\todo{Perhaps the word ``1-click'' isn't really necessary, (although I agree it's important to fix $\sigma_0$ since you only use ``1-click'' rotation one or two times, and it might be clearer to say something about $\sigma_0^dy$ rather than something about the $d$-click rotation of y. Additionally, you don't define $d$-click rotation anywhere, but again, I don't think you should use this work ``click'' at all, even though I know you like thinking in these terms.}
 \end{note}
 
 \begin{lem}{\label{lem:cyclicprime}}
@@ -1112,17 +1114,17 @@ Let $G = C_n$ where $n$ is a prime, then $q_i - p_i = (n-1)/2$ for $ 1 \le i \le
 
 \begin{proof} \todo{Elise: very minor note, but if you are setting $G=C_n$, try to be consistent and only use $G$ throughout the proof.  It's clearer}
 Let $G = C_n$ where $n$ is a prime. We consider the action of $G$ on $B_n$. 
- Note that $n$ being a prime guarantees that the action of any nontrivial $\sigma \in G$ has no fixed points, since $\sigma$ is always an $n$-cycle in its cycle decomposition. Now suppose $x\otimes y \in A_i$  is an element such that $\sigma x \in y$ for some $\sigma \neq e$. Then, there is no $g \in C_n$ such that $gx = \sigma x$ and $g y = y$, since $gx = \sigma x \so g = \sigma $ and $g y = y \so g = 1$. Let $Gx\otimes Gy$  be an element in $[\mathcal F^1(B_n/G)]_i$, i.e., an edge class in the necklace poset, with representative $x\otimes y$. We regard $Gx \otimes Gy$ as a subset of $\mathcal F^1 (B_n)$ with elements $\{x' \otimes y'\}$  where $Gx = Gx', Gy = Gy'$ and $x' \lessdot y'$. We can also view the $G$-orbit $G(x \otimes y)$ as a subset of $\mathcal F^1 (B_n)$, namely $G(x \otimes y) = \{gx \otimes g y : g \in G \}$. Clearly $G(x \otimes y) \subset Gx \otimes Gy$ as subsets of $\mathcal F^1 (B_n)$. It is also clear that the number of distinct $\sigma \in G$ such that $\sigma x < y$ is precisely the number of $G$-orbits in $Gx\otimes Gy$,  in particular, if the only $\sigma $ such that $\sigma x < y$ is identity, then $Gx \otimes Gy$ is the $G$-orbit $G(x \otimes y)$ as subset of $\mathcal F^1 (B_n)$. 
+ Note that $n$ being a prime guarantees that the action of any nontrivial $\sigma \in G$ has no fixed points, since $\sigma$ is always an $n$-cycle in its cycle decomposition. Now suppose $x\otimes y \in A_i$ \todo{what is $A_i.$ I think you may mean $\mathcal F^1(B_n)_i?$}  is an element such that $\sigma x =y$ for some $\sigma \neq e$. Then, there is no $g \in C_n$ such that $gx = \sigma x$ and $g y = y$, since $gx = \sigma x \so g = \sigma $ and $g y = y \so g = e$. Let $Gx\otimes Gy$  be an element in $[\mathcal F^1(B_n/G)]_i$\todo{again, change brackets to parentheses, although I'll stop pointing this out}, i.e., an edge class in the necklace poset, with representative $x\otimes y$. We shall abuse notation by writing $Gx \otimes Gy$ in place of $Gx\otimes Gy \cap \mathcal F^1(B_n)$ as sets, and hence, viewing $Gx \otimes Gy = Gx\otimes Gy \cap \mathcal F^1(B_n)\subset \mathcal F^1(B_n)$. We shall view $G(x \otimes y)$ as a subset of $\mathcal F^1 (B_n)$, namely $G(x \otimes y) = \{gx \otimes g y : g \in G \}$. Clearly $G(x \otimes y) \subset Gx \otimes Gy$ as subsets of $\mathcal F^1 (B_n)$. It is also clear that the number of distinct $\sigma \in G$ such that $\sigma x < y$ is precisely the number of $G$-orbits in $Gx\otimes Gy$. In particular, if the only $\sigma $ such that $\sigma x < y$ is identity, then $Gx \otimes Gy=G(x \otimes y)$ as subsets of $\mathcal F^1 (B_n)$. 
 
-Note that $q_i$ is the number of the disjoint subsets $G(x \otimes y)$ in $\mathcal F^1 (B_n)$, so the problem of counting $q_i - p_i$ is the same as that of counting the number of distinct $G$-orbits $G(x \otimes y)$  with non-identity $\sigma \in G$ such that $\sigma x < y$, and we claim that for $i\neq 1,n-1$, this number is $(n-1)/2$.  
+Note that $q_i$ is the number of the disjoint subsets $G(x \otimes y)$ in $\mathcal F^1 (B_n)$, so the problem of counting $q_i - p_i$ is the same as that of counting the number of distinct $G$-orbits $G(x \otimes y)$  with non-identity $\sigma \in G$ such that $\sigma x < y$, and we claim that for $i\neq 1,n-1$, this number is $(n-1)/2$. \todo{You also need to say that there are at most 2 $G$ orbits in the same $G\times G$ orbit (which is nonobvious, and very special to the cyclic group.) I think you really need to put this paragraph after the next paragraph.}
 
 
-First consider $\sigma = \sigma_0$ and $x \otimes y $ such that $x \lessdot y$ and $\sigma x \lessdot y$, i.e., we take out the distinct filled bead from $y$ in the necklace, and rotate $y$ by a $1$-click rotation, then the remaining $i$ filled beads remain in $\sigma y$. It is clear that the only possibility for this to occur is if we have $i+1$ consecutive filled beads, i.e., $y = \{1, 2, ..., i+1\}$ and $x = \{1, 2, ..., i \}$ (up to rotational equivalence by actions of $G$). 
+First consider $\sigma = \sigma_0$ and $x \otimes y $ such that $x \lessdot y$ and $\sigma x \lessdot y$, i.e., we take out the distinct filled bead from $y$ in the necklace, and rotate $y$ by a $1$-click rotation, then the remaining $i$ filled beads remain in $\sigma y$. \todo{I think i.e. actually makes things more confusing, rather than clearer, and I would remove it} It is clear that the only possibility for this to occur is if we have $i+1$ consecutive filled beads, i.e., $y = \{1, 2, ..., i+1\}$ and $x = \{1, 2, ..., i \}$ (up to rotational equivalence by actions of $G$). 
 
 %Similarly we consider $\sigma = \sigma_0^2$ and $x \otimes y $ where $x \lessdot y$ and $\sigma x \lessdot y$,  i.e., we take out the distinct filled bead from $y$ in the necklace, and rotate $y$ by a $2$-click rotation, then the remaining $i$ filled beads are in $\sigma y$. Now we again trace back from an arbitrarily assigned ``last'' filled bead in $y$, say at position $P$, then at position $P - 2, P -4, ... $ (reduce mod $n$ whenever necessary) there need to be a filled bead by assumption. In this case, there is again only one possibility of $G (x \otimes y)$, namely the $G$-orbits of $y = \{1, 3, ... 2i +1\}$  and $x = \{1, 3, ..., 2i -1\}$.
 
   
-In general, for any $\sigma = \sigma_0^{j}$, $j < n/2$, there is a precisely one orbit $G(x \otimes y)$ such that $x \lessdot y$ and $\sigma x < y$.  Notice that for $j > n/2$, the necklace $\{1, j+1,2j+1, ...  \}$ and $\{1, (n-j)+1, 2(n-j)+1, ... \}$ are the same necklaces, so we do not count them again. It is also easy to show that, for all distinct $j < n/2$, the necklaces where the filled beads are $\{1, j+1, 2j+1, ..., i\cdot j+1\}$ are all distinct, since $n$ is a prime number. 
+In general, for any $\sigma = \sigma_0^{j}$, $j < n/2$, there is a precisely one orbit $G(x \otimes y)$ such that $x \lessdot y$ and $\sigma x < y$.  Notice that the necklace $\{1, j+1,2j+1, ...  \}$ and $\{1, (n-j)+1, 2(n-j)+1, ... \}$ are the same necklaces, so it suffices to count the number of $x\otimes y$ with $x \lessdot y,\sigma_0^jx \lessdot y,$ with $j < n/2$. It is also easy to show that, for all distinct $j < n/2$, the necklaces representated by $\{1, j+1, 2j+1, ..., i\cdot j+1\}$ are all distinct, since $n$ is a prime number. 
 \end{proof}
 
 \begin{cor}{\label{cor:cyclic_prime_unimodal}} Let $G = C_n$ where $n$ is a prime, and $p_i$ as defined above. Then the sequence $p_i$ is unimodal. 
@@ -1133,6 +1135,7 @@ By the Proposition and the symmetry of $p_i$, we only need to show $p_0 \le p_1$
 \end{proof}
 
 A similar method can be used to bound $q_i - p_i$ for $n$ not necessarily prime.  Our next goal in the section is to show that:
+\todo{It seems like there is never a proof of this lemma, although presumably you mean to put it right above ~\ref{cor:cyclic_unimodal}. I think it's rather confusing to state this lemma in its precise form here, and why it implies unimodality, since it seems to be the same as ~\ref{cor:cyclic_unimodal}. I would recommend removing this lemma here, and you should just say the goal in this section is to prove ~\ref{cor:cyclic_unimodal}.}
 
 \begin{lem}{\label{lem:cyclicgeneral}}
 
@@ -1141,25 +1144,24 @@ Let $G = C_n$, and $p_i, q_i$ be defined as above. Let $\lambda_i = q_i - p_i$, 
 Note that this suffices to show that the $p_i$ are unimodal, since the Lemma implies that
 $$p_{i+1} - p_{i} = (q_{i+1} - \lambda_{i+1}) - (q_i - \lambda_i) = (q_{i+1} - q_i) - (\lambda_{i+1}- \lambda_i) \ge 0.$$ 
 
-\begin{note} Let $B_m/C_m$ be the necklace quotient poset, and let $q (i, m) = |\mathcal F^1 (B_m)/C_m|_{i}$ and similarly let $p (i, m) = |\mathcal F^1 (B_m/C_m)|_{i}$.
+\begin{note} Let $B_m/C_m$ be the necklace quotient poset, and let $q (i, m) = |\mathcal F^1 (B_m)/C_m|_{i}$ and similarly let $p (i, m) = |\mathcal F^1 (B_m/C_m)|_{i}$. \todo{Perhaps define this together with $p_i$ above, since $p_i$ really depend on $n$ as well? See the comment on your definition of $p_i,q_i.$}
 \end{note}
 
 \begin{defn}
-Let  $\sigma \in G.$ we call each subset of $x \in B_n$ that is fixed by $\sigma$ a \textit{full cycle} (under the action of $\sigma$), and $x \minus \{\text{all full cycles}\}$ is called a \textit{tail cycle}.  
+Let  $\sigma \in G.$ we call each subset $s \subset x \in B_n$ that is fixed by $\sigma$ a \textit{full cycle} (under the action of $\sigma$), and $x \setminus \left(\cup_{\text{full cycles } s} s\right)$ is called a \textit{tail cycle} (under the action of $\sigma$).  
 \end{defn}
 
-
+\todo{I think you should put this lemma above ~\ref{lem:cyclicprime} because then you don't have to say there are at most two special orbits in the same orbit in that proof.}
 \begin{lem}{\label{lem:cyclic_bound_r}}
-Let $G = C_n$, $n$ not necessarily prime, assume that $\sigma_0^r x \lessdot y$ for some $x \otimes y$, where $x \lessdot y$ and $r < n/2$, also assume that there is no $g \in G$ such that $g x = \sigma_0^r (x)$ and $gy = y$, then $r$ is the only integer $1 \le r < n/2$ such that $\sigma_0^r (x) \lessdot y$. 
+Let $G = C_n$, $n$ not necessarily prime. Assume that $\sigma_0^r x \lessdot y$ for some $x \otimes y$, where $x \lessdot y$ and $r < n/2$. Also assume that there is no $g \in G$ such that $g x = \sigma_0^r (x)$ and $gy = y$. Then $r$ is the only integer $1 \le r < n/2$ such that $\sigma_0^r (x) \lessdot y$. 
 \end{lem}
-
 \begin{proof}
 
-By the assumption we know that $x$ has a tail cycle under the action of $\sigma_0^{r}$, for otherwise $x$ is fixed and we can simply take $g = id$. We also know that the tail cycle is not completed to be a full cycle when we add the extra element $y \minus x$, for otherwise $y$ is fixed under $\sigma_0^r$  and we can take $g = \sigma_0^r$.  Call this tail cycle $\gamma$, so $\gamma$ consists of some filled beads in the necklace, one of which is the distinct element $z = y \minus x$. Let $\sigma$ be any rotation such that $\sigma x \lessdot y$, then $\sigma$ has to take a full cycle of $x$ (under $\sigma_0^r$) to another full cycle (under $\sigma_0^r$), so $\sigma (\gamma \minus z) \lessdot \gamma$. Recall that $\sigma_0^r (\gamma \minus z) \lessdot \gamma$ by assumption, so the elements in $\gamma$ are $r$-positions away from each other, namely $\gamma = \{ z, z-r, z-2r, ... z -l r\}$, but $z+r$ is empty since the cycle is assumed to be a tail cycle. Since $\sigma (\gamma \minus z) \lessdot \gamma$, $\sigma$ has to send something to $z$, say $z - m r$ is sent to $z$, then $z - {m-1}r$ is sent to $z+r$, which is a contradiction. 
+By assumption, $x$ has a tail cycle under the action of $\sigma_0^{r}$, for otherwise $x$ is fixed by $\sigma_0^r,$ because then $g = id$ satisfies $gx = \sigma_0^rx,gy = y.$ Additionally, $y$ must have some tail cycle under the action of $\sigma_0^r$, for otherwise $y$ is fixed under $\sigma_0^r$  and we can take $g = \sigma_0^r$.  Call $\gamma$ the tail cycle of $y$, so $\gamma$ consists of some filled beads in the necklace, one of which is the element $z = y \minus x$. Let $\sigma$ be any rotation such that $\sigma x \lessdot y$. then $\sigma$ has to take a full cycle of $x$ (under $\sigma_0^r$) to another full cycle (under $\sigma_0^r$), so $\sigma (\gamma \minus z) \lessdot \gamma$. Recall that $\sigma_0^r (\gamma \minus z) \lessdot \gamma$ by assumption, so the elements in $\gamma$ are $r$-positions away from each other, namely $\gamma = \{ z, z-r, z-2r, ... z -l r\}$, but $z+r \notin \gamma,$ since $\gamma$ a tail cycle. Since $\sigma (\gamma \minus z) \lessdot \gamma$, there is some $m$ for which $\sigma(z - m r) = z$. But then, $z-(m-1)r \in x,$ and $\sigma(z - (m-1)r) = z+r \notin y$, a contradiction. 
 \end{proof}
-
 \begin{lem}{\label{lem:cyclic_counting_difference}} 
 Let $G= C_n$, $q_i$ and $p_i$ be defined as usual, 
+\todo{I don't think you need to say let $q_i,p_i$ be defined as usual}
 then $$q_i - p_i = \#\{G{(x \otimes y)} : \exists \: \, \sigma_0^r x \lessdot y \text{ where } r < n/2, \text{ but } \nexists \:  g \text{ s.t. } g x = \sigma_0 ^r x, g y = y \}.$$
 \end{lem}
 
@@ -1170,8 +1172,8 @@ then $$q_i - p_i = \#\{G{(x \otimes y)} : \exists \: \, \sigma_0^r x \lessdot y 
 
 
 \begin{defn}
-Fix $r < n/2$ to be an integer and let $ G({x\otimes y)}$ be an $G$-orbit of edges. We call $G(x \otimes y)$ a special orbit if  $ \sigma_0^r x \lessdot y, \, \, \text{ but  there does not exist } g \in C_n \text{ such that } g x = \sigma_0 ^r x,  \text{ and }g y = y$. 
-
+Fix $r < n/2$ to be an integer and let $ G({x\otimes y)}$ be an $G$-orbit of edges. We call $G(x \otimes y)$ a {\it special orbit} if  $ \sigma_0^r x \lessdot y, \, \, \text{ but  there does not exist } g \in C_n \text{ such that } g x = \sigma_0 ^r x,  \text{ and }g y = y$. 
+\todo{special is really indescriptive. Maybe you could say a double orbit, or something like that?}
 \end{defn}
 
 \begin{lem}{\label{lem:cyclic_bounding_lambda}} 
@@ -1198,7 +1200,7 @@ $$\sum_{\substack{k | (i+1, n), \\ 1 < k < n}} q\left(\frac{i+1}{k}, \frac{n}{k}
  
 Note that, from the process of calculating $\lambda_{i+1} - \lambda_{i}$, we can potentially obtain a better bound  \todo{Elise: of what?  Be precise.} if we need to. 
 \end{proof}
-
+\todo{Maybe call this a proposition or theorem instead of corollary? It doesn't really follow immediately from other things, and it's the main result we're showing}
 \begin{cor}{\label{cor:cyclic_unimodal}} 
 The poset $\mathcal F^1(B_n/C_n)$ is rank symmetric and rank unimodal.
 \end{cor}
@@ -1583,6 +1585,108 @@ In this section, we include various remarks, as well as failed attempts, which d
 \ssec{Quotients by Automorphism Groups of Rooted Trees}
 
 In Subsection ~\ref{ssec:rooted_trees}, we saw that the full automorphism groups of rooted trees are cover transitive. It is well known that the quotient $B_{ml}/(S_m\wr S_l)$ is a distributive lattice. Hence, we were curious whether $B_{ml}/G$ is a distributive lattice as well, where $G$ is the automorphism group of a rooted tree. The answer is a definitive no, as can be seen in the case $G = (S_2 \wr S_2) \wr S_2,$ where $G$ acts on a the binary rooted tree $P$ with $|L(P)| = 8,$ whose vertices are labeled $0,\ldots, 7$ from left to right. In this case, it is easy to see that $G\{0,5,6\} \lessdot G\{0,1,5,6\},G\{0,5,6\} \lessdot G\{0,1,2,5\},G\{0,1,5\} \lessdot G\{0,1,5,6\},G\{0,1,5\} \lessdot G\{0,1,2,5\}.$ Hence, $G\{0,5,6\},G\{0,1,5\}$ do not have a well defined join, and so $B_{ml}/G$ is not a lattice.
+
+\begin{tikzpicture}[scale=.7]
+  \node (0) at (-4,0) {$0$};
+  \node (1) at (-3,0) {$1$};
+  \node (2) at (-2,0) {$2$};
+  \node (3) at (-1,0) {$3$};
+    \node (4) at (0,0) {$4$};
+  \node (5) at (1,0) {$5$};
+  \node (6) at (2,0) {$6$};
+  \node (7) at (3,0) {$7$};
+  \node (8) at (-3.5,1) {$8$};
+  \node (9) at (-1.5,1) {$9$};
+  \node (10) at (.5,1) {$10$};
+  \node (11) at (2.5,1) {$11$};
+    \node (12) at (-2.5,2) {$12$};
+  \node (13) at (1.5,2) {$13$};
+  \node (14) at (-.5,3) {$14$};
+  \draw (0)--(8);
+  \draw (1)--(8);
+  \draw (2)--(9);
+  \draw (3)--(9);
+  \draw (4)--(10);
+  \draw (5)--(10);
+  \draw (6)--(11);
+  \draw (7)--(11);
+  \draw (8)--(12);
+  \draw (9)--(12);
+  \draw (10)--(13);
+  \draw (11)--(13);
+  \draw (12)--(14);
+  \draw (13)--(14);
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.7]
+  \node (0) at (0,-2) {$G\emptyset$};
+  
+  \node (1) at (0,0) {$G\{7\}$};
+  
+  \node (2) at (-2,2) {$G\{2,4\}$};
+  \node (3) at (0,2) {$G\{2,3\}$};
+  \node (4) at (2,2) {$G\{0,2\}$};
+  
+  \node (5) at (-2,4) {$G\{0,5,6\}$};
+  \node (6) at (0,4) {$G\{4,6,7\}$};
+  \node (7) at (2,4) {$G\{0,1,5\}$};
+  
+  \node (8) at (-6,6) {$G\{0,1,5,6\}$};
+  \node (9) at (-3,6) {$G\{0,1,2,5\}$};
+  \node (10) at (0,6) {$G\{0,2,5,7\}$};
+  \node (11) at (3,6) {$G\{4,5,6,7\}$};
+  \node (12) at (6,6) {$G\{0,1,4,5\}$};
+  
+  \node (13) at (-4,8) {$G\{2,3,4,6,7\}$};
+  \node (14) at (0,8) {$G\{1,2,3,5,7\}$};
+  \node (15) at (4,8) {$G\{0,4,5,6,7\}$};
+  
+  \node (16) at (-5,10) {$G\{0,1,2,4,6,7\}$};
+  \node (17) at (0,10) {$G\{0,1,2,3,5,6\}$};
+  \node (18) at (5,10) {$G\{0,1,2,3,4,5\}$};
+  
+  \node (19) at (0,12) {$G\{0,1,2,3,4,5,6\}$};
+  
+  \node (20) at (0,14) {$G\{0,1,2,3,4,5,6,7\}$};
+
+  \draw (0) -- (1);
+  
+  \draw (1) -- (2);
+  \draw (1) -- (3);
+  \draw (1) -- (4);
+  
+  \draw (2) -- (5);
+  \draw (2) -- (7);
+  \draw (3) -- (6);
+  \draw (3) -- (7);
+  \draw (4) -- (5);
+  \draw (4) -- (6);
+  \draw (5) -- (8);
+  \draw (5) -- (9);
+  \draw (5) -- (10);
+  \draw (6) -- (9);
+  \draw (6) -- (11);
+  \draw (7) -- (8);
+  \draw (7) -- (9);
+  \draw (7) -- (12);
+  \draw (8) -- (13);
+  \draw (8) -- (14);
+  \draw (9) -- (13);
+  \draw (9) -- (14);
+  \draw (9) -- (15);
+  \draw (10) -- (14);
+  \draw (11) -- (15);
+  \draw (12) -- (13);
+  \draw (13) -- (16);
+  \draw (13) -- (18);
+  \draw (14) -- (16);
+  \draw (14) -- (17);
+  \draw (15) -- (17);
+  \draw (15) -- (18);
+  \draw (16) -- (19);
+  \draw (17) -- (19);
+  \draw (18) -- (19);
+  \draw (19) -- (20);
+\end{tikzpicture}
 
 \ssec{A Failed Attempt for Showing $\mathcal F^1(B_n/G)$ is unimodal}
 

@@ -270,6 +270,14 @@ def full_size(grp):
 
 #boolean_matrix(5,1)
 
+grp = bq.Grp([(1,0,2,3,4,5,6,7),(0,1,3,2,4,5,6,7),(0,1,2,3,5,4,6,7),(0,1,2,3,4,5,7,6),(2,3,0,1,4,5,6,7),(0,1,2,3,6,7,4,5),(4,5,6,7,0,1,2,3)])
+
+poset  = Poset_quot(grp)
+for i in xrange(poset.rank+1):
+    print poset.vertices[i]
+for i in xrange(poset.rank+1):
+    print poset.edges[i]
+
 '''
 for i in range(3,10):
     grp = bq.Grp(bq.cyclic_g_lst(i))
@@ -277,6 +285,7 @@ for i in range(3,10):
     print gen_q_lst(grp)    
 '''
 
+'''
 n = 9
 for j in range(0,n):
     for k in range(2,n):
@@ -304,7 +313,7 @@ for j in range(0,n):
 #            print str(l) + 'l done'
 #        print str(k) + 'k done'
 #    print str(j) + 'i done'
-
+'''
 
 
 '''

@@ -27,8 +27,8 @@ class Grp:
         self.action_size = len(tpl_lst[0])
         self.group_set = compute_group(self.generators)
 
-#grp = Grp([(7, 4, 5, 0, 2, 1, 3, 6), (5, 4, 2, 0, 6, 1, 3, 7)])
-#print len(grp.group_set)
+grp = Grp([(1,0,2,3,4,5,6,7),(0,1,3,2,4,5,6,7),(0,1,2,3,5,4,6,7),(0,1,2,3,4,5,7,6),(2,3,0,1,4,5,6,7),(0,1,2,3,6,7,4,5),(4,5,6,7,0,1,2,3)])
+print len(grp.group_set)
 
 #computes all pairs in the boolean algebra
 def pairs(n,i,r):

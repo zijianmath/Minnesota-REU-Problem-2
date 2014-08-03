@@ -14,7 +14,7 @@
 \usepackage{comment}
 \usepackage{amssymb}
 \usepackage[colorinlistoftodos, textsize=tiny]{todonotes}
-
+\usepackage[all]{xy}
 
 \newtheorem{thm}{Theorem}[subsection]
 \newtheorem{cor}[thm]{Corollary}
@@ -117,10 +117,6 @@
 \maketitle
 
 \section{Things without homes}
-
-
-
-
 
 \section{Introduction}\label{sec:introduction}
 Let $P$ be a finite graded poset of rank $n$.  It is natural to study the structure of the edges in the Hasse diagram of $P$.  To this end, define an endofunctor $\mathcal{F}^r$ on the category finite graded posets with rank-preserving morphisms as follows
@@ -258,6 +254,39 @@ Suppose now that $A\le_\mathcal{F} B\le_\mathcal{F} A$, and take $f\colon A\righ
 The poset $\mathcal{F}^1(P)$ is graded, with $\rk{x\otimes y} = \rk{x}$ for all $x\otimes y\in \mathcal{F}^r(P)$, where $\rk{x}$ is the rank of $x$ in $P$.
 \end{lem}
 
+\begin{counterexample}
+It is quite crucial we declare the relation $\leq_\mathcal F$ to be the transitive closure of $\lessdot_{\mathcal F}.$ An example of something that can go wrong is as follows. On the left hand side is the hasse diagram of a poset $P$ in the middle is the poset $\mathcal F^1(P)$ and on the right hand side is the poset obtained from the relation $x\otimes y \leq a\otimes b$ if $x \leq a, y \leq b.$
+\begin{tikzpicture}[scale=.7]
+  \node (one) at (90:2cm) {$6$};
+  \node (b) at (150:2cm) {$4$};
+  \node (a) at (210:2cm) {$2$};
+  \node (zero) at (270:2cm) {$1$};
+  \node (c) at (330:2cm) {$3$};
+  \node (d) at (30:2cm) {$5$};
+  \draw (zero) -- (a) -- (b) -- (one) -- (d) -- (c) -- (zero);
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.7]
+  \node (one) at (60:2cm) {$5\otimes 6$};
+  \node (b) at (120:2cm) {$4\otimes 6$};
+  \node (a) at (180:2cm) {$2\otimes 4$};
+  \node (zero) at (240:2cm) {$1\otimes 2$};
+  \node (c) at (300:2cm) {$1\otimes 3$};
+  \node (d) at (0:2cm) {$3\otimes 5$};
+  \draw (zero) -- (a) -- (b);
+  \draw (c)--(d)--(one);
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.7]
+  \node (one) at (60:2cm) {$5\otimes 6$};
+  \node (b) at (120:2cm) {$4\otimes 6$};
+  \node (a) at (180:2cm) {$2\otimes 4$};
+  \node (zero) at (240:2cm) {$1\otimes 2$};
+  \node (c) at (300:2cm) {$1\otimes 3$};
+  \node (d) at (0:2cm) {$3\otimes 5$};
+  \draw (zero) -- (a) -- (b) -- (c)--(d)--(one) -- (zero);
+\end{tikzpicture}
+
+Here, it is clear that $\mathcal F^1(P)$ is a graded poset, with $rk(x\otimes y) = rk(x),$ but, the hasse diagram on the right represents a poset which does not have a grading.
+\end{counterexample}
 \begin{proof}
 \todo[inline]{prove this}
 \todo{I think this may actually be wrong. As a counterexample, take the poset whose hasse diagram is a regular hexagon, with one point at the bottom. Then, there is an $x\otimes y$ with $x$ of rank 2 in the original diagram, but $rk(x\otimes y) = 1$. I think, however, this can be fixed by declaring the $<$ relation to be the transitive closure of the $\lessdot$ relation, as done for $H.$}
@@ -305,7 +334,33 @@ For $P$ a graded poset, define the graded poset $\mathcal H^r(P)$ as follows. If
 \end{defn}
 
 \begin{warning}
-While $\mathcal F^r:\mathcal P \rightarrow \mathcal P$ is a functor, $\mathcal H^r$ is not a functor. In particular, we have not specified how $\mathcal H^r$ acts on morphisms. If, for $f:P \rightarrow Q,$ we attempted to define $\mathcal H^r(f):\mathcal P \rightarrow \mathcal Q,$ we would quickly run into troubles. For example, suppose we took $f$ mapping a diamond $P$ to a chain of length three $Q$. Then, $\mathcal H^1(P)$ has four points, with two pairs of edges, whereas $\mathcal H^1(Q)$ has two disconnected points. It is clear that there can be no order preserving mapping between these two objects. \todo{draw picture of this poset}
+While $\mathcal F^r:\mathcal P \rightarrow \mathcal P$ is a functor, $\mathcal H^r$ is not a functor. In particular, we have not specified how $\mathcal H^r$ acts on morphisms. If, for $f:P \rightarrow Q,$ we attempted to define $\mathcal H^r(f):\mathcal P \rightarrow \mathcal Q,$ we would quickly run into troubles. For example, suppose we took $f$ mapping a diamond $P$ (leftmost below) to a chain of length three $Q$ (second leftmost) Then, $\mathcal H^1(P)$ (second rightmost) has four points, with two pairs of edges, whereas $\mathcal H^1(Q)$ (rightmost) has two disconnected points. It is clear that there can be no order preserving mapping between these two objects. 
+
+\begin{tikzpicture}[scale=.7]
+  \node (b) at (0:2cm) {$3$};
+  \node (a) at (90:2cm) {$4$};
+  \node (c) at (180:2cm) {$2$};
+  \node (d) at (270:2cm) {$1$};
+  \draw (a) -- (b) -- (d) -- (c)--(a);
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.7]
+  \node (b) at (90:2cm) {$3$};
+  \node (a) at (270:2cm) {$1$};
+  \node (c) at (0:0cm) {$2$};
+  \draw (a) -- (c) -- (b);
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.7]
+  \node (b) at (45:1.414cm) {$4$};
+  \node (a) at (135:1.414cm) {$3$};
+  \node (c) at (225:1.414cm) {$1$};
+  \node (d) at (315:1.414cm) {$2$};
+  \draw (a) -- (d) ;
+  \draw (c) -- (b);
+\end{tikzpicture}
+\begin{tikzpicture}[scale=.7]
+  \node (b) at (90:1cm) {$2$};
+  \node (a) at (270:1cm) {$1$};
+\end{tikzpicture}
 
 However, it is still true that $\mathcal H^r(P)$ can be viewed as a graded poset with $rk_{\mathcal H^r(P)}(x\otimes y) = rk_P(x).$
 \end{warning}

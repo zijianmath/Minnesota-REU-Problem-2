@@ -14,7 +14,7 @@
 \usepackage{comment}
 \usepackage{amssymb}
 \usepackage[colorinlistoftodos, textsize=tiny]{todonotes}
-\usepackage[all]{xy}
+\usetikzlibrary{matrix,arrows,decorations.pathmorphing}
 
 \newtheorem{thm}{Theorem}[subsection]
 \newtheorem{cor}[thm]{Corollary}
@@ -100,6 +100,7 @@
 
 \def\Stab{\operatorname{Stab}}
 \def\Fix{\operatorname{Fix}}
+\newcommand\im{\text{Im}}
 
 \makeatletter
 \providecommand\@dotsep{5}
@@ -289,7 +290,6 @@ Here, it is clear that $\mathcal F^1(P)$ is a graded poset, with $rk(x\otimes y)
 \end{counterexample}
 \begin{proof}
 \todo[inline]{prove this}
-\todo{I think this may actually be wrong. As a counterexample, take the poset whose hasse diagram is a regular hexagon, with one point at the bottom. Then, there is an $x\otimes y$ with $x$ of rank 2 in the original diagram, but $rk(x\otimes y) = 1$. I think, however, this can be fixed by declaring the $<$ relation to be the transitive closure of the $\lessdot$ relation, as done for $H.$}
 \end{proof}
 
 We also have that the action of $G$ on $P$ induces an action on $\mathcal{F}^r(P)$ as follows.  
@@ -485,6 +485,7 @@ Once again, the proof of the above three statements is analogous to those of ~\r
 \end{proof}
 
 \section{Cover Transitive Actions}
+\label{sec:cover_transitive}
 In this section, we develop the theory of cover transitive actions $\phi$ where $G$ is a group, $P$ is a poset, and $\phi:G\times P \rightarrow P$ is an action. Recall Definition ~\ref{defn:cover_transitive}, that $\phi$ is cover transitive if whenever $x,y,z \in P,x\lessdot y,y\lessdot z,x \in Gy$ then there exists $g \in Stab(z)$ with $gx = y.$ For cover transitive actions $\phi:G\times P \rightarrow P,$ we shall show that, $\mathcal F^1(P/G)$ is Peck. Additionally, we shall show the cover transitive property is closed under semidirect products, in the appropriate sense. It is obvious that the action of $S_k$ on $B_k$ is cover transitive, and we shall also see in Lemma ~\ref{dihedral001} that the action of certain dihedral groups are cover transitive. We can then use these as building blocks to construct other cover transitive groups. In particular, we shall show in this section that automorphism groups of rooted trees are cover transitive.
 
 \begin{eg}
@@ -568,6 +569,7 @@ Finally, define $g \in G^n$ with $g_j = \delta,g_i = \sigma\delta^{-1}\epsilon$ 
 \end{proof}
 
 \ssec{An application to rooted trees.}
+\label{ssec:rooted_trees}
 In this subsection, we prove that the automorphism group of rooted trees is always cover transitive. To do this we will apply Theorem ~\ref{thm:wreath_preservation} and Theorem ~\ref{thm:direct_product_preservation}, since the automorphism group of rooted trees is essentially built from direct products and wreath products with a symmetric group. To this aim, we first give definitions relating to rooted trees, then characterize their automorphisms, and finally show that such automorphism groups are always cover transitive.
 
 \begin{defn}
@@ -1574,6 +1576,119 @@ For $n >2,$ the matrix $M^{n-2i-1}$ is invertible.
 We saw that if $\beta(i+1) \neq 1,$ we have that $q_{a,b} = \sum_{\substack{{y\subset b,}\\{x \subset a,}\\{y\not\subset a}}}^{}x\otimes y$ lie in the span of $v_{a\otimes b}.$ It is always the case that $\beta \geq 1,i \geq 0.$ The only time in which $\beta = 1,i=0$ is when $n = 2.$ Therefore, $q_{a,b}$ are always defined for $n > 2.$ However, $q_{a,b}$ are exactly the rows of $L^{n-2i-1}$ as defined in Theorem ~\ref{explicit_gbn_lefchetz}. Using Theorem ~\ref{gbn_decomposition}, we know $\fbn^1(B_n)$ is unitary Peck, and therefore the rows of $L^{n-2i-1}$ are independent. Therefore, the rows of $M^{n-2i-1}$ span an independent set in a vector space of the same dimension. So, the rows of $M^{n-2i-1}$ are independent. Hence, $M^{n-2i-1}$ is indeed an isomorphism, when $n > 2.$
 \end{proof}
 
+\section{Odds, Ends, and Failed Attempts}
+
+In this section, we include various remarks, as well as failed attempts, which don't particularly belong in other sections.
+
+\ssec{Quotients by Automorphism Groups of Rooted Trees}
+
+In Subsection ~\ref{ssec:rooted_trees}, we saw that the full automorphism groups of rooted trees are cover transitive. It is well known that the quotient $B_{ml}/(S_m\wr S_l)$ is a distributive lattice. Hence, we were curious whether $B_{ml}/G$ is a distributive lattice as well, where $G$ is the automorphism group of a rooted tree. The answer is a definitive no, as can be seen in the case $G = (S_2 \wr S_2) \wr S_2,$ where $G$ acts on a the binary rooted tree $P$ with $|L(P)| = 8,$ whose vertices are labeled $0,\ldots, 7$ from left to right. In this case, it is easy to see that $G\{0,5,6\} \lessdot G\{0,1,5,6\},G\{0,5,6\} \lessdot G\{0,1,2,5\},G\{0,1,5\} \lessdot G\{0,1,5,6\},G\{0,1,5\} \lessdot G\{0,1,2,5\}.$ Hence, $G\{0,5,6\},G\{0,1,5\}$ do not have a well defined join, and so $B_{ml}/G$ is not a lattice.
+
+\ssec{A Failed Attempt for Showing $\mathcal F^1(B_n/G)$ is unimodal}
+
+In this section, we describe one path we were pursuing in order to show $\mathcal F^1(B_n/G)$ is unimodal. We were attempting to do this by trying to show there were injective order raising maps $U_i:\mathcal F^1(B_n/G)_i \rightarrow \mathcal F^1(B_n/G)_{i+1}.$
+
+We shall now define several maps, so that we can draw a certain commuting diagram in Remark ~\ref{failed_commuting_diagram}
+
+
+\begin{note}
+Let $U_i:P_i \rightarrow P_{i+1}$ be the raising operator for the poset $P.$ Then, we obtain an induced map
+\begin{align*}
+	U_i \otimes U_{i+1}:P_i\otimes P_{i+1} \rightarrow P_{i+1} \otimes P_{i+1},x \otimes y \mapsto U(x) \otimes U(y).
+\end{align*}
+
+We also have the natural inclusions
+\begin{align*}
+	k_i:\mathcal F^1(P)_i &\rightarrow P_i \otimes P_{i+1},\\
+	x\otimes y &\mapsto x\otimes y\\
+	k_i^{G\times G}:\mathcal F^1(P/G)_i &\rightarrow (P/G)_i \otimes (P/G)_{i+1},\\
+	Gx\otimes Gy &\mapsto Gx\otimes Gy,
+\end{align*}
+where we have $x \lessdot y$ and $Gx \lessdot Gy.$ The maps above are defined on a basis, and are extended by linearity.
+
+Next, we define the map
+\begin{align*}
+	j_i:\mathcal (P/G)_i \otimes (P/G)_{i+1} & \rightarrow P_i \otimes P_{i+1},\\
+	Gx\otimes Gy &\mapsto \frac{1}{|G|}\sum_{g \in G}^{} gx\otimes \frac{1}{|G|}\sum_{h\in G}^{}hy.
+\end{align*}
+where $x$ is an arbitrary representative of $Gx$ and $y$ is an arbitrary representative of $Gy$
+
+Then, define the map
+\begin{align*}
+	p_i: P_i \otimes P_{i+1} &\rightarrow \mathcal (P/G)_i \otimes (P/G)_{i+1},\\
+	x\otimes y &\mapsto Gx\otimes Gy.
+\end{align*}
+
+Further, define the map 
+\begin{align*}
+	(U_i \otimes U_{i+1})^{G\times G}:P_i\otimes P_{i+1} &\rightarrow P_{i+1} \otimes P_{i+1},\\
+	Gx \otimes Gy &\mapsto p_{i+1}\circ(U_i \otimes U_{i+1})\circ j_i(Gx\otimes Gy).
+\end{align*}
+
+We also have the projections inclusions
+\begin{align*}
+	\pi_i:P_i \otimes P_{i+1} & \rightarrow \mathcal F^1(P)_{i},\\
+	x\otimes y &\mapsto  \begin{cases}
+	x\otimes y, &\text{ if }x\lessdot y\\
+	0 &\text { otherwise}
+\end{cases}\\
+	\pi_i^{G\times G}: (P/G)_i \otimes (P/G)_{i+1} &\rightarrow\mathcal F^1(P/G)_i,\\
+	Gx\otimes Gy &\mapsto \begin{cases}
+	Gx\otimes Gy, &\text{ if }Gx\lessdot Gy\\
+	0 &\text { otherwise}
+\end{cases},
+\end{align*}
+where we have $x \lessdot y$ and $Gx \lessdot Gy.$ The maps above are defined on a basis, and are extended by linearity.
+
+Finally, denote
+\begin{align*}
+	\mathcal F^1(U)_i:\mathcal F^1(P)_i &\rightarrow \mathcal F^1(P)_{i+1}\\
+	x\otimes y &\mapsto k_i \circ (U \otimes U) \circ \pi_{i+1}(x\otimes y)\\
+\mathcal F^1(U)^{G\times G}_i:\mathcal F^1(P/G)_i & \rightarrow \mathcal F^1(P/G)_{i+1}\\
+	Gx\otimes Gy &\mapsto k^{G\times G}_i \circ (U \otimes U)^{G\times G} \circ \pi^{G\times G}_{i+1}(Gx\otimes Gy)
+\end{align*}
+where it is defined above on a basis and we extend to the whole space by linearity.
+\end{note}
+
+\begin{rem}
+\label{failed_commuting_diagram}
+For $i < \frac{n}{2}$ we obtain the following (almost commuting, but $j_{i+1}\circ p_{i+1} \neq \id.$) diagram
+
+\begin{tikzpicture}[baseline=(current  bounding  box.center)]
+\node (a) at (0,0) {$\mathcal F^1(P)_i$};
+\node (b) at (3.5,0) {$P_i \otimes P_{i+1}$};
+\node (c) at (8,0) {$P_{i+1} \otimes P_{i+2} $};
+\node (d) at (12,0) {$\mathcal F^1(P)_{i+1}$};
+\node (e) at (0,-2) {$\mathcal F^1(P/G)_i$};
+\node (f) at (3.5,-2) {$(P/G)_i \otimes (P/G)_{i+1}$};
+\node (g) at (8,-2) {$(P/G)_{i+1} \otimes (P/G)_{i+2} $};
+\node (h) at (12,-2) {$\mathcal F^1(P/G)_{i+1}$};
+\path[right hook->,font=\scriptsize,>=angle 90] ([xshift= 4pt]g.north) edge node[right] {$j_{i+1}$} ([xshift= 4pt]c.south)
+(a) edge node[above]{$k_i$} (b)
+(b) edge node[above]{$U_i\otimes U_{i+1}$} (c)
+(e) edge node[above]{$k_i^{G\times G}$}(f)
+(f) edge node[above] {$(U_i \otimes U_{i+1})^{G\times G}$} (g)
+(f) edge node[right] {$j_{i}$} (b)
+(a) edge [bend left] node[above] {$\mathcal F^1(U)_i$} (d)
+(e) edge [bend right] node[above] {$\mathcal F^1(U)^{G\times G}_i$} (h)
+;
+\path[->>,font=\scriptsize,>=angle 90]
+([xshift= -4pt]c.south) edge node[left] {$p_{i+1}$} ([xshift= -4pt]g.north)
+(c) edge node[above] {$\pi_{i+1}$}(d)
+(g) edge node[above] {$\pi_{i+1}^{G\times G}$} (h)
+;
+\end{tikzpicture}
+
+
+Unfortunately, in general, with the above definitions of the maps, 
+$$\ker \left(\pi^{G\times G}_{i+1}\circ p_{i+1}\right) \cap \im((U\otimes U)\circ j_i\circ k^{G\times G}_i)
+\not\subset \ker \pi_{i+1} \cap \im((U\otimes U)\circ j_i\circ k^{G\times G}_i).$$
+However, if we did have 
+$$\ker \left(\pi^{G\times G}_{i+1}\circ p_{i+1}\right) \cap \im((U\otimes U)\circ j_i\circ k^{G\times G}_i)
+\subset \ker \pi_{i+1} \cap \im((U\otimes U)\circ j_i\circ k^{G\times G}_i),$$
+using the fact that $\mathcal F^1(U)_i,U_i,U_{i+1}$ are all injective, a fairly simple diagram chase would reveal $\mathcal F^1(U)_i^{G\times G}$ is injective. This, in turn, would imply $\mathcal F^1(B_n/G)_i$ is symmetric, unimodal, and sperner.
+We have tried several variations on these exact maps, but were never quite able to obtain the desired $\ker \left(\pi^{G\times G}_{i+1}\circ p_{i+1}\right) \cap \im((U\otimes U)\circ j_i\circ k^{G\times G}_i)\subset \ker \pi_{i+1} \cap \im((U\otimes U)\circ j_i\circ k^{G\times G}_i).$
+\end{rem}
 
 \bibliography{References}
 \bibliographystyle{alpha}

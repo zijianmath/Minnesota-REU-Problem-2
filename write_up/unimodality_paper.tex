@@ -273,6 +273,7 @@ The function defined by $g\cdot A = \{g\cdot a \colon a\in A\}$ for all $g\in G$
 Since $g$ is an automorphism of $P$, $g\cdot A$ must also be isomorphic to $B_r$, that is $g\cdot A\in \mathcal{F}^r(P)$.  Suppose $A\le B$, and let $f\colon A\rightarrow B$ be an isomorphism satisfying $x\le f(x)$ for all $x\in A$.  Then $g\circ f\circ g^{-1}\colon g\cdot A \rightarrow g\cdot B$ is an isomorphism, and we have that $g^{-1}\cdot x \le f(g^{-1}\cdot x)$ by the definition of $f$.  Acting by $g$ on the left and using the fact that $g$ is order-preserving gives that $x\le g\cdot f(g^{-1}\cdot x)$, hence $g\cdot A\le g\cdot B$.  It follows that $g$ is an automorphism of $\mathcal{F}^r(P)$.
 \end{proof}
 
+
 \begin{prop}\label{prop:surjection_between_F_quotients}
 For any group $G$ acting on $P$ and $0\le i\le \rk(P)$, we have $|\mathcal{F}^r(P/G)|_i \le |\mathcal{F}^r(P)/G|_i$. Furthermore there exists a poset surjection $q\colon \mathcal{F}^1(P)/G\rightarrow \mathcal{F}^1(P/G)$ defined by $q(G(x\otimes y)) = Gx\otimes Gy$, with $q$ being a bijection if and only if the action of $G$ on $P$ is cover transitive.\todo{maybe seperate out the cover transitive bit, and put it in the cover transitive section? I think it seems a bit out of place here}\todo{Can't we define cover transitive not only for $\mathcal F^1$, but also for $\mathcal F^r$? Wouldn't this theorem still hold exactly as stated for $\mathcal F^r$ with our new definition?}
 \end{prop}
@@ -290,7 +291,13 @@ In the previous theorem, we stated that $q$ is a bijection if and only if the ac
 \end{counterexample}
 
 \section{The Poset $\mathcal{H}^r(P)$}
-In this discussion we discuss a modified version of $\mathcal{F}^r(P)$, which we will denote $\mathcal{H}^r(P)$.  As before let $P$ be a finite graded poset, and let $G$ be a group acting on $P$.  We define the elements of $\mathcal{H}^r(P)$ to be exactly those of $\mathcal{F}^r(P)$, namely the boolean subalgebras of $P$ of size $r$, but we define a different partial order on $\mathcal{H}^r(P)$.
+In this discussion we discuss a modified version of $\mathcal{F}^r(P)$, which we will denote $\mathcal{H}^r(P)$. The main point of introducing this object is to give a simple, noncomputational proof that $\mathcal F^r(B_n)/G$ is Peck. 
+
+At least for the case $r=1$ there is an alternative proof of this fact. It is actually shown in Section ~\ref{sec:unitary_peck_f} that $\mathcal F^1(B_n)$ is unitary Peck, for $n>2,$ so, by Theorem \ref{thm:quotients_of_unitary_peck_posets}, $\mathcal F^1(B_n)/G$ is Peck. However, the proof of this is extremely messy and computational.
+
+\todo{are we obligated to check whether $\mathcal F^r(B_n)$ is unitary Peck? Maybe we should at least put it as a question.}
+
+We now define the object $\mathcal H^r(P),$ whose elements are the same as those of $\mathcal{H}^r(P),$ but we define a different partial order on $\mathcal{H}^r(P)$.
 
 \begin{defn}
 \label{defn:h_map}
@@ -372,24 +379,20 @@ If $f:P\rightarrow Q$ is a bijection and $P$ is Peck then $Q$ is Peck.
 Let $rk(P) = rk(Q) = n.$ Since $P$ is Peck, there exists an order raising map $U_i:P_i\rightarrow P_{i+1}$ such that $U_{n-i-1} \cdots U_i:P_i \rightarrow P_{n-i}$ is an isomorphism. Then, define $f(U)_i:P_i\rightarrow P_{i+1}$ by $f(U)_i(x) = f(U_i(f^{-1}(x))).$ This map is well defined because $f$ is a bijection. This map is order raising because $y > x \implies f(y) > f(x),$ by definition of morphisms of posets. It follows that since $U_{n-i-1} \cdots U_i$ is an isomorphism, $f(U)_{n-i-1} \cdots f(U)_i$ is as well, because the vector spaces $V(P_i) \cong V(Q_i)$ since $f$ is a bijection. Therefore, $Q$ is Peck.
 \end{proof}
 
-\todo{Finish editing this part}
-\begin{prop}
-For any group $G$ acting on $P$ and $0\le i\le \rk(P)$, we have $|\mathcal{H}^r(P)/G|_i \le |\mathcal{F}^r(P/G)|_i$. Furthermore, the map $q\colon \fbn^1(P)/G\rightarrow \mathcal{F}^1(P/G),G(x\otimes y) \mapsto Gx\otimes Gy$ is a surjection.
-\end{prop}
-
+\begin{lem}
+\label{bijection_h_f}
+The map $f:\mathcal H^r(P) \rightarrow \mathcal F^r(P),G(x\otimes y) \mapsto G(x\otimes y)$ is a bijection.
+\end{lem}
 \begin{proof}
-The first part follows from Proposition \ref{prop:surjection_between_F_quotients} and the fact that the elements of $\mathcal{H}^r(P)$ and $\mathcal{F}^r(P)$ are the same.  By Remark \ref{rem:order_containment}, the map $\mathcal{H}^1(P)/G\rightarrow \mathcal{F}^1(P)/G$ defined by $G(x\otimes y)\mapsto G(x\otimes y)$ is a poset bijection.  The second part then follows from Proposition \ref{prop:surjection_between_F_quotients}.
+The elements of $\mathcal H^r(P),\mathcal F^r(P)$ are precisely the same by definition. Therefore, as long as $f$ is a morphism, it is automatically a bijection. Since $f$ is clearly rank preserving, to show $f$ is a morphism, it suffices to show $f$ is order preserving. This is immediate from Remark ~\ref{rem:order_containment}
 \end{proof}
-
-
 
 \begin{cor}
 \label{cor:quotiented_edge_peck}
 $\mathcal{F}^r(B_n)/G$ is Peck for any subgroup $G\subset S_n$.
 \end{cor}
-
 \begin{proof}
-\todo[inline]{prove this}
+By Corollary ~\ref{cor:quotients_of_HBn_peck}, $\mathcal H^r(B_n)/G$ is Peck. By Lemma ~\ref{bijection_h_f}, the map $f:\mathcal H^r(P) \rightarrow \mathcal F^r(P),G(x\otimes y) \mapsto G(x\otimes y)$ is a bijection. Then, by Lemma ~\ref{lem:bijection_peck_implication}, it follows that $\mathcal F^r(B_n)/G$ is Peck.
 \end{proof}
 
 \subsection{A Generalization of $\mathcal H^r,\mathcal F^r$}
@@ -1261,6 +1264,7 @@ In general, for $G \in Gl_n(\BF_q)$ acting on $B_n(q)$, we want to ask the follo
 
 
 \section{The object $\mathcal F^1(B_n).$}
+\label{sec:unitary_peck_f}
 In this section, we explicitly compute the raising operators corresponding to both $\mathcal H^1(B_n),\mathcal F^1(B_n)$ and explictly show that $\mathcal F^1(B_n)$ is unitary Peck by showing certain raising maps are invertible.
 
 \begin{note}

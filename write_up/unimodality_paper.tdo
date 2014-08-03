@@ -1,0 +1,53 @@
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ I very strongly think we should notate this as $\EuScript F^r(P)$ as it seems quite confusing to remove the dependence on $r,P$ and it's still quite short}{3}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Since people know what the transitive closure is, are we sure we want to use the valuable space in the introduction explicitly defining it?}{3}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ I think we should either say both order preserving and rank preserving or neither of them. I prefer neither, since we later define automorphisms as satisfying both of these properties. The same should be done in \nobreakspace 1\hbox {}}{3}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ add reference}{3}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Weren't we going to include a question about q-analogs?}{3}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ for consiceness, can we say $g\in \operatorname {Stab}(z)$ with $g\cdot x =y$ throughout the paper?}{3}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ David, there is an inconsistency in notation here: using ``:'' for ``such that'' versus $``|''$ (for ``such that''. I think $``|''$ is slightly more standard so I propose using this convention. I'm ok with using ``:'' though if you feel strongly, David.}{3}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Please note: This paragraph does NOT currently reflect reality. I thought for a while about how we should structure the paper, and this is roughly how I think it should look.}{4}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ consolidate this section}{4}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ consolidate this section}{4}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Obviously come back to this at the end, but since this is the introduction for the REU report, not a journal paper, we should also include descriptions of the sections we don't think will go in the journal paper.}{4}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ shouldn't the word disjoint be removed here?}{4}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ add reference}{5}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ prove this}{5}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ I think this may actually be wrong. As a counterexample, take the poset whose hasse diagram is a regular hexagon, with one point at the bottom. Then, there is an $x\otimes y$ with $x$ of rank 2 in the original diagram, but $rk(x\otimes y) = 1$. I think, however, this can be fixed by declaring the $<$ relation to be the transitive closure of the $\lessdot $ relation, as done for $H.$}{5}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ maybe seperate out the cover transitive bit, and put it in the cover transitive section? I think it seems a bit out of place here}{6}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Can't we define cover transitive not only for $\EuScript F^1$, but also for $\EuScript F^r$? Wouldn't this theorem still hold exactly as stated for $\EuScript F^r$ with our new definition?}{6}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise:"which is clearly surjective"}{6}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: maybe "distinct" instead of "multiple" would be clearer }{6}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ are we obligated to check whether $\EuScript F^r(B_n)$ is unitary Peck? Maybe we should at least put it as a question.}{7}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ draw picture of this poset}{7}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ David, the proof of this lemma is the same as one that we need for $\EuScript F$ section, so you can probably put this proof there, and feel free to replace this proof by "similarly to the proof for F..."}{7}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ David, once again, the proof of this lemma is the same as one that we need for $\EuScript F$ section, so you can probably put this proof there, and feel free to replace this proof by "similarly to the proof for F..."}{7}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: you might want to re-state the definition of cover transitive here}{10}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ maybe write this as one of three equivalent conditions, together with q being a bijection}{10}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: this doesn't need to be in a remark environment}{11}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: I think the $h_l$ should just be an $h$, and put parentheses around the RHS}{11}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: how can you have $b<c$ and also $c\lessdot b$?}{11}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: why not make this a Prop or a Lemma?}{12}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: maybe "furthermore" instead of "hence"?}{12}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: get rid of this "Now"}{12}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: what are the $i_1, \cdots , i_m$ denoting?}{12}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: Could you state this explicit decomposition in the theorem statement?}{12}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: take out the "very nice"}{13}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: I really like that you are giving the technical definition and then clarifying it. That is a good practice in general.}{14}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: could this be a Lemma?}{14}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: left justified?}{14}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: this is a confusing definition. It might read better if you said "denote by $\overline {x}$ the unique element of $Gx$ such that $\overline {x}$ is a Young diagram"}{14}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: you haven't defined $\binom {a}{b}_q$ yet!}{15}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ the following commented out section was based on the old definition of $\EuScript F^r$. Should we remove it?}{16}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise:...labor?}{16}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: did you define this?}{16}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: get ride of "really just"}{19}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Perhaps also put in the recursive relations which the $P[l,m]$ satisfy}{21}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: is this a particular power of $\EuScript H$?}{21}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: use "described" or "acheived" instead of "gotten"}{21}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: is this word supposed to be here?}{21}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: very minor note, but if you are setting $G=C_n$, try to be consistent and only use $G$ throughout the proof. It's clearer}{23}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: you should switch the last two clauses of this sentence.}{25}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: does this mean $\lambda _{i+1} - \lambda _{i}\not =0$?}{25}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: of what? Be precise.}{26}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: earlier you were using $|*|$ for rank size}{27}
+\contentsline {todo}{\color@fb@x {}{black}{}{orange}{\leavevmode {\color {orange}o}}\ Elise: you should definitely consider using something other than $q_i$ here. It might get confusing since $q$ now has another meaning.}{28}

@@ -1,0 +1,28 @@
+\begin{thebibliography}{Sta13}
+
+\bibitem[EB05]{babson}
+Dmitry N.~Kozlov Eric~Babson.
+\newblock Group actions on posets.
+\newblock {\em J. Algebra}, 285:439--450, 2005.
+
+\bibitem[IP13]{pak}
+Greta~Panova Igor~Pak.
+\newblock Unimodality via kronecker products.
+\newblock {\em Journal of Algebraic Combinatorics}, page To appear, 2013.
+
+\bibitem[Sta84]{quotients_stanley}
+Richard~P. Stanley.
+\newblock Quotients of peck posets.
+\newblock {\em Order}, 1:29--34, 1984.
+
+\bibitem[Sta11]{enumerative_comb}
+Richard~P. Stanley.
+\newblock {\em Enumerative Combinatorics}, volume~1.
+\newblock Cambridge University Press, 2011.
+
+\bibitem[Sta13]{algebraic_stanley}
+Richard~P. Stanley.
+\newblock {\em Algebraic Combinatorics}.
+\newblock Springer, 2013.
+
+\end{thebibliography}
